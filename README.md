@@ -25,9 +25,9 @@
 ### **`Design & Documentation:`**
 
 - [Slide of Presentation](https://docs.google.com/presentation/d/1aUV2L98Gq43LgOB2OIHlnl3YOkrKV6gLP0FRUagd13Y/edit?usp=sharing)
-- [BPMN](https://viewer.diagrams.net/?page-id=AEXkepp2AQowinVXfrau&highlight=0000ff&edit=_blank&layers=1&nav=1&page-id=AEXkepp2AQowinVXfrau#G1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-)
-- [Use Case](https://viewer.diagrams.net/?page-id=AEXkepp2AQowinVXfrau&highlight=0000ff&edit=_blank&layers=1&nav=1&page-id=AEXkepp2AQowinVXfrau#G1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-)
-- [Entity Relational Diagram](https://viewer.diagrams.net/?page-id=AEXkepp2AQowinVXfrau&highlight=0000ff&edit=_blank&layers=1&nav=1&page-id=AEXkepp2AQowinVXfrau#G1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-)
+- [BPMN](https://drive.google.com/file/d/1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-/view?usp=sharing)
+- [Use Case](https://drive.google.com/file/d/1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-/view?usp=sharing)
+- [Entity Relational Diagram](https://drive.google.com/file/d/1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-/view?usp=sharing)
 - [Data Dummy](https://docs.google.com/spreadsheets/d/1ydZpEoqUuwcYv1IFHPfIrQ0GB3hgGPOUd-sXmQGy9HQ/edit?usp=sharing)
 - [Progress of Project](https://docs.google.com/spreadsheets/d/19E78qnOJODgxfsP4NqAyg3y5IwQ_nZCxiMKqyV_5gkY/edit?usp=sharing)
 
