@@ -1,16 +1,16 @@
 ## **`Information for the Final Project Repository`**
 
-### **_`Title: ???`_**
+### **_`Title: DevPro Learning`_**
 
 ---
 
-### **`Kelompok 0?:`**
+### **`Kelompok 6:`**
 
-- **Name???**
-- **Name???**
-- **Name???**
-- **Name???**
-- **Name???**
+- **Harun Al Hakim**
+- **Rizki Kurnianingsih**
+- **Muhamad Bintang Alfarizki**
+- **Rovines Derlan Hutabarat**
+- **Teofilus Desius Ziraluo**
 
 ---
 
@@ -24,14 +24,12 @@
 
 ### **`Design & Documentation:`**
 
-_(silahkan edit sesuai kebutuhan, ex:)_
-
-- [Slide of Presentation](#)
-- [BPMN](#)
-- [Use Case](#)
-- [Entity Relational Diagram](#)
-- [Data Dummy](#)
-- [Progress of Project](#)
+- [Slide of Presentation](https://docs.google.com/presentation/d/1aUV2L98Gq43LgOB2OIHlnl3YOkrKV6gLP0FRUagd13Y/edit?usp=sharing)
+- [BPMN](https://viewer.diagrams.net/?page-id=AEXkepp2AQowinVXfrau&highlight=0000ff&edit=_blank&layers=1&nav=1&page-id=AEXkepp2AQowinVXfrau#G1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-)
+- [Use Case](https://viewer.diagrams.net/?page-id=AEXkepp2AQowinVXfrau&highlight=0000ff&edit=_blank&layers=1&nav=1&page-id=AEXkepp2AQowinVXfrau#G1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-)
+- [Entity Relational Diagram](https://viewer.diagrams.net/?page-id=AEXkepp2AQowinVXfrau&highlight=0000ff&edit=_blank&layers=1&nav=1&page-id=AEXkepp2AQowinVXfrau#G1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-)
+- [Data Dummy](https://docs.google.com/spreadsheets/d/1ydZpEoqUuwcYv1IFHPfIrQ0GB3hgGPOUd-sXmQGy9HQ/edit?usp=sharing)
+- [Progress of Project](https://docs.google.com/spreadsheets/d/19E78qnOJODgxfsP4NqAyg3y5IwQ_nZCxiMKqyV_5gkY/edit?usp=sharing)
 
 ---
 
@@ -43,14 +41,14 @@ _(silahkan edit sesuai kebutuhan, ex:)_
 
 ### **`Pembagian Tugas:`**
 
-- (silahkan edit sesuai kebutuhan atau bisa dilink pada `Progress of Project` - ke **spreadsheet**)
+[Progress of Project](https://docs.google.com/spreadsheets/d/19E78qnOJODgxfsP4NqAyg3y5IwQ_nZCxiMKqyV_5gkY/edit?usp=sharing)
 
 ---
 
 ### **`Ketentuan Implementasi Repository:`**
 
-- Silahkan clone repository yang sudah disediakan untuk setiap kelompoknya masing-masing.
-- Setalah clone, silahkan masukkan folder project **`backend`** & **`frontend`** yang nanti teman-teman buat.
+- Silakan clone repository yang sudah disediakan untuk setiap kelompoknya masing-masing.
+- Setelah clone, silakan masukkan folder project **`backend`** & **`frontend`** yang nanti teman-teman buat.
 - Untuk folder **`materials`** bisa diarsipkan dari `hasil akhir segment 4` export dari:
   - **Testing endpoint pada postman dengan extension `.postman_collection`**
   - **Database project dengan extension `.sql`**
