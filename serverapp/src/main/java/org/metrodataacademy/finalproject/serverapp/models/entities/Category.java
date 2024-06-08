@@ -1,4 +1,4 @@
-package org.metrodataacademy.finalproject.serverapp.models;
+package org.metrodataacademy.finalproject.serverapp.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,8 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_privilege")
-public class Privilege {
+@Table(name = "tb_category")
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +21,6 @@ public class Privilege {
     @Column(unique = true, nullable = false, length = 50)
     private String name;
 
-    @ManyToMany(mappedBy = "privileges")
-    private List<Role> roles;
+    @OneToMany(mappedBy = "categories", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Course> courses;
 }

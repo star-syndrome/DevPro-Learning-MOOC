@@ -29,3 +29,6 @@ spring:
             enable: true
           ssl:
             trust: smtp.gmail.com
+
+module-name: DevPro Learning
+api-version: 1.0.0

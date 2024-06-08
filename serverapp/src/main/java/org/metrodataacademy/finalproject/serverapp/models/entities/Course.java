@@ -1,4 +1,4 @@
-package org.metrodataacademy.finalproject.serverapp.models;
+package org.metrodataacademy.finalproject.serverapp.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -40,7 +40,7 @@ public class Course {
     private Integer totalDuration;
 
     @OneToMany(mappedBy = "courses", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Modul> moduls;
+    private List<Modul> modules;
 
     @OneToMany(mappedBy = "courses", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Order> orders;

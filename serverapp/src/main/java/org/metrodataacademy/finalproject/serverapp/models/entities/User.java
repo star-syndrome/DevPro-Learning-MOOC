@@ -1,4 +1,4 @@
-package org.metrodataacademy.finalproject.serverapp.models;
+package org.metrodataacademy.finalproject.serverapp.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

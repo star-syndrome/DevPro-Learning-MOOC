@@ -1,4 +1,4 @@
-package org.metrodataacademy.finalproject.serverapp.models;
+package org.metrodataacademy.finalproject.serverapp.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,6 +34,6 @@ public class Modul {
             name = "course_id",
             referencedColumnName = "id",
             nullable = false,
-            foreignKey = @ForeignKey(name = "fk_modul"))
+            foreignKey = @ForeignKey(name = "fk_module"))
     private Course courses;
 }
