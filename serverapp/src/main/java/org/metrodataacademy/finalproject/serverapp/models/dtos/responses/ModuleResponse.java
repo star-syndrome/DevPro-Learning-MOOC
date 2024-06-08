@@ -6,15 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class GetAllCoursesAfterLogin {
+public class ModuleResponse {
 
-    private String title;
-    private Boolean isPremium;
-    private Integer price;
-    private String level;
-    private String mentor;
-    private String category;
+    private String name;
+    private String description;
+    private String content;
+    private Integer duration;
 }

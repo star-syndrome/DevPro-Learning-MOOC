@@ -11,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_modul")
-public class Modul {
+public class Module {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -40,7 +40,7 @@ public class Course {
     private Integer totalDuration;
 
     @OneToMany(mappedBy = "courses", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Modul> modules;
+    private List<Module> modules;
 
     @OneToMany(mappedBy = "courses", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Order> orders;

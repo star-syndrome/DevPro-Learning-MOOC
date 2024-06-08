@@ -6,10 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class GetAllCoursesBeforeLogin {
+public class CourseResponse {
 
     private String title;
     private Boolean isPremium;
