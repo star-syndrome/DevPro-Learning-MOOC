@@ -20,4 +20,6 @@ public interface CourseService {
     CourseResponse addCourse(AddCourseRequest addCourseRequest);
 
     CourseResponse updateCourse(Integer id, UpdateCourseRequest updateCourseRequest);
+
+    CourseResponse deleteCourse(Integer id);
 }

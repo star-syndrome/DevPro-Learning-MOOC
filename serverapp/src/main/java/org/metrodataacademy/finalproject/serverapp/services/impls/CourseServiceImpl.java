@@ -178,7 +178,7 @@ public class CourseServiceImpl implements CourseService {
                 Module module = modules.stream()
                         .filter(mdl -> mdl.getName().equals(moduleRequest.getName()))
                         .findFirst()
-                        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Module not found!"));
+                        .orElse(null);
                 if (module != null) {
                     continue;
                 }
@@ -220,6 +220,23 @@ public class CourseServiceImpl implements CourseService {
             courseRepository.save(course);
 
             log.info("Updating the course with id {} was successful!", course.getId());
+            return mapToCourseResponse(course);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Override
+    public CourseResponse deleteCourse(Integer id) {
+        try {
+            log.info("Try to delete course data with id {}", id);
+            Course course = courseRepository.findById(id)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found!"));
+
+            courseRepository.delete(course);
+            log.info("Deleting the course with id {} was successful!", course.getId());
+
             return mapToCourseResponse(course);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());

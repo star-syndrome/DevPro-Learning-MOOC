@@ -74,4 +74,13 @@ public class CourseController {
         return ResponseEntity.ok()
                 .body(courseService.updateCourse(id, updateCourseRequest));
     }
+
+    @DeleteMapping(
+            path = "/delete/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<CourseResponse> deleteCourse(@PathVariable Integer id) {;
+        return ResponseEntity.ok()
+                .body(courseService.deleteCourse(id));
+    }
 }
