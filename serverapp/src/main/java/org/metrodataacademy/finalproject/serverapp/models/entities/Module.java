@@ -1,16 +1,18 @@
 package org.metrodataacademy.finalproject.serverapp.models.entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_modul")
+@Table(name = "tb_module")
 public class Module {
 
     @Id
@@ -33,7 +35,6 @@ public class Module {
     @JoinColumn(
             name = "course_id",
             referencedColumnName = "id",
-            nullable = false,
             foreignKey = @ForeignKey(name = "fk_module"))
     private Course courses;
 }

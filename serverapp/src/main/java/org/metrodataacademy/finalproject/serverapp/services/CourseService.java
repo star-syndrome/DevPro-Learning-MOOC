@@ -1,5 +1,6 @@
 package org.metrodataacademy.finalproject.serverapp.services;
 
+import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.AddCourseRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseDetailsResponse;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseResponse;
 
@@ -14,4 +15,6 @@ public interface CourseService {
     List<CourseResponse> getMyCourse();
 
     CourseDetailsResponse getCourseDetails(Integer id);
+
+    CourseResponse addCourse(AddCourseRequest addCourseRequest);
 }

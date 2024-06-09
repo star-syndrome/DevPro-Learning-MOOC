@@ -1,11 +1,13 @@
 package org.metrodataacademy.finalproject.serverapp.controllers;
 
+import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.AddCourseRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseDetailsResponse;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseResponse;
 import org.metrodataacademy.finalproject.serverapp.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -51,5 +53,14 @@ public class CourseController {
     public ResponseEntity<CourseDetailsResponse> courseDetails(@PathVariable Integer id) {
         return ResponseEntity.ok()
                 .body(courseService.getCourseDetails(id));
+    }
+
+    @PostMapping(
+            path = "/add",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> addCourse(@Validated @RequestBody AddCourseRequest addCourseRequest){
+        return ResponseEntity.ok()
+                .body(courseService.addCourse(addCourseRequest));
     }
 }
