@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddModuleRequest {
+public class UpdateModuleRequest {
 
     @NotBlank
     @Size(max = 100)

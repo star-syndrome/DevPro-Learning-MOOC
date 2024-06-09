@@ -1,6 +1,7 @@
 package org.metrodataacademy.finalproject.serverapp.controllers;
 
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.AddCourseRequest;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UpdateCourseRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseDetailsResponse;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseResponse;
 import org.metrodataacademy.finalproject.serverapp.services.CourseService;
@@ -59,8 +60,18 @@ public class CourseController {
             path = "/add",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> addCourse(@Validated @RequestBody AddCourseRequest addCourseRequest){
+    public ResponseEntity<CourseResponse> addCourse(@Validated @RequestBody AddCourseRequest addCourseRequest){
         return ResponseEntity.ok()
                 .body(courseService.addCourse(addCourseRequest));
+    }
+
+    @PutMapping(
+            path = "/update/{id}",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<CourseResponse> updateCourse(@PathVariable Integer id,
+                                                       @Validated @RequestBody UpdateCourseRequest updateCourseRequest){
+        return ResponseEntity.ok()
+                .body(courseService.updateCourse(id, updateCourseRequest));
     }
 }

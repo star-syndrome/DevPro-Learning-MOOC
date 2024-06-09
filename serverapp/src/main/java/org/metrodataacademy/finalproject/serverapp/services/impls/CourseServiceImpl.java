@@ -2,6 +2,8 @@ package org.metrodataacademy.finalproject.serverapp.services.impls;
 
 import lombok.extern.slf4j.Slf4j;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.AddCourseRequest;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UpdateCourseRequest;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UpdateModuleRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseDetailsResponse;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseResponse;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.ModuleResponse;
@@ -11,6 +13,7 @@ import org.metrodataacademy.finalproject.serverapp.models.entities.Module;
 import org.metrodataacademy.finalproject.serverapp.models.entities.User;
 import org.metrodataacademy.finalproject.serverapp.repositories.CategoryRepository;
 import org.metrodataacademy.finalproject.serverapp.repositories.CourseRepository;
+import org.metrodataacademy.finalproject.serverapp.repositories.ModuleRepository;
 import org.metrodataacademy.finalproject.serverapp.repositories.UserRepository;
 import org.metrodataacademy.finalproject.serverapp.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +23,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +33,9 @@ public class CourseServiceImpl implements CourseService {
 
     @Autowired
     private CourseRepository courseRepository;
+
+    @Autowired
+    private ModuleRepository moduleRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -150,6 +155,71 @@ public class CourseServiceImpl implements CourseService {
             courseRepository.save(course);
 
             log.info("Process of adding a new course is completed, new course: {}", course.getTitle());
+            return mapToCourseResponse(course);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Override
+    public CourseResponse updateCourse(Integer id, UpdateCourseRequest updateCourseRequest) {
+        try {
+            log.info("Try to update course data with id {}", id);
+            Course course = courseRepository.findById(id)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found!"));
+
+            if (courseRepository.existsByTitleAndNotId(updateCourseRequest.getTitle(), id)) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Course title already exists!");
+            }
+
+            List<Module> modules = course.getModules();
+            for (UpdateModuleRequest moduleRequest : updateCourseRequest.getUpdateModuleRequests()) {
+                Module module = modules.stream()
+                        .filter(mdl -> mdl.getName().equals(moduleRequest.getName()))
+                        .findFirst()
+                        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Module not found!"));
+                if (module != null) {
+                    continue;
+                }
+                if (moduleRepository.existsByNameAndNotId(moduleRequest.getName(), -1)) {
+                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Module name already exists!");
+                }
+            }
+
+            Category category = categoryRepository.findById(updateCourseRequest.getCategoryId())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found!"));
+
+            User user = userRepository.findById(1) // <- Admin ID
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
+
+            course.setTitle(updateCourseRequest.getTitle());
+            course.setIsPremium(updateCourseRequest.getIsPremium());
+            course.setPrice(updateCourseRequest.getPrice());
+            course.setLevel(updateCourseRequest.getLevel());
+            course.setMentor(updateCourseRequest.getMentor());
+            course.setAbout(updateCourseRequest.getAbout());
+            course.setTotalDuration(updateCourseRequest.getTotalDuration());
+            course.setCategories(category);
+            course.setUsers(user);
+
+            List<Module> moduleList = updateCourseRequest.getUpdateModuleRequests().stream()
+                    .map(updateModuleRequest -> {
+                        Module module = modules.stream()
+                                .filter(mdl -> mdl.getName().equals(updateModuleRequest.getName()))
+                                .findFirst()
+                                .orElse(new Module());
+                        module.setName(updateModuleRequest.getName());
+                        module.setDescription(updateModuleRequest.getDescription());
+                        module.setContent(updateModuleRequest.getContent());
+                        module.setDuration(updateModuleRequest.getDuration());
+                        return module;
+                    }).collect(Collectors.toList());
+
+            course.setModules(moduleList);
+            courseRepository.save(course);
+
+            log.info("Updating the course with id {} was successful!", course.getId());
             return mapToCourseResponse(course);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());

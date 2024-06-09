@@ -23,4 +23,7 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 
     @Query("SELECT COUNT(*) > 0 FROM Order o WHERE o.users.id = :user AND o.courses.id = :course")
     Boolean hasCourseOrder(Integer user, Integer course);
+
+    @Query("SELECT COUNT(c) > 0 FROM Course c WHERE c.title = :title AND c.id != :id")
+    Boolean existsByTitleAndNotId(String title, Integer id);
 }
