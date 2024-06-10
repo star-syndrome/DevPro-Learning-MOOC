@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: Final Project
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+server:
+  port: 8300
