@@ -4,9 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.AddCourseRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UpdateCourseRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UpdateModuleRequest;
-import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseDetailsResponse;
-import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseResponse;
-import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.ModuleResponse;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.*;
 import org.metrodataacademy.finalproject.serverapp.models.entities.Category;
 import org.metrodataacademy.finalproject.serverapp.models.entities.Course;
 import org.metrodataacademy.finalproject.serverapp.models.entities.Module;
@@ -66,6 +64,15 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional(readOnly = true)
+    public List<CourseDetailsAdminResponse> getAllCourseForAdmin() {
+        log.info("Getting list of courses for admin!");
+        return courseRepository.findAll().stream()
+                .map(this::mapToCourseDetailsAdminResponse)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List<CourseResponse> getMyCourse() {
         log.info("Getting my courses!");
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -99,7 +106,7 @@ public class CourseServiceImpl implements CourseService {
                             .isPremium(courses.getIsPremium())
                             .level(courses.getLevel())
                             .mentor(courses.getMentor())
-                            .totalDuration(courses.getTotalDuration())
+                            .totalDuration(courses.getModules().stream().mapToInt(Module::getDuration).sum())
                             .moduleResponses(courses.getModules().stream()
                                     .map(module -> ModuleResponse.builder()
                                             .name(module.getName())
@@ -118,7 +125,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public CourseResponse addCourse(AddCourseRequest addCourseRequest) {
+    public CourseDetailsAdminResponse addCourse(AddCourseRequest addCourseRequest) {
         try {
             log.info("Process of adding new course {}", addCourseRequest.getTitle());
             if (courseRepository.existsByTitle(addCourseRequest.getTitle())) {
@@ -147,7 +154,7 @@ public class CourseServiceImpl implements CourseService {
                     .level(addCourseRequest.getLevel())
                     .mentor(addCourseRequest.getMentor())
                     .about(addCourseRequest.getAbout())
-                    .totalDuration(addCourseRequest.getTotalDuration())
+                    .totalDuration(modules.stream().mapToInt(Module::getDuration).sum())
                     .modules(modules)
                     .categories(category)
                     .users(user)
@@ -155,7 +162,7 @@ public class CourseServiceImpl implements CourseService {
             courseRepository.save(course);
 
             log.info("Process of adding a new course is completed, new course: {}", course.getTitle());
-            return mapToCourseResponse(course);
+            return mapToCourseDetailsAdminResponse(course);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
             throw e;
@@ -163,7 +170,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public CourseResponse updateCourse(Integer id, UpdateCourseRequest updateCourseRequest) {
+    public CourseDetailsAdminResponse updateCourse(Integer id, UpdateCourseRequest updateCourseRequest) {
         try {
             log.info("Try to update course data with id {}", id);
             Course course = courseRepository.findById(id)
@@ -199,7 +206,6 @@ public class CourseServiceImpl implements CourseService {
             course.setLevel(updateCourseRequest.getLevel());
             course.setMentor(updateCourseRequest.getMentor());
             course.setAbout(updateCourseRequest.getAbout());
-            course.setTotalDuration(updateCourseRequest.getTotalDuration());
             course.setCategories(category);
             course.setUsers(user);
 
@@ -217,10 +223,11 @@ public class CourseServiceImpl implements CourseService {
                     }).collect(Collectors.toList());
 
             course.setModules(moduleList);
+            course.setTotalDuration(moduleList.stream().mapToInt(Module::getDuration).sum());
             courseRepository.save(course);
 
             log.info("Updating the course with id {} was successful!", course.getId());
-            return mapToCourseResponse(course);
+            return mapToCourseDetailsAdminResponse(course);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
             throw e;
@@ -228,7 +235,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public CourseResponse deleteCourse(Integer id) {
+    public CourseDetailsAdminResponse deleteCourse(Integer id) {
         try {
             log.info("Try to delete course data with id {}", id);
             Course course = courseRepository.findById(id)
@@ -237,7 +244,7 @@ public class CourseServiceImpl implements CourseService {
             courseRepository.delete(course);
             log.info("Deleting the course with id {} was successful!", course.getId());
 
-            return mapToCourseResponse(course);
+            return mapToCourseDetailsAdminResponse(course);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
             throw e;
@@ -252,6 +259,28 @@ public class CourseServiceImpl implements CourseService {
                 .level(course.getLevel())
                 .mentor(course.getMentor())
                 .category(course.getCategories().getName())
+                .build();
+    }
+
+    private CourseDetailsAdminResponse mapToCourseDetailsAdminResponse(Course course) {
+        return CourseDetailsAdminResponse.builder()
+                .id(course.getId())
+                .title(course.getTitle())
+                .about(course.getAbout())
+                .price(course.getPrice())
+                .isPremium(course.getIsPremium())
+                .level(course.getLevel())
+                .mentor(course.getMentor())
+                .totalDuration(course.getTotalDuration())
+                .moduleAdminResponses(course.getModules().stream()
+                        .map(module -> ModuleAdminResponse.builder()
+                                .id(module.getId())
+                                .name(module.getName())
+                                .description(module.getDescription())
+                                .content(module.getContent())
+                                .duration(module.getDuration())
+                                .build())
+                        .collect(Collectors.toList()))
                 .build();
     }
 }

@@ -36,9 +36,6 @@ public class AddCourseRequest {
     private String about;
 
     @NotNull
-    private Integer totalDuration;
-
-    @NotNull
     private Integer categoryId;
 
     @NotNull
