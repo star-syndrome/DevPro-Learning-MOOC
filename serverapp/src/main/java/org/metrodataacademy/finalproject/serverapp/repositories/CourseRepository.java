@@ -13,6 +13,8 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 
     Optional<Course> findById(Integer id);
 
+    Optional<Course> findCourseByTitle(String title);
+
     Boolean existsByTitle(String title);
 
     @Query("SELECT c FROM Course c LEFT JOIN Order o ON c.id = o.courses.id AND o.users.id = :id WHERE o.courses.id IS NULL")
