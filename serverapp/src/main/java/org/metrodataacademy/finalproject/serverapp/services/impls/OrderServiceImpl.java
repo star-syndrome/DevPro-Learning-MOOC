@@ -1,6 +1,7 @@
 package org.metrodataacademy.finalproject.serverapp.services.impls;
 
 import lombok.extern.slf4j.Slf4j;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.EmailRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.OrderRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.OrderDetailsResponse;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.OrderResponse;
@@ -12,6 +13,7 @@ import org.metrodataacademy.finalproject.serverapp.repositories.CourseRepository
 import org.metrodataacademy.finalproject.serverapp.repositories.OrderRepository;
 import org.metrodataacademy.finalproject.serverapp.repositories.PaymentRepository;
 import org.metrodataacademy.finalproject.serverapp.repositories.UserRepository;
+import org.metrodataacademy.finalproject.serverapp.services.EmailService;
 import org.metrodataacademy.finalproject.serverapp.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,6 +43,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private PaymentRepository paymentRepository;
+
+    @Autowired
+    private EmailService emailService;
 
     @Override
     public OrderDetailsResponse getOrderDetailsCourse(String title) {
@@ -95,6 +100,16 @@ public class OrderServiceImpl implements OrderService {
                     .courses(course)
                     .build();
             orderRepository.save(order);
+
+            EmailRequest emailRequest = EmailRequest.builder()
+                    .recipient(user.getEmail())
+                    .subject("Receipt DevPro Learning")
+                    .content("This is your receipt!" + "\nName: " + order.getUsers().getName() + "\nCourse: "
+                            + order.getCourses().getTitle() + "\nPayment: " + order.getPayments().getName() + "\nPaid: "
+                            + order.getIsPaid() + "\nOrder Time: " + order.getTime() + "\nOrder Id: " + order.getId()
+                            + "\nThank you!")
+                    .build();
+            emailService.sendEmail(emailRequest);
 
             log.info("Course {} purchase successful!", course.getTitle());
             return mapToOrderResponse(order);
