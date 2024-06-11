@@ -11,7 +11,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/category")
@@ -20,15 +19,6 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
-
-    @GetMapping(
-            path = "/getAll",
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    @PreAuthorize(value = "hasAnyAuthority('READ_USER', 'READ_ADMIN')")
-    public ResponseEntity<List<CategoryResponse>> getAllPayment() {
-        return ResponseEntity.ok().body(categoryService.getAllCategory());
-    }
 
     @GetMapping(
             path = "/{id}",
@@ -45,7 +35,7 @@ public class CategoryController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize(value = "hasAuthority('CREATE_ADMIN')")
-    public ResponseEntity<CategoryResponse> addPayment(@Validated @RequestBody AddCategoryRequest addCategoryRequest) {
+    public ResponseEntity<CategoryResponse> addCategory(@Validated @RequestBody AddCategoryRequest addCategoryRequest) {
         return ResponseEntity.ok().body(categoryService.addCategory(addCategoryRequest));
     }
 
@@ -55,7 +45,7 @@ public class CategoryController {
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize(value = "hasAuthority('UPDATE_ADMIN')")
-    public ResponseEntity<CategoryResponse> updatePayment(
+    public ResponseEntity<CategoryResponse> updateCategory(
             @PathVariable Integer id, @Validated @RequestBody UpdateCategoryRequest updateCategoryRequest) {
         return ResponseEntity.ok().body(categoryService.updateCategory(id, updateCategoryRequest));
     }
@@ -65,7 +55,7 @@ public class CategoryController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize(value = "hasAuthority('DELETE_ADMIN')")
-    public ResponseEntity<CategoryResponse> deletePayment(@PathVariable Integer id) {
+    public ResponseEntity<CategoryResponse> deleteCategory(@PathVariable Integer id) {
         return ResponseEntity.ok().body(categoryService.deleteCategory(id));
     }
 }

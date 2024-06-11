@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>E-Receipt</title>
+	</head>
+	<body
+		style="
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding-top: 30px;
+			background-color: #f4f4f4;
+		">
+		<div
+			style="
+				max-width: 600px;
+				margin: 20px auto;
+				background-color: #fff;
+				border: 1px solid #ddd;
+				padding: 20px;
+			">
+			<h1 style="text-align: center; color: #333">DevPro Learning E-Receipt</h1>
+			<div
+				style="
+					border-bottom: 1px solid #ddd;
+					padding-bottom: 10px;
+					margin-bottom: 20px;
+				">
+				<p style="margin: 0; padding-bottom: 10px">
+					Order ID: <strong th:text="${orderId}"></strong>
+				</p>
+				<p style="margin: 0">Date: <strong th:text="${orderTime}"></strong></p>
+			</div>
+			<div style="margin-bottom: 20px">
+				<h2 style="color: #333; margin-bottom: 10px">Customer Details</h2>
+				<p style="margin: 0; padding-bottom: 10px">
+					Name: <strong th:text="${name}"></strong>
+				</p>
+				<p style="margin: 0">Email: <strong th:text="${recipient}"></strong></p>
+			</div>
+			<div style="margin-bottom: 20px">
+				<h2 style="color: #333; margin-bottom: 10px">Course Details</h2>
+				<table style="width: 100%; border-collapse: collapse">
+					<thead>
+						<tr>
+							<th
+								style="
+									text-align: left;
+									border-bottom: 1px solid #ddd;
+									padding: 8px;
+								">
+								Course
+							</th>
+							<th
+								style="
+									text-align: left;
+									border-bottom: 1px solid #ddd;
+									padding: 8px;
+								">
+								Duration
+							</th>
+							<th
+								style="
+									text-align: left;
+									border-bottom: 1px solid #ddd;
+									padding: 8px;
+								">
+								Price
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="border-bottom: 1px solid #ddd; padding: 8px">
+								<span th:text="${title}"></span>
+							</td>
+							<td style="border-bottom: 1px solid #ddd; padding: 8px">
+								<span th:text="${duration}"></span>
+							</td>
+							<td style="border-bottom: 1px solid #ddd; padding: 8px">
+								<span th:text="${price}"></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="margin-bottom: 20px">
+				<h2 style="color: #333; margin-bottom: 10px">Payment Method</h2>
+				<p style="margin: 0; padding-bottom: 10px">
+					Method: <strong th:text="${paymentMethod}"></strong>
+				</p>
+				<p style="margin: 0">
+					Status Paid: <strong th:text="${paid}"></strong>
+				</p>
+			</div>
+			<div style="border-top: 1px solid #ddd; padding-top: 10px">
+				<p style="text-align: center; color: #888; margin: 0">
+					Thank you for your purchase!
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

@@ -11,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import java.util.List;
 
 @RestController
@@ -37,7 +38,7 @@ public class OrderController {
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize(value = "hasAuthority('CREATE_USER')")
-    public ResponseEntity<OrderResponse> orderCourse(@Validated @RequestBody OrderRequest orderRequest) {
+    public ResponseEntity<OrderResponse> orderCourse(@Validated @RequestBody OrderRequest orderRequest) throws MessagingException {
         return ResponseEntity.ok()
                 .body(orderService.orderCourse(orderRequest));
     }

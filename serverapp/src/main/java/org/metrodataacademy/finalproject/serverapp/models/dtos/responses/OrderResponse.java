@@ -14,7 +14,7 @@ public class OrderResponse {
 
     private String id;
     private String course;
-    private String username;
+    private String name;
     private String time;
     private String payment;
     private Boolean isPaid;

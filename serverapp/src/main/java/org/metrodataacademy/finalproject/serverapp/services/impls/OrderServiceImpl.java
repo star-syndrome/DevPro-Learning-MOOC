@@ -1,8 +1,8 @@
 package org.metrodataacademy.finalproject.serverapp.services.impls;
 
 import lombok.extern.slf4j.Slf4j;
-import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.EmailRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.OrderRequest;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.ReceiptRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.OrderDetailsResponse;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.OrderResponse;
 import org.metrodataacademy.finalproject.serverapp.models.entities.Course;
@@ -26,6 +26,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.mail.MessagingException;
 
 @Service
 @Transactional
@@ -74,7 +76,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderResponse orderCourse(OrderRequest orderRequest) {
+    public OrderResponse orderCourse(OrderRequest orderRequest) throws MessagingException{
         try {
             log.info("Trying to purchase a {} course.", orderRequest.getTitle());
             String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -101,15 +103,26 @@ public class OrderServiceImpl implements OrderService {
                     .build();
             orderRepository.save(order);
 
-            EmailRequest emailRequest = EmailRequest.builder()
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+
+            final double tax = 0.11;
+            int price = course.getPrice();
+            double calculateTax = tax * price;
+            double totalPrice = price + calculateTax;
+
+            ReceiptRequest receiptRequest = ReceiptRequest.builder()
                     .recipient(user.getEmail())
-                    .subject("Receipt DevPro Learning")
-                    .content("This is your receipt!" + "\nName: " + order.getUsers().getName() + "\nCourse: "
-                            + order.getCourses().getTitle() + "\nPayment: " + order.getPayments().getName() + "\nPaid: "
-                            + order.getIsPaid() + "\nOrder Time: " + order.getTime() + "\nOrder Id: " + order.getId()
-                            + "\nThank you!")
+                    .subject("DevPro Learning Receipt")
+                    .orderId(order.getId())
+                    .name(user.getName())
+                    .title(course.getTitle())
+                    .duration(course.getTotalDuration())
+                    .price(totalPrice)
+                    .orderTime(simpleDateFormat.format(order.getTime()))
+                    .paymentMethod(order.getPayments().getName())
+                    .paid(order.getIsPaid())
                     .build();
-            emailService.sendEmail(emailRequest);
+            emailService.sendReceipt(receiptRequest);
 
             log.info("Course {} purchase successful!", course.getTitle());
             return mapToOrderResponse(order);
@@ -133,7 +146,7 @@ public class OrderServiceImpl implements OrderService {
         return OrderResponse.builder()
                 .id(order.getId())
                 .course(order.getCourses().getTitle())
-                .username(order.getUsers().getUsername())
+                .name(order.getUsers().getName())
                 .time(simpleDateFormat.format(order.getTime()))
                 .payment(order.getPayments().getName())
                 .isPaid(order.getIsPaid())

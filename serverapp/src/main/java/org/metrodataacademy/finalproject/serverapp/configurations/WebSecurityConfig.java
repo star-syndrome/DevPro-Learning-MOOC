@@ -28,7 +28,8 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth ->
                         auth
-                                .antMatchers("/api/course/getAllCourseBeforeLogin",
+                                .antMatchers(
+                                        "/api/course/getAllCourseBeforeLogin", "/api/category/getAll",
                                         "/api/auth/**", "/swagger-ui.html", "/swagger-ui/**",
                                         "/v3/api-docs/**").permitAll()
                                 .anyRequest().authenticated())

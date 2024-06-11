@@ -5,17 +5,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Email;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmailRequest {
+public class ReceiptRequest {
 
-    @Email
     private String recipient;
-
     private String subject;
-    private String content;
+    private String orderId;
+    private String name;
+    private String title;
+    private Integer duration;
+    private Double price;
+    private String orderTime;
+    private String paymentMethod;
+    private Boolean paid;
 }

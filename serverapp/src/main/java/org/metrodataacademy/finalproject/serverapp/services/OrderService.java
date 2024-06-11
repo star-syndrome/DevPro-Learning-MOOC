@@ -6,11 +6,13 @@ import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.OrderRe
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 public interface OrderService {
 
     OrderDetailsResponse getOrderDetailsCourse(String title);
 
-    OrderResponse orderCourse(OrderRequest orderRequest);
+    OrderResponse orderCourse(OrderRequest orderRequest) throws MessagingException;
 
     List<OrderResponse> getPaymentHistory();
 }

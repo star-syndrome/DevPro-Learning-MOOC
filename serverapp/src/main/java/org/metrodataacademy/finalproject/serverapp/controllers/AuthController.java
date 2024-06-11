@@ -2,10 +2,12 @@ package org.metrodataacademy.finalproject.serverapp.controllers;
 
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.LoginRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.RegistrationRequest;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CategoryResponse;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseResponse;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.LoginResponse;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.RegistrationResponse;
 import org.metrodataacademy.finalproject.serverapp.services.AuthService;
+import org.metrodataacademy.finalproject.serverapp.services.CategoryService;
 import org.metrodataacademy.finalproject.serverapp.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -25,6 +27,9 @@ public class AuthController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @PostMapping(
             path = "/auth/registration",
@@ -51,5 +56,13 @@ public class AuthController {
     public ResponseEntity<List<CourseResponse>> getAllCourseBeforeLogin() {
         return ResponseEntity.ok()
                 .body(courseService.getAllCourseBeforeLogin());
+    }
+
+    @GetMapping(
+            path = "/category/getAll",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<List<CategoryResponse>> getAllPayment() {
+        return ResponseEntity.ok().body(categoryService.getAllCategory());
     }
 }
