@@ -56,10 +56,10 @@ public class OrderServiceImpl implements OrderService {
             Course course = courseRepository.findCourseByTitle(title)
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found!"));
 
-            final double tax = 0.11;
-            int price = course.getPrice();
-            double calculateTax = tax * price;
-            double totalPrice = price + calculateTax;
+            final Double tax = 0.11;
+            Integer price = course.getPrice();
+            Double calculateTax = tax * price;
+            Double totalPrice = price + calculateTax;
 
             return OrderDetailsResponse.builder()
                     .title(course.getTitle())
@@ -105,10 +105,10 @@ public class OrderServiceImpl implements OrderService {
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
-            final double tax = 0.11;
-            int price = course.getPrice();
-            double calculateTax = tax * price;
-            double totalPrice = price + calculateTax;
+            final Double tax = 0.11;
+            Integer price = course.getPrice();
+            Double calculateTax = tax * price;
+            Double totalPrice = price + calculateTax;
 
             ReceiptRequest receiptRequest = ReceiptRequest.builder()
                     .recipient(user.getEmail())
