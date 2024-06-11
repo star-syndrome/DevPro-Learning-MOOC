@@ -1,9 +1,9 @@
 package org.metrodataacademy.finalproject.serverapp.controllers;
 
-import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.AddPaymentRequest;
-import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UpdatePaymentRequest;
-import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.PaymentResponse;
-import org.metrodataacademy.finalproject.serverapp.services.PaymentService;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.AddCategoryRequest;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UpdateCategoryRequest;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CategoryResponse;
+import org.metrodataacademy.finalproject.serverapp.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/payment")
+@RequestMapping(path = "/api/category")
 @PreAuthorize(value = "hasAnyRole('ADMIN', 'USER')")
-public class PaymentController {
+public class CategoryController {
 
     @Autowired
-    private PaymentService paymentService;
+    private CategoryService categoryService;
 
     @GetMapping(
             path = "/getAll",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize(value = "hasAnyAuthority('READ_USER', 'READ_ADMIN')")
-    public ResponseEntity<List<PaymentResponse>> getAllPayment() {
-        return ResponseEntity.ok().body(paymentService.getAllPayment());
+    public ResponseEntity<List<CategoryResponse>> getAllPayment() {
+        return ResponseEntity.ok().body(categoryService.getAllCategory());
     }
 
     @GetMapping(
@@ -35,8 +35,8 @@ public class PaymentController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize(value = "hasAnyAuthority('READ_USER', 'READ_ADMIN')")
-    public ResponseEntity<PaymentResponse> getById(@PathVariable Integer id) {
-        return ResponseEntity.ok().body(paymentService.getById(id));
+    public ResponseEntity<CategoryResponse> getById(@PathVariable Integer id) {
+        return ResponseEntity.ok().body(categoryService.getById(id));
     }
 
     @PostMapping(
@@ -45,8 +45,8 @@ public class PaymentController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize(value = "hasAuthority('CREATE_ADMIN')")
-    public ResponseEntity<PaymentResponse> addPayment(@Validated @RequestBody AddPaymentRequest addPaymentRequest) {
-        return ResponseEntity.ok().body(paymentService.addPayment(addPaymentRequest));
+    public ResponseEntity<CategoryResponse> addPayment(@Validated @RequestBody AddCategoryRequest addCategoryRequest) {
+        return ResponseEntity.ok().body(categoryService.addCategory(addCategoryRequest));
     }
 
     @PutMapping(
@@ -55,9 +55,9 @@ public class PaymentController {
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize(value = "hasAuthority('UPDATE_ADMIN')")
-    public ResponseEntity<PaymentResponse> updatePayment(
-            @PathVariable Integer id, @Validated @RequestBody UpdatePaymentRequest updatePaymentRequest) {
-        return ResponseEntity.ok().body(paymentService.updatePayment(id, updatePaymentRequest));
+    public ResponseEntity<CategoryResponse> updatePayment(
+            @PathVariable Integer id, @Validated @RequestBody UpdateCategoryRequest updateCategoryRequest) {
+        return ResponseEntity.ok().body(categoryService.updateCategory(id, updateCategoryRequest));
     }
 
     @DeleteMapping(
@@ -65,7 +65,7 @@ public class PaymentController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize(value = "hasAuthority('DELETE_ADMIN')")
-    public ResponseEntity<PaymentResponse> deletePayment(@PathVariable Integer id) {
-        return ResponseEntity.ok().body(paymentService.deletePayment(id));
+    public ResponseEntity<CategoryResponse> deletePayment(@PathVariable Integer id) {
+        return ResponseEntity.ok().body(categoryService.deleteCategory(id));
     }
 }

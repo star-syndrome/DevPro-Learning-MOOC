@@ -7,6 +7,7 @@ import org.metrodataacademy.finalproject.serverapp.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/order")
+@PreAuthorize(value = "hasAnyRole('ADMIN', 'USER')")
 public class OrderController {
 
     @Autowired
@@ -23,6 +25,7 @@ public class OrderController {
             path = "/getOrderDetailsCourse/{title}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
+    @PreAuthorize(value = "hasAuthority('READ_USER')")
     public ResponseEntity<OrderDetailsResponse> getOrderDetailsCourse(@PathVariable String title) {
         return ResponseEntity.ok()
                 .body(orderService.getOrderDetailsCourse(title));
@@ -33,6 +36,7 @@ public class OrderController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
+    @PreAuthorize(value = "hasAuthority('CREATE_USER')")
     public ResponseEntity<OrderResponse> orderCourse(@Validated @RequestBody OrderRequest orderRequest) {
         return ResponseEntity.ok()
                 .body(orderService.orderCourse(orderRequest));
@@ -42,6 +46,7 @@ public class OrderController {
             path = "/paymentHistoryForAdmin",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
+    @PreAuthorize(value = "hasAuthority('READ_ADMIN')")
     public ResponseEntity<List<OrderResponse>> getPaymentHistoriesForAdmin() {
         return ResponseEntity.ok()
                 .body(orderService.getPaymentHistory());

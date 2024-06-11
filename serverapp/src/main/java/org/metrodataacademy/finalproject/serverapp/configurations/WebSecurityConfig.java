@@ -28,8 +28,9 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth ->
                         auth
-                                .antMatchers("/**", "/api/auth/**", "/swagger-ui.html",
-                                        "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                                .antMatchers("/api/course/getAllCourseBeforeLogin",
+                                        "/api/auth/**", "/swagger-ui.html", "/swagger-ui/**",
+                                        "/v3/api-docs/**").permitAll()
                                 .anyRequest().authenticated())
                 .userDetailsService(userDetailsService)
                 .httpBasic(Customizer.withDefaults());

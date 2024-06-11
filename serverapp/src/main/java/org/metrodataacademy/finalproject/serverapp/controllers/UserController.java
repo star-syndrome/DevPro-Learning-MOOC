@@ -7,11 +7,13 @@ import org.metrodataacademy.finalproject.serverapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/profile")
+@PreAuthorize(value = "hasRole('USER')")
 public class UserController {
 
     @Autowired
@@ -21,6 +23,7 @@ public class UserController {
             path = "/get",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
+    @PreAuthorize(value = "hasAuthority('READ_USER')")
     public ResponseEntity<UserResponse> getUser() {
         return ResponseEntity.ok()
                 .body(userService.getUserProfile());
@@ -31,6 +34,7 @@ public class UserController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
+    @PreAuthorize(value = "hasAuthority('UPDATE_USER')")
     public ResponseEntity<UserResponse> updateUser(@Validated @RequestBody UpdateUserProfileRequest updateUserProfileRequest) {
         return ResponseEntity.ok()
                 .body(userService.updateUserProfile(updateUserProfileRequest));
@@ -41,6 +45,7 @@ public class UserController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
+    @PreAuthorize(value = "hasAuthority('UPDATE_USER')")
     public ResponseEntity<UserResponse> changePassword(@Validated @RequestBody ChangePasswordRequest changePasswordRequest) {
         return ResponseEntity.ok()
                 .body(userService.changePasswordUser(changePasswordRequest));
