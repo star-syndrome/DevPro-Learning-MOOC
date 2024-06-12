@@ -1,5 +1,6 @@
 package org.metrodataacademy.finalproject.serverapp.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.AddCategoryRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UpdateCategoryRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CategoryResponse;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(path = "/api/category")
+@RequestMapping(path = "/api")
 @PreAuthorize(value = "hasAnyRole('ADMIN', 'USER')")
 public class CategoryController {
 
@@ -21,29 +22,32 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping(
-            path = "/{id}",
+            path = "/category/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
+    @Operation(summary = "API to get category by id")
     @PreAuthorize(value = "hasAnyAuthority('READ_USER', 'READ_ADMIN')")
     public ResponseEntity<CategoryResponse> getById(@PathVariable Integer id) {
         return ResponseEntity.ok().body(categoryService.getById(id));
     }
 
     @PostMapping(
-            path = "/create",
+            path = "/admin/category",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
+    @Operation(summary = "API for admin to create category")
     @PreAuthorize(value = "hasAuthority('CREATE_ADMIN')")
     public ResponseEntity<CategoryResponse> addCategory(@Validated @RequestBody AddCategoryRequest addCategoryRequest) {
         return ResponseEntity.ok().body(categoryService.addCategory(addCategoryRequest));
     }
 
     @PutMapping(
-            path = "/update/{id}",
+            path = "/admin/category/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
+    @Operation(summary = "API for admin to update category")
     @PreAuthorize(value = "hasAuthority('UPDATE_ADMIN')")
     public ResponseEntity<CategoryResponse> updateCategory(
             @PathVariable Integer id, @Validated @RequestBody UpdateCategoryRequest updateCategoryRequest) {
@@ -51,9 +55,10 @@ public class CategoryController {
     }
 
     @DeleteMapping(
-            path = "/delete/{id}",
+            path = "/admin/category/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
+    @Operation(summary = "API for admin to delete category")
     @PreAuthorize(value = "hasAuthority('DELETE_ADMIN')")
     public ResponseEntity<CategoryResponse> deleteCategory(@PathVariable Integer id) {
         return ResponseEntity.ok().body(categoryService.deleteCategory(id));

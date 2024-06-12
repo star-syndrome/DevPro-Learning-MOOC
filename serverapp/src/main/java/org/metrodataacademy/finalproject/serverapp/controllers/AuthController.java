@@ -1,5 +1,6 @@
 package org.metrodataacademy.finalproject.serverapp.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.LoginRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.RegistrationRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CategoryResponse;
@@ -50,19 +51,21 @@ public class AuthController {
     }
 
     @GetMapping(
-            path = "/course/getAllCourseBeforeLogin",
+            path = "/course/before-login",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
+    @Operation(summary = "API to get all course before login (landing page)")
     public ResponseEntity<List<CourseResponse>> getAllCourseBeforeLogin() {
         return ResponseEntity.ok()
                 .body(courseService.getAllCourseBeforeLogin());
     }
 
     @GetMapping(
-            path = "/category/getAll",
+            path = "/category",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<List<CategoryResponse>> getAllPayment() {
+    @Operation(summary = "API to get all category (landing page)")
+    public ResponseEntity<List<CategoryResponse>> getAllCategory() {
         return ResponseEntity.ok().body(categoryService.getAllCategory());
     }
 }

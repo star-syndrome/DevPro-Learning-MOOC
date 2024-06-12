@@ -29,7 +29,7 @@ public class WebSecurityConfig {
                 .authorizeRequests(auth ->
                         auth
                                 .antMatchers(
-                                        "/api/course/getAllCourseBeforeLogin", "/api/category/getAll",
+                                        "/api/course/before-login", "/api/category",
                                         "/api/auth/**", "/swagger-ui.html", "/swagger-ui/**",
                                         "/v3/api-docs/**").permitAll()
                                 .anyRequest().authenticated())

@@ -86,19 +86,40 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional(readOnly = true)
-    public CourseDetailsResponse getCourseDetails(Integer id) {
+    public CourseResponse getCourseByTitle(String title) {
         try {
-            log.info("Getting course details information from course id {} ", id);
+            log.info("Getting course information from course title {} ", title);
+            String username = SecurityContextHolder.getContext().getAuthentication().getName();
+            userRepository.findByUsername(username)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
+
+            Course course = courseRepository.findCourseByTitle(title)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found!"));
+
+            return courseRepository.findCourseByTitle(course.getTitle())
+                    .map(this::mapToCourseResponse)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found!"));
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public CourseDetailsResponse getCourseDetails(String title) {
+        try {
+            log.info("Getting course details information from course title {} ", title);
             String username = SecurityContextHolder.getContext().getAuthentication().getName();
             User users = userRepository.findByUsername(username)
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
 
-            Course course = courseRepository.findById(id)
+            Course course = courseRepository.findCourseByTitle(title)
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found!"));
 
             Boolean hasCourseOrder = courseRepository.hasCourseOrder(users.getId(), course.getId());
 
-            return courseRepository.findById(course.getId())
+            return courseRepository.findCourseByTitle(course.getTitle())
                     .map(courses -> CourseDetailsResponse.builder()
                             .title(courses.getTitle())
                             .about(courses.getAbout())
@@ -167,6 +188,15 @@ public class CourseServiceImpl implements CourseService {
             System.out.println("Error: " + e.getMessage());
             throw e;
         }
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public CourseDetailsAdminResponse getCourseByIdForAdmin(Integer id) {
+        log.info("Getting course details information from course id {} ", id);
+        return courseRepository.findById(id)
+                .map(this::mapToCourseDetailsAdminResponse)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found!"));
     }
 
     @Override

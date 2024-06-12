@@ -18,9 +18,13 @@ public interface CourseService {
 
     List<CourseResponse> getMyCourse();
 
-    CourseDetailsResponse getCourseDetails(Integer id);
+    CourseResponse getCourseByTitle(String title);
+
+    CourseDetailsResponse getCourseDetails(String title);
 
     CourseDetailsAdminResponse addCourse(AddCourseRequest addCourseRequest);
+
+    CourseDetailsAdminResponse getCourseByIdForAdmin(Integer id);
 
     CourseDetailsAdminResponse updateCourse(Integer id, UpdateCourseRequest updateCourseRequest);
 

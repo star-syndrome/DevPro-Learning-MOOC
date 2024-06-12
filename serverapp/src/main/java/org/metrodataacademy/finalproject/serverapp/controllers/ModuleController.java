@@ -1,5 +1,6 @@
 package org.metrodataacademy.finalproject.serverapp.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.ModuleResponse;
 import org.metrodataacademy.finalproject.serverapp.services.ModuleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/api/module")
+@RequestMapping(path = "/api/admin/module")
 @PreAuthorize(value = "hasRole('ADMIN')")
 public class ModuleController {
 
@@ -20,9 +21,10 @@ public class ModuleController {
     private ModuleService moduleService;
 
     @DeleteMapping(
-            path = "/delete/{id}",
+            path = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
+    @Operation(summary = "API for admin to delete module")
     @PreAuthorize(value = "hasAuthority('DELETE_ADMIN')")
     public ResponseEntity<ModuleResponse> deleteModule(@PathVariable Integer id) {;
         return ResponseEntity.ok()
