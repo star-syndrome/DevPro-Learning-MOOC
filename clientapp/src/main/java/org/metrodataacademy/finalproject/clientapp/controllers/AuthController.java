@@ -10,6 +10,7 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller(value = "/auth")
 public class AuthController {
@@ -26,6 +27,17 @@ public class AuthController {
 
         if (authentication instanceof AnonymousAuthenticationToken) {
             return "auth/login";
+        }
+        return "redirect:/#";
+    }
+
+    @PostMapping(
+        path = "/login",
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public String login(LoginRequest loginRequest) {
+        if (!authService.login(loginRequest)) {
+            return "redirect:/login?error=true";
         }
         return "redirect:/#";
     }
