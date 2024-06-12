@@ -1,6 +1,7 @@
 package org.metrodataacademy.finalproject.clientapp.controllers;
 
 import org.metrodataacademy.finalproject.clientapp.models.dtos.requests.LoginRequest;
+import org.metrodataacademy.finalproject.clientapp.models.dtos.requests.RegistrationRequest;
 import org.metrodataacademy.finalproject.clientapp.services.AuthService;
 import org.metrodataacademy.finalproject.clientapp.utils.AuthSessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,13 @@ public class AuthController {
             return "auth/login";
         }
         return "redirect:/#";
+    }
+
+    @GetMapping(
+        path = "/registration",
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public String registrationView(RegistrationRequest registrationRequest) {
+        return "auth/registration";
     }
 }
