@@ -1,13 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/src/main/resources/static/css/register.css">
 </head>
 <body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Daftar</h2>
+            <form>
+                <label for="name">Nama</label>
+                <input type="text" id="name" name="name" placeholder="Nama Lengkap..." required>
 
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+                
+
+                <label for="phone">Nomor Seluler</label>
+                <input type="tel" id="phone" name="phone" value="" required>
+                
+
+                <label for="password">Buat Password</label>
+                <input type="password" id="password" name="password" minlength="8" placeholder="Min. 8 karakter">
+                
+
+                <button type="submit">Daftar</button>
+            </form>
+            <p>Sudah punya akun? <a href="login.html">Masuk di sini</a></p>
+        </div>
+        <div class="logo-container">
+            <h1>Belajar</h1>
+        </div>
+    </div>
+    <script src="/src/main/resources/static/js/register.js"></script>
 </body>
 </html>

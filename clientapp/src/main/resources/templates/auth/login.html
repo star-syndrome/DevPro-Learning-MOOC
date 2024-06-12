@@ -1,13 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/src/main/resources/static/css/register.css">
 </head>
 <body>
-
+    <div class="container">
+        <div class="form-container">
+            <h2>Masuk</h2>
+            <form action="#">
+                <div class="input-group">
+                    <label for="email">Email/No Telepon</label>
+                    <input type="text" id="email" name="email" placeholder="Contoh johndoe@gmail.com">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Ingat Saya</label>
+                </div>
+                <button type="submit">Masuk</button>
+            </form>
+            <a href="#" class="forgot-password">Lupa Kata Sandi?</a>
+            <p class="register">Belum punya akun? <a href="registration.html">Daftar di sini</a></p>
+        </div>
+        <div class="logo-container">
+            <h1>Belajar</h1>
+        </div>
+    </div>
+    <script src="/src/main/resources/static/js/register.js"></script>
 </body>
 </html>

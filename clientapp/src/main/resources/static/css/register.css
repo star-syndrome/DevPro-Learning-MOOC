@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+}
+
+.container {
+    display: flex;
+    width: 70%;
+    height: 80vh;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 40px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo-container {
+    background-color: #6f44ff;
+    color: #fff;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    color: #6f44ff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 22px);
+}
+
+input[type="password"]:invalid {
+    border-color: red;
+}
+
+.valid,
+.invalid {
+    margin-left: 10px;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #6f44ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5a3ae6;
+}
+
+p {
+    margin-top: 20px;
+}
+
+a {
+    color: #6f44ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: red;
+    display: none;
+    margin-top: 5px;
+}
+
+input[type="password"]:invalid + .invalid + .error {
+    display: block;
+}
