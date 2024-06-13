@@ -1,13 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Navbar</title>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>NavBar</title>
+	</head>
+	<body>
+		<!-- Navigation Bars -->
+		<div th:fragment="navbar">
+			<nav class="navbar navbar-expand-lg bg-body-tertiary">
+				<div class="container-fluid">
+					<a class="navbar-brand fw-bold fs-3" th:href="@{/home}">
+						<!-- <img
+							class="d-inline-block align-text-top"
+							th:src="@{}"
+							alt="Logo"
+							width="40"
+							height="36" /> -->
+						DevPro Learning
+					</a>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarTogglerDemo02"
+						aria-controls="navbarTogglerDemo02"
+						aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+						<ul class="navbar-nav me-lg-auto mt-lg-2 fs-5">
+							<li class="nav-item">
+								<a
+									class="nav-link"
+									th:classappend="${isActive} == 'home' ? 'active fw-bold' : ''"
+									th:href="@{/home}"
+									>Home</a
+								>
+							</li>
+						</ul>
 
-</body>
+						<form
+							class="d-flex justify-content-center"
+							th:action="@{/logout}"
+							th:method="POST">
+							<button class="btn btn-danger fw-bold" type="submit">
+								Log out
+							</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</body>
 </html>

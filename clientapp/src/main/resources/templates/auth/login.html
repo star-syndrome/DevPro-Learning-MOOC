@@ -1,37 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="/src/main/resources/static/css/register.css">
-</head>
-<body>
-    <div class="container">
-        <div class="form-container">
-            <h2>Masuk</h2>
-            <form action="#">
-                <div class="input-group">
-                    <label for="email">Email/No Telepon</label>
-                    <input type="text" id="email" name="email" placeholder="Contoh johndoe@gmail.com">
-                </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password">
-                </div>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="rememberMe">
-                    <label for="rememberMe">Ingat Saya</label>
-                </div>
-                <button type="submit">Masuk</button>
-            </form>
-            <a href="#" class="forgot-password">Lupa Kata Sandi?</a>
-            <p class="register">Belum punya akun? <a href="registration.html">Daftar di sini</a></p>
-        </div>
-        <div class="logo-container">
-            <h1>Belajar</h1>
-        </div>
-    </div>
-    <script src="/src/main/resources/static/js/register.js"></script>
-</body>
+<html
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/auth}">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Login Page</title>
+	</head>
+	<body>
+		<div class="container" layout:fragment="content">
+			<div class="form-container">
+				<h2>Log in</h2>
+				<form
+					th:action="@{/auth/login}"
+					th:method="POST"
+					th:object="${loginRequest}">
+					<div class="input-group">
+						<label for="username">Username</label>
+						<input
+							type="text"
+							id="username"
+							name="username"
+							th:field="*{username}"
+							placeholder="Enter your username" />
+					</div>
+					<div class="input-group">
+						<label for="current-password">Password</label>
+						<input
+							type="password"
+							id="current-password"
+							name="current-password"
+							th:field="*{password}"
+							placeholder="Enter your password" />
+					</div>
+					<div>
+						<input class="mt-3" type="checkbox" onclick="showPassword()" />
+						Show Password
+					</div>
+					<button type="submit">Log in</button>
+					<a href="#" class="forgot-password mt-2">Forgot Password?</a>
+					<p class="register">
+						Don't have an account?
+						<a th:href="@{/auth/registration}">Sign up here!</a>
+					</p>
+				</form>
+			</div>
+			<div class="logo-container">
+				<h1>DevPro Learning</h1>
+			</div>
+		</div>
+
+		<!-- JS -->
+		<div layout:fragment="script">
+			<script src="/js/login.js"></script>
+		</div>
+	</body>
 </html>

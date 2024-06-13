@@ -1,7 +1,6 @@
 package org.metrodataacademy.finalproject.clientapp.controllers;
 
 import org.metrodataacademy.finalproject.clientapp.models.dtos.requests.LoginRequest;
-import org.metrodataacademy.finalproject.clientapp.models.dtos.requests.RegistrationRequest;
 import org.metrodataacademy.finalproject.clientapp.services.AuthService;
 import org.metrodataacademy.finalproject.clientapp.utils.AuthSessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +10,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller(value = "/auth")
+@Controller
+@RequestMapping("/auth")
 public class AuthController {
 
     @Autowired
@@ -28,7 +29,7 @@ public class AuthController {
         if (authentication instanceof AnonymousAuthenticationToken) {
             return "auth/login";
         }
-        return "redirect:/#";
+        return "redirect:/home";
     }
 
     @PostMapping(
@@ -39,14 +40,14 @@ public class AuthController {
         if (!authService.login(loginRequest)) {
             return "redirect:/login?error=true";
         }
-        return "redirect:/#";
+        return "redirect:/home";
     }
 
     @GetMapping(
         path = "/registration",
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public String registrationView(RegistrationRequest registrationRequest) {
+    public String registrationView() {
         return "auth/registration";
     }
 }

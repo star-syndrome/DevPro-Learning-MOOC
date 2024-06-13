@@ -16,7 +16,7 @@ public class WebSecurityConfig {
                         auth
                                 .antMatchers("/css/**", "/img/**", "/js/**")
                                 .permitAll()
-                                .antMatchers("/**", "/", "/auth/**")
+                                .antMatchers("/", "/auth/**")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()

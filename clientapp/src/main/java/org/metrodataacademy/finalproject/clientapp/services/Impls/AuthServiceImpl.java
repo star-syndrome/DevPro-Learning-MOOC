@@ -2,9 +2,7 @@ package org.metrodataacademy.finalproject.clientapp.services.Impls;
 
 import lombok.extern.slf4j.Slf4j;
 import org.metrodataacademy.finalproject.clientapp.models.dtos.requests.LoginRequest;
-import org.metrodataacademy.finalproject.clientapp.models.dtos.requests.RegistrationRequest;
 import org.metrodataacademy.finalproject.clientapp.models.dtos.responses.LoginResponse;
-import org.metrodataacademy.finalproject.clientapp.models.dtos.responses.RegistrationResponse;
 import org.metrodataacademy.finalproject.clientapp.services.AuthService;
 import org.metrodataacademy.finalproject.clientapp.utils.AuthSessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,7 +40,7 @@ public class AuthServiceImpl implements AuthService {
             );
 
             if (response.getStatusCode() == HttpStatus.OK) {
-                setPrinciple(Objects.requireNonNull(response.getBody()), loginRequest.getPassword());
+                setPrinciple(response.getBody(), loginRequest.getPassword());
 
                 Authentication authentication = AuthSessionUtil.getAuthentication();
 
@@ -56,25 +53,9 @@ public class AuthServiceImpl implements AuthService {
         return false;
     }
 
-    @Override
-    public RegistrationResponse registration(RegistrationRequest registrationRequest) {
-        try {
-            return restTemplate
-                    .exchange(
-                            url + "/registration",
-                            HttpMethod.POST,
-                            new HttpEntity<>(registrationRequest),
-                            RegistrationResponse.class)
-                    .getBody();
-        } catch (Exception e) {
-            log.error("Error: {}", e.getMessage());
-            throw e;
-        }
-    }
-
     public void setPrinciple(LoginResponse loginResponse, String password) {
         List<SimpleGrantedAuthority> authorities = loginResponse.getRoles().stream()
-                .map(SimpleGrantedAuthority::new)
+                .map(authority -> new SimpleGrantedAuthority(authority))
                 .collect(Collectors.toList());
 
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(

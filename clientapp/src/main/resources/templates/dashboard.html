@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/main}">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Dashboard</title>
+	</head>
+	<body>
+		<!-- Content -->
+		<section
+			class="container ms-5 mt-3"
+			layout:fragment="content"
+			sec:authorize="isAuthenticated()">
+			<h1 class="fw-bold">
+				Hi <span sec:authentication="name"></span>, <br />
+				Welcome to DevPro Learning!
+			</h1>
+		</section>
+	</body>
+</html>
