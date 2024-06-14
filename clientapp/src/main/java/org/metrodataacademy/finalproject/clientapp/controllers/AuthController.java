@@ -27,7 +27,7 @@ public class AuthController {
         Authentication authentication = AuthSessionUtil.getAuthentication();
 
         if (authentication instanceof AnonymousAuthenticationToken) {
-            return "auth/login";
+            return "pages/auth/login";
         }
         return "redirect:/home";
     }
@@ -48,6 +48,6 @@ public class AuthController {
         produces = MediaType.APPLICATION_JSON_VALUE
     )
     public String registrationView() {
-        return "auth/registration";
+        return "pages/auth/registration";
     }
 }

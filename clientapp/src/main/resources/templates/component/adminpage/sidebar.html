@@ -8,16 +8,16 @@
 <body>
 <!-- Sidebar -->
 <div th:fragment="sidebar">
-    <div class="bg-[#6148FF] w-72 h-full fixed text-white">
+    <div class="bg-[var(--primary)] w-72 h-full fixed text-white">
         <div class="flex justify-center items-center my-7">
             <img src="" alt="/">
         </div>
         <ul class="font-medium">
-            <li th:classappend="${#httpServletRequest.requestURI == '/admin/dashboard'} ? 'bg-[#489CFF]' : ''"
+            <li th:classappend="${#httpServletRequest.requestURI == '/admin/dashboard'} ? 'bg-[var(--secondary)]' : ''"
                 class="py-2 px-8">
                 <a th:href="@{/dashboard}">Dashboard</a>
             </li>
-            <li th:classappend="${#httpServletRequest.requestURI == '/kelola-kelas'} ? 'bg-[#489CFF]' : ''"
+            <li th:classappend="${#httpServletRequest.requestURI == '/kelola-kelas'} ? 'bg-[var(--secondary)]' : ''"
                 class="py-2 px-8">
                 <a th:href="@{/kelola-kelas}">Kelola Kelas</a>
             </li>
