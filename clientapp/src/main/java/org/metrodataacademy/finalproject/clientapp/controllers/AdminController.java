@@ -11,4 +11,9 @@ public class AdminController {
     public String dashboardView(){
         return "pages/adminpage/dashboard";
     }
+
+    @GetMapping("/kelola-kelas")
+    public String kelolaKelasView(){
+        return "pages/adminpage/kelolaKelas";
+    }
 }
