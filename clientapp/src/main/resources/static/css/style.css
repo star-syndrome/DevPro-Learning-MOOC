@@ -3,3 +3,8 @@
 * {
     font-family: "Plus Jakarta Sans", sans-serif;
 }
+
+:root {
+    --primary : #6148FF;
+    --secondary : #489CFF;
+}

@@ -12,7 +12,7 @@
 			<div class="form-container">
 				<h2>Log in</h2>
 				<form
-					th:action="@{/auth/login}"
+					th:action="@{/templates/pages/auth/login}"
 					th:method="POST"
 					th:object="${loginRequest}">
 					<div class="input-group">
@@ -41,7 +41,7 @@
 					<a href="#" class="forgot-password mt-2">Forgot Password?</a>
 					<p class="register">
 						Don't have an account?
-						<a th:href="@{/auth/registration}">Sign up here!</a>
+						<a th:href="@{/templates/pages/auth/registration}">Sign up here!</a>
 					</p>
 				</form>
 			</div>
