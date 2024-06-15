@@ -6,7 +6,95 @@
 			name="viewport"
 			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="/clientapp/src/main/resources/static/css/index.css">
 		<title>Landing Page</title>
 	</head>
-	<body></body>
+	<body>
+		<header class="header">
+			<div class="container">
+				<div class="logo">Belajar</div>
+				<div class="search-bar">
+					<input type="text" placeholder="Cari Kursus terbaik...">
+					<button type="button">🔍</button>
+				</div>
+				<div class="login">
+					<a href="#">Masuk</a>
+				</div>
+			</div>
+		</header>
+	
+		<section class="hero">
+			<div class="container">
+				<div class="hero-text">
+					<h1>Belajar dari Praktisi Terbaik!</h1>
+					<button>IKUTI KELAS</button>
+				</div>
+				<div class="hero-image">
+					<img src="hero-image.jpg" alt="Hero Image">
+				</div>
+			</div>
+		</section>
+	
+		<section class="categories">
+			<div class="container">
+				<h2>Kategori Belajar</h2>
+				<div class="category-list">
+					<div class="category-item">UI/UX Design</div>
+					<div class="category-item">Product Management</div>
+					<div class="category-item">Web Development</div>
+					<div class="category-item">Android Development</div>
+					<div class="category-item">IOS Development</div>
+					<div class="category-item">Data Science</div>
+					<a href="#" class="see-all">Lihat Semua</a>
+				</div>
+			</div>
+		</section>
+	
+		<section class="popular-courses">
+			<div class="container">
+				<h2>Kursus Populer</h2>
+				<div class="filters">
+					<button>All</button>
+					<button>Data Science</button>
+					<button>UI/UX Design</button>
+					<button>Android Development</button>
+					<button>Web Development</button>
+					<button>IOS Development</button>
+					<button>Business Intelligence</button>
+					<a href="#" class="see-all">Lihat Semua</a>
+				</div>
+				<div class="courses">
+					<div class="course">
+						<img src="course1.jpg" alt="Course 1">
+						<h3>Belajar Web Designer dengan Figma</h3>
+						<p>by Angela Dew</p>
+						<p>Intermediate Level</p>
+						<p>10 Modul</p>
+						<p>120 Menit</p>
+						<p>Rp 249.000</p>
+					</div>
+					<div class="course">
+						<img src="course2.jpg" alt="Course 2">
+						<h3>Membuat Wireframe Hingga ke Visual Design</h3>
+						<p>by Angela Dew</p>
+						<p>Intermediate Level</p>
+						<p>5 Modul</p>
+						<p>90 Menit</p>
+						<p>Rp 249.000</p>
+					</div>
+					<div class="course">
+						<img src="course3.jpg" alt="Course 3">
+						<h3>Pemahaman tentang Design System</h3>
+						<p>by Angela Dew</p>
+						<p>Advanced Level</p>
+						<p>8 Modul</p>
+						<p>120 Menit</p>
+						<p>Rp 249.000</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script src="/clientapp/src/main/resources/static/js/index.js"></script>
+	</body>
 </html>
