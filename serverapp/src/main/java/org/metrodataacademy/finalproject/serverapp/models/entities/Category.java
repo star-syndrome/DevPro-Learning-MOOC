@@ -21,6 +21,8 @@ public class Category {
     @Column(unique = true, nullable = false, length = 50)
     private String name;
 
+    private String linkPhoto;
+
     @OneToMany(mappedBy = "categories", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Course> courses;
 }

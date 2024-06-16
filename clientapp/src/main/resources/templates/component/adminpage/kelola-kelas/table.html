@@ -1,74 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Table</title>
-</head>
-<body>
-<!-- Table -->
-<div th:fragment="table">
-    <div class="flex justify-between mt-10 mb-2">
-        <h1 class="font-bold text-[20px]">Kelola Kelas</h1>
-        <div class="flex justify-center items-center gap-x-3">
-            <div class="flex justify-center items-center rounded-xl outline outline-1 bg-[var(--primary)] px-3 text-white text-sm font-semibold gap-x-1 py-1">
-                <img src="https://img.icons8.com/material-outlined/96/FFFFFF/add.png" alt="filter" class="h-4">
-                <h1>Tambah</h1>
-            </div>
-            <div class="flex justify-center items-center rounded-xl outline outline-[var(--primary)] outline-1 px-3 text-[var(--primary)] text-sm font-semibold gap-x-1 py-1">
-                <img src="https://img.icons8.com/android/24/7950F2/filter.png" alt="filter" class="h-4">
-                <h1>Filter</h1>
-            </div>
-            <img src="https://img.icons8.com/ios-filled/50/7950F2/search--v1.png" alt="search" class="h-5">
-        </div>
-    </div>
-    <div class="overflow-x-auto">
-        <table class="min-w-full">
-            <thead class="bg-[#EBF3FC]">
-            <tr class="text-left text-xs font-bold">
-                <th scope="col" class="px-2 py-3 ">Kode Kelas</th>
-                <th scope="col" class="px-2 py-3">Kategori</th>
-                <th scope="col" class="px-2 py-3">Nama Kelas</th>
-                <th scope="col" class="px-2 py-3">Tipe Kelas</th>
-                <th scope="col" class="px-2 py-3">Level</th>
-                <th scope="col" class="px-2 py-3">Harga Kelas</th>
-                <th scope="col" class="px-2 py-3">Aksi</th>
-            </tr>
-            </thead>
-            <tbody class="bg-transparent ">
-            <tr class="text-xs font-medium">
-                <td class="px-2 py-4">UIUX123</td>
-                <td class="px-2 py-4">UI/UX Design</td>
-                <td class="px-2 py-4">Belajar Web Design Dengan Figma</td>
-                <td class="px-2 py-4 text-green-500">Gratis</td>
-                <td class="px-2 py-4">Beginner</td>
-                <td class="px-2 py-4">Rp.0</td>
-                <td>
-                    <div class="flex items-center text-white gap-x-2">
-                        <button class="bg-[var(--primary)] rounded-xl px-3 py-1">Ubah</button>
-                        <button class="bg-red-600 rounded-xl px-3 py-1">Hapus</button>
-                    </div>
-                </td>
-            </tr>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Table</title>
+	</head>
+	<body>
+		<!-- Table -->
+		<div th:fragment="table">
+			<div class="flex justify-between mt-10 mb-2">
+				<h1 class="font-bold text-[20px]">Manage Courses</h1>
+				<div class="flex justify-center items-center gap-x-3">
+					<div
+						class="flex justify-center items-center rounded-xl outline outline-1 bg-[var(--primary)] px-3 text-white text-sm font-semibold gap-x-1 py-1">
+						<img
+							src="https://img.icons8.com/material-outlined/96/FFFFFF/add.png"
+							alt="filter"
+							class="h-4" />
+						<h1>Tambah</h1>
+					</div>
+					<div
+						class="flex justify-center items-center rounded-xl outline outline-[var(--primary)] outline-1 px-3 text-[var(--primary)] text-sm font-semibold gap-x-1 py-1">
+						<img
+							src="https://img.icons8.com/android/24/7950F2/filter.png"
+							alt="filter"
+							class="h-4" />
+						<h1>Filter</h1>
+					</div>
+					<img
+						src="https://img.icons8.com/ios-filled/50/7950F2/search--v1.png"
+						alt="search"
+						class="h-5" />
+				</div>
+			</div>
+			<div class="overflow-x-auto">
+				<table class="min-w-full">
+					<thead class="bg-[#EBF3FC]">
+						<tr class="text-left text-xs font-bold">
+							<th scope="col" class="px-2 py-3">ID</th>
+							<th scope="col" class="px-2 py-3">Kategori</th>
+							<th scope="col" class="px-2 py-3">Nama Kelas</th>
+							<th scope="col" class="px-2 py-3">Tipe Kelas</th>
+							<th scope="col" class="px-2 py-3">Level</th>
+							<th scope="col" class="px-2 py-3">Harga Kelas</th>
+							<th scope="col" class="px-2 py-3">Aksi</th>
+						</tr>
+					</thead>
+					<tbody class="bg-transparent">
+						<tr class="text-xs font-medium">
+							<td class="px-2 py-4">UIUX123</td>
+							<td class="px-2 py-4">UI/UX Design</td>
+							<td class="px-2 py-4">Belajar Web Design Dengan Figma</td>
+							<td class="px-2 py-4 text-green-500">Gratis</td>
+							<td class="px-2 py-4">Beginner</td>
+							<td class="px-2 py-4">Rp.0</td>
+							<td>
+								<div class="flex items-center text-white gap-x-2">
+									<button class="bg-[var(--primary)] rounded-xl px-3 py-1">
+										Ubah
+									</button>
+									<button class="bg-red-600 rounded-xl px-3 py-1">Hapus</button>
+								</div>
+							</td>
+						</tr>
 
-            <tr class="text-xs font-medium">
-                <td class="px-2 py-4">DS0041</td>
-                <td class="px-2 py-4">Data Science</td>
-                <td class="px-2 py-4">Data Cleaning Untuk Pemula</td>
-                <td class="px-2 py-4 text-[var(--primary)]">Premium</td>
-                <td class="px-2 py-4">Advanced</td>
-                <td class="px-2 py-4">Rp.10.000</td>
-                <td>
-                    <div class="flex items-center text-white gap-x-2">
-                        <button class="bg-[var(--primary)] rounded-xl px-3 py-1">Ubah</button>
-                        <button class="bg-red-600 rounded-xl px-3 py-1">Hapus</button>
-                    </div>
-                </td>
-            </tr>
-
-            </tbody>
-        </table>
-    </div>
-</div>
-</body>
+						<tr class="text-xs font-medium">
+							<td class="px-2 py-4">DS0041</td>
+							<td class="px-2 py-4">Data Science</td>
+							<td class="px-2 py-4">Data Cleaning Untuk Pemula</td>
+							<td class="px-2 py-4 text-[var(--primary)]">Premium</td>
+							<td class="px-2 py-4">Advanced</td>
+							<td class="px-2 py-4">Rp.10.000</td>
+							<td>
+								<div class="flex items-center text-white gap-x-2">
+									<button class="bg-[var(--primary)] rounded-xl px-3 py-1">
+										Ubah
+									</button>
+									<button class="bg-red-600 rounded-xl px-3 py-1">Hapus</button>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
 </html>

@@ -104,6 +104,7 @@ public class CategoryServiceImpl implements CategoryService {
         return CategoryResponse.builder()
                 .id(category.getId())
                 .name(category.getName())
+                .linkPhoto(category.getLinkPhoto())
                 .build();
     }
 }

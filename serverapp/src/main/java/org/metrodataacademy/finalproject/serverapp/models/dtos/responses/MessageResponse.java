@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryResponse {
+public class MessageResponse {
 
-    private Integer id;
-    private String name;
-    private String linkPhoto;
+    private String message;
 }
