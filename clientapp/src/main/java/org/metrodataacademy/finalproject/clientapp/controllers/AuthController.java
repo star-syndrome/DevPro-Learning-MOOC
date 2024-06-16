@@ -32,6 +32,19 @@ public class AuthController {
         return "redirect:/home";
     }
 
+    @GetMapping(
+            path = "/admin/login",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public String loginViewAdmin(LoginRequest loginRequest) {
+        Authentication authentication = AuthSessionUtil.getAuthentication();
+
+        if (authentication instanceof AnonymousAuthenticationToken) {
+            return "pages/auth/login-admin";
+        }
+        return "redirect:/admin/dashboard";
+    }
+
     @PostMapping(
         path = "/login",
         produces = MediaType.APPLICATION_JSON_VALUE
@@ -41,6 +54,17 @@ public class AuthController {
             return "redirect:/login?error=true";
         }
         return "redirect:/home";
+    }
+
+    @PostMapping(
+        path = "/admin/login",
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public String loginAdmin(LoginRequest loginRequest) {
+        if (!authService.login(loginRequest)) {
+            return "redirect:/login?error=true";
+        }
+        return "redirect:/admin/dashboard";
     }
 
     @GetMapping(

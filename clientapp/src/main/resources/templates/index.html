@@ -6,23 +6,32 @@
 			name="viewport"
 			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<link rel="stylesheet" href="/clientapp/src/main/resources/static/css/index.css">
 		<title>Landing Page</title>
+
+		<!-- Bootstrap -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+			crossorigin="anonymous" />
+
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="/css/index.css" />
 	</head>
 	<body>
 		<header class="header">
 			<div class="container">
-				<div class="logo">Belajar</div>
+				<div class="logo">DevPro Learning</div>
 				<div class="search-bar">
-					<input type="text" placeholder="Cari Kursus terbaik...">
+					<input type="text" placeholder="Cari Kursus terbaik..." />
 					<button type="button">🔍</button>
 				</div>
 				<div class="login">
-					<a href="#">Masuk</a>
+					<a th:href="@{/auth/login}">Masuk</a>
 				</div>
 			</div>
 		</header>
-	
+
 		<section class="hero">
 			<div class="container">
 				<div class="hero-text">
@@ -30,11 +39,11 @@
 					<button>IKUTI KELAS</button>
 				</div>
 				<div class="hero-image">
-					<img src="hero-image.jpg" alt="Hero Image">
+					<img src="hero-image.jpg" alt="Hero Image" />
 				</div>
 			</div>
 		</section>
-	
+
 		<section class="categories">
 			<div class="container">
 				<h2>Kategori Belajar</h2>
@@ -49,7 +58,7 @@
 				</div>
 			</div>
 		</section>
-	
+
 		<section class="popular-courses">
 			<div class="container">
 				<h2>Kursus Populer</h2>
@@ -65,7 +74,7 @@
 				</div>
 				<div class="courses">
 					<div class="course">
-						<img src="course1.jpg" alt="Course 1">
+						<img src="course1.jpg" alt="Course 1" />
 						<h3>Belajar Web Designer dengan Figma</h3>
 						<p>by Angela Dew</p>
 						<p>Intermediate Level</p>
@@ -74,7 +83,7 @@
 						<p>Rp 249.000</p>
 					</div>
 					<div class="course">
-						<img src="course2.jpg" alt="Course 2">
+						<img src="course2.jpg" alt="Course 2" />
 						<h3>Membuat Wireframe Hingga ke Visual Design</h3>
 						<p>by Angela Dew</p>
 						<p>Intermediate Level</p>
@@ -83,7 +92,7 @@
 						<p>Rp 249.000</p>
 					</div>
 					<div class="course">
-						<img src="course3.jpg" alt="Course 3">
+						<img src="course3.jpg" alt="Course 3" />
 						<h3>Pemahaman tentang Design System</h3>
 						<p>by Angela Dew</p>
 						<p>Advanced Level</p>
@@ -95,6 +104,12 @@
 			</div>
 		</section>
 
-		<script src="/clientapp/src/main/resources/static/js/index.js"></script>
+		<!-- Bootstrap  -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+			crossorigin="anonymous"></script>
+
+		<script src="/js/index.js"></script>
 	</body>
 </html>
