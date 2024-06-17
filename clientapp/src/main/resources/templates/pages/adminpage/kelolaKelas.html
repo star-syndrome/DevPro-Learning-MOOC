@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/admin}">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Kelola Kelas Page</title>
-	</head>
-	<body>
-		<div layout:fragment="content" sec:authorize="isAuthenticated()">
-			<div th:replace="component/adminpage/dashboard/card :: card"></div>
-			<div th:replace="component/adminpage/kelola-kelas/table :: table"></div>
-		</div>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/admin}">
 
-		<div layout:fragment="script">
-			<script src="/js/course.js"></script>
-		</div>
-	</body>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Kelola Kelas Page</title>
+</head>
+
+<body>
+	<div layout:fragment="content" sec:authorize="isAuthenticated()">
+		<div th:replace="component/adminpage/dashboard/card :: card"></div>
+		<div th:replace="component/adminpage/kelola-kelas/table :: table"></div>
+		<div th:replace="component/adminpage/kelola-kelas/tambah-kelas :: add-modal"></div>
+	</div>
+
+	<div layout:fragment="script">
+		<script src="/js/course.js"></script>
+	</div>
+</body>
+
 </html>
