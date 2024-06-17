@@ -3,14 +3,20 @@ package org.metrodataacademy.finalproject.serverapp.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.AddCategoryRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UpdateCategoryRequest;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UploadImageRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CategoryResponse;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.MessageResponse;
 import org.metrodataacademy.finalproject.serverapp.services.CategoryService;
+import org.metrodataacademy.finalproject.serverapp.services.CloudinaryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 
 @RestController
@@ -21,6 +27,9 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private CloudinaryService cloudinaryService;
+
     @GetMapping(
             path = "/category/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
@@ -29,6 +38,18 @@ public class CategoryController {
     @PreAuthorize(value = "hasAnyAuthority('READ_USER', 'READ_ADMIN')")
     public ResponseEntity<CategoryResponse> getById(@PathVariable Integer id) {
         return ResponseEntity.ok().body(categoryService.getById(id));
+    }
+
+    @PostMapping(path = "/admin/category/upload-image/{id}")
+    @PreAuthorize(value = "hasAuthority('CREATE_ADMIN')")
+    public ResponseEntity<MessageResponse> uploadImage(@PathVariable Integer id, @ModelAttribute UploadImageRequest uploadImageRequest) {
+        return Optional.of(uploadImageRequest)
+                .map(UploadImageRequest::getMultipartFile)
+                .filter(file -> !file.isEmpty())
+                .map(file -> new ResponseEntity<>(cloudinaryService.uploadImageForCategory(id, file), HttpStatus.OK))
+                .orElse(new ResponseEntity<>(MessageResponse.builder()
+                        .message("Upload image failed")
+                        .build(), HttpStatus.INTERNAL_SERVER_ERROR));
     }
 
     @PostMapping(

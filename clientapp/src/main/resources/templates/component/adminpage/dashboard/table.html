@@ -1,56 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Table</title>
-</head>
-<body>
-<!-- Table -->
-<div th:fragment="table">
-    <div class="flex justify-between mt-10 mb-2">
-        <h1 class="font-bold text-[20px]">Status Pembayaran</h1>
-        <div class="flex justify-center items-center gap-x-3">
-            <div class="flex justify-center items-center rounded-xl outline outline-[var(--primary)] outline-1 px-3 text-[var(--primary)] text-sm font-semibold gap-x-1 py-[2px]">
-                <img src="https://img.icons8.com/android/24/7950F2/filter.png" alt="filter" class="h-4">
-                <h1>Filter</h1>
-            </div>
-            <img src="https://img.icons8.com/ios-filled/50/7950F2/search--v1.png" alt="search" class="h-5">
-        </div>
-    </div>
-    <div class="overflow-x-auto">
-        <table class="min-w-full">
-            <thead class="bg-[#EBF3FC]">
-            <tr class="text-left text-xs font-bold">
-                <th scope="col" class="px-2 py-3 ">ID</th>
-                <th scope="col" class="px-2 py-3">Kategori</th>
-                <th scope="col" class="px-2 py-3">Kelas Premium</th>
-                <th scope="col" class="px-2 py-3">Status</th>
-                <th scope="col" class="px-2 py-3">Metode Pembayaran</th>
-                <th scope="col" class="px-2 py-3">Tanggal Bayar</th>
-            </tr>
-            </thead>
-            <tbody class="bg-transparent ">
-            <tr class="text-xs font-medium">
-                <td class="px-2 py-4">Jane Cooper</td>
-                <td class="px-2 py-4">UI/UX Design</td>
-                <td class="px-2 py-4">Belajar Web Design Dengan Figma</td>
-                <td class="px-2 py-4 text-green-500">Sudah Bayar</td>
-                <td class="px-2 py-4">Credit Cart</td>
-                <td class="px-2 py-4">10 oktoker 2024</td>
-            </tr>
-            <tr class="text-xs font-medium">
-                <td class="px-2 py-4">Cooper Jane</td>
-                <td class="px-2 py-4">Data Science</td>
-                <td class="px-2 py-4">Data Cleaning Untuk Pemula</td>
-                <td class="px-2 py-4 text-red-500">Belum Bayar</td>
-                <td class="px-2 py-4">-</td>
-                <td class="px-2 py-4">19 april 2024</td>
-            </tr>
-
-            </tbody>
-        </table>
-    </div>
-</div>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Table</title>
+	</head>
+	<body>
+		<!-- Table -->
+		<div th:fragment="table">
+			<div class="flex justify-between mt-10 mb-2">
+				<h1 class="font-bold text-[20px]">Payment History</h1>
+				<div class="flex justify-center items-center gap-x-3">
+					<div
+						class="flex justify-center items-center rounded-xl outline outline-[var(--primary)] outline-1 px-3 text-[var(--primary)] text-sm font-semibold gap-x-1 py-[2px]">
+						<img
+							src="https://img.icons8.com/android/24/7950F2/filter.png"
+							alt="filter"
+							class="h-4" />
+						<h1>Filter</h1>
+					</div>
+					<img
+						src="https://img.icons8.com/ios-filled/50/7950F2/search--v1.png"
+						alt="search"
+						class="h-5" />
+				</div>
+			</div>
+			<div class="overflow-x-auto">
+				<table class="min-w-full">
+					<thead class="bg-[#EBF3FC]">
+						<tr class="text-left text-xs font-bold">
+							<th scope="col" class="px-2 py-3">ID</th>
+							<th scope="col" class="px-2 py-3">Kategori</th>
+							<th scope="col" class="px-2 py-3">Kelas Premium</th>
+							<th scope="col" class="px-2 py-3">Status Pembayaran</th>
+							<th scope="col" class="px-2 py-3">Metode Pembayaran</th>
+							<th scope="col" class="px-2 py-3">Tanggal Bayar</th>
+						</tr>
+					</thead>
+					<tbody class="bg-transparent">
+						<tr class="text-xs font-medium">
+							<td class="px-2 py-4">123</td>
+							<td class="px-2 py-4">UI/UX Design</td>
+							<td class="px-2 py-4">Belajar Web Design Dengan Figma</td>
+							<td class="px-2 py-4 text-green-500">Sudah Bayar</td>
+							<td class="px-2 py-4">Credit Card</td>
+							<td class="px-2 py-4">10 Oktober 2024</td>
+						</tr>
+						<tr class="text-xs font-medium">
+							<td class="px-2 py-4">456</td>
+							<td class="px-2 py-4">Data Science</td>
+							<td class="px-2 py-4">Data Cleaning Untuk Pemula</td>
+							<td class="px-2 py-4 text-red-500">Sudah Bayar</td>
+							<td class="px-2 py-4">-</td>
+							<td class="px-2 py-4">19 April 2024</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
 </html>

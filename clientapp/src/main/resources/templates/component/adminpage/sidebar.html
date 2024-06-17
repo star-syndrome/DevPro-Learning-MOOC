@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Sidebar</title>
-</head>
-<body>
-<!-- Sidebar -->
-<div th:fragment="sidebar">
-    <div class="bg-[var(--primary)] w-72 h-full fixed text-white">
-        <div class="flex justify-center items-center my-7">
-            <img src="" alt="/">
-        </div>
-        <ul class="font-medium">
-            <li th:classappend="${#httpServletRequest.requestURI == '/admin/dashboard'} ? 'bg-[var(--secondary)]' : ''"
-                class="py-2 px-8">
-                <a th:href="@{/admin/dashboard}">Dashboard</a>
-            </li>
-            <li th:classappend="${#httpServletRequest.requestURI == '/admin/kelola-kelas'} ? 'bg-[var(--secondary)]' : ''"
-                class="py-2 px-8">
-                <a th:href="@{/admin/kelola-kelas}">Kelola Kelas</a>
-            </li>
-            <li class="py-2 px-8">
-                <a th:href="@{/keluar}">Keluar</a>
-            </li>
-        </ul>
-    </div>
-</div>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sidebar</title>
+	</head>
+	<body>
+		<!-- Sidebar -->
+		<div th:fragment="sidebar">
+			<div class="bg-[var(--primary)] w-72 h-full fixed text-white">
+				<div class="flex justify-center items-center my-7">DevPro Learning</div>
+				<ul class="font-medium">
+					<li
+						th:classappend="${#httpServletRequest.requestURI == '/admin/dashboard'} ? 'bg-[var(--secondary)]' : ''"
+						class="py-2 px-8">
+						<a
+							th:href="@{/admin/dashboard}"
+							sec:authorize="hasRole('ROLE_ADMIN')"
+							>Dashboard
+						</a>
+					</li>
+					<li
+						th:classappend="${#httpServletRequest.requestURI == '/admin/kelola-kelas'} ? 'bg-[var(--secondary)]' : ''"
+						class="py-2 px-8">
+						<a
+							th:href="@{/admin/kelola-kelas}"
+							sec:authorize="hasRole('ROLE_ADMIN')"
+							>Manage Courses
+						</a>
+					</li>
+					<li class="py-2 px-8">
+						<form th:action="@{/logout}" th:method="POST">
+							<button class="btn btn-danger fw-bold" type="submit">
+								Log out
+							</button>
+						</form>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
 </html>

@@ -10,9 +10,9 @@
 	<body>
 		<div class="container" layout:fragment="content">
 			<div class="form-container">
-				<h2>Log in</h2>
+				<h2>Welcome Admin!</h2>
 				<form
-					th:action="@{/auth/login}"
+					th:action="@{/auth/admin/login}"
 					th:method="POST"
 					th:object="${loginRequest}">
 					<div class="input-group">
@@ -38,11 +38,6 @@
 						Show Password
 					</div>
 					<button type="submit">Log in</button>
-					<a href="#" class="forgot-password mt-2">Forgot Password?</a>
-					<p class="register">
-						Don't have an account?
-						<a th:href="@{/auth/registration}">Sign up here!</a>
-					</p>
 				</form>
 			</div>
 			<div class="logo-container">
