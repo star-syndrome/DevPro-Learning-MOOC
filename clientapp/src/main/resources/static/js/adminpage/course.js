@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $("#table-course").DataTable({
+  $("#tabel-kursus").DataTable({
     ajax: {
       url: "/api/admin/course",
       dataSrc: "",

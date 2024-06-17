@@ -4,18 +4,18 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Kelola Kelas Page</title>
+	<title>Kategori</title>
 </head>
 
 <body>
 	<div layout:fragment="content" sec:authorize="isAuthenticated()">
 		<div th:replace="component/adminpage/dashboard/card :: card"></div>
-		<div th:replace="component/adminpage/kelola-kelas/table :: table"></div>
-		<div th:replace="component/adminpage/kelola-kelas/tambah-kelas :: add-modal"></div>
+		<div th:replace="component/adminpage/kategori/tabel-kategori :: tabel-kategori"></div>
+		<div th:replace="component/adminpage/kategori/tambah-kategori :: modal-tambah-kategori"></div>
 	</div>
 
 	<div layout:fragment="script">
-		<script src="/js/course.js"></script>
+		<script src="/js/adminpage/category.js"></script>
 	</div>
 </body>
 

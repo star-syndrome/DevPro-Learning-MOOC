@@ -17,8 +17,13 @@ public class AdminController {
 
     @GetMapping("/kelola-kelas")
     public String kelolaKelasView(){
-        return "pages/adminpage/kelolaKelas";
+        return "pages/adminpage/kursus";
     }
 
-   
+    @GetMapping("/kategori-kelas")
+    public String kategoriKelasView() {
+        return "pages/adminpage/kategori";
+    }
+    
+
 }

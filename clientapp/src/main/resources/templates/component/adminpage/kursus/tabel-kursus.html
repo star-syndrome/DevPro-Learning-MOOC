@@ -3,22 +3,22 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Table</title>
+		<title>Kursus</title>
 	</head>
 	<body>
-		<!-- Table -->
-		<div th:fragment="table">
+		<!-- Tabel Kursus -->
+		<div th:fragment="tabel-kursus">
 			<div class="flex justify-between mt-10 mb-2">
-				<h1 class="font-bold text-[20px]">Manage Courses</h1>
+				<h1 class="font-bold text-[20px]">Kelola Kursus</h1>
 				<div class="flex justify-center items-center gap-x-3">
 					<div
-						class="flex justify-center items-center rounded-xl outline outline-1 bg-[var(--primary)] px-3 text-white text-sm font-semibold gap-x-1 py-1">
-						<button id="addCourseButton" class="btn btn-success">Add Course</button>
+						class="flex justify-center items-center rounded-2xl outline outline-1 bg-[var(--primary)] px-3 text-white text-sm font-semibold gap-x-1 py-[5px]">
+						<button id="addCourseButton" class="btn btn-success">Tambah Kursus</button>
 					</div>
 				</div>
 			</div>
 			<div class="overflow-x-auto">
-				<table class="min-w-full" id="table-course">
+				<table class="min-w-full" id="tabel-kursus">
 					<thead class="bg-[#EBF3FC]">
 						<tr class="text-left text-xs font-bold">
 							<th scope="col-1" class="px-2 py-3">No</th>
