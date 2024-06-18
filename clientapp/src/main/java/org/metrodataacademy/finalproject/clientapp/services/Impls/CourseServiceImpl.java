@@ -75,4 +75,26 @@ public class CourseServiceImpl implements CourseService {
                 CourseDetailsAdminResponse.class
             ).getBody();
     }
+
+    @Override
+    public Long countAllCourses() {
+        return restTemplate
+            .exchange(
+                url + "/total-courses",
+                HttpMethod.GET,
+                null,
+                Long.class
+            ).getBody();
+    }
+
+    @Override
+    public Long countPremiumCourses() {
+        return restTemplate
+            .exchange(
+                url + "/total-premium-courses",
+                HttpMethod.GET,
+                null,
+                Long.class
+            ).getBody();
+    }
 }

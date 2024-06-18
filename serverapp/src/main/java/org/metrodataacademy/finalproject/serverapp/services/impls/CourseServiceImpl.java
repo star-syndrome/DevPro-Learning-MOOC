@@ -281,6 +281,26 @@ public class CourseServiceImpl implements CourseService {
         }
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Long countAllCourses() {
+        log.info("Get total of all courses!");
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
+        return courseRepository.countTotalCourses(user.getId());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Long countPremiumCourses() {
+        log.info("Get total of all premium courses!");
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
+        return courseRepository.countByIsPremium(user.getId());
+    }
+
     private CourseResponse mapToCourseResponse(Course course) {
         return CourseResponse.builder()
                 .title(course.getTitle())

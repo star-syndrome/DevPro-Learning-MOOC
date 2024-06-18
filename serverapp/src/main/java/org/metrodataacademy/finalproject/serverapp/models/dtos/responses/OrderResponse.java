@@ -13,9 +13,10 @@ import lombok.NoArgsConstructor;
 public class OrderResponse {
 
     private String id;
+    private String category;
     private String course;
-    private String name;
+    private String username;
     private String time;
     private String payment;
-    private Boolean isPaid;
+    private String isPaid;
 }

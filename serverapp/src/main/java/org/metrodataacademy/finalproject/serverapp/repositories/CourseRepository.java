@@ -28,4 +28,10 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 
     @Query("SELECT COUNT(c) > 0 FROM Course c WHERE c.title = :title AND c.id != :id")
     Boolean existsByTitleAndNotId(String title, Integer id);
+
+    @Query("SELECT COUNT(c) FROM Course c WHERE c.users.id = :id")
+    Long countTotalCourses(Integer id);
+
+    @Query("SELECT COUNT(c) FROM Course c WHERE c.users.id = :id AND c.isPremium = true")
+    Long countByIsPremium(Integer id);
 }

@@ -1,7 +1,7 @@
 $(document).ready(() => {
-	$("#tabel-kategori").DataTable({
+	$("#tabel-pembayaran").DataTable({
 		ajax: {
-			url: "/api/category",
+			url: "/api/payment",
 			dataSrc: "",
 		},
 		columnDefs: [
@@ -16,7 +16,6 @@ $(document).ready(() => {
 		columns: [
 			{ data: "id" },
 			{ data: "name" },
-			{ data: "linkPhoto" },
 			{
 				data: null,
 				render: (data) => {
@@ -28,14 +27,14 @@ $(document).ready(() => {
                             data-bs-toggle="modal"
                             data-bs-target="#update"
                             title="Update ${data.name}"
-                            onclick="beforeUpdateCourse(${data.id})">
+                            onclick="beforeUpdatePayment(${data.id})">
                             <span class="material-symbols-rounded"> sync </span>
                         </button>
                         <button
                             type="button"
                             class="btn btn-danger d-flex align-items-center"
                             title="Delete ${data.name}"
-                            onclick="deleteCourse(${data.id})">
+                            onclick="deletePayment(${data.id})">
                             <span class="material-symbols-rounded"> delete </span>
                         </button>   
                     </div>`;
@@ -43,8 +42,8 @@ $(document).ready(() => {
 			},
 		],
 	});
-	$("#tabel-kategori").on("draw.dt", function () {
-		$("#tabel-kategori")
+	$("#tabel-pembayaran").on("draw.dt", function () {
+		$("#tabel-pembayaran")
 			.DataTable()
 			.column(0, { search: "applied", order: "applied" })
 			.nodes()
@@ -85,17 +84,4 @@ $(document).ready(() => {
 			console.error("Error fetching data:", error);
 		},
 	});
-});
-
-// Trigger Add Category Modal
-const addCategoryButton = document.getElementById("addCategoryButton");
-const addCategoryModal = document.getElementById("addCategoryModal");
-const closeAddCategoryModal = document.getElementById("closeAddCategoryModal");
-addCategoryButton.addEventListener("click", function () {
-	addCategoryModal.classList.remove("hidden");
-	addCategoryModal.classList.add("bg-black/60");
-});
-closeAddCategoryModal.addEventListener("click", function () {
-	addCategoryModal.classList.add("hidden");
-	addCategoryModal.classList.remove("bg-black/60");
 });

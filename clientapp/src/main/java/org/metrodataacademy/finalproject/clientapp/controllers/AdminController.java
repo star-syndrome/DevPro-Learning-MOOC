@@ -3,7 +3,6 @@ package org.metrodataacademy.finalproject.clientapp.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -24,6 +23,9 @@ public class AdminController {
     public String kategoriKelasView() {
         return "pages/adminpage/kategori";
     }
-    
 
+    @GetMapping("/metode-pembayaran")
+    public String metodePembayaranView() {
+        return "pages/adminpage/pembayaran";
+    }
 }

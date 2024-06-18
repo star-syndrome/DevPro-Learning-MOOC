@@ -38,6 +38,15 @@
 							>Kategori
 						</a>
 					</li>
+					<li
+						th:classappend="${#httpServletRequest.requestURI == '/admin/metode-pembayaran'} ? 'bg-[var(--secondary)]' : ''"
+						class="py-2 px-8">
+						<a
+							th:href="@{/admin/metode-pembayaran}"
+							sec:authorize="hasRole('ROLE_ADMIN')"
+							>Metode Pembayaran
+						</a>
+					</li>
 					<li class="py-2 px-8">
 						<form th:action="@{/logout}" th:method="POST">
 							<button class="btn btn-danger fw-bold" type="submit">

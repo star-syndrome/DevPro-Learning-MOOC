@@ -3,30 +3,29 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Kategori</title>
+		<title>Metode Pembayaran</title>
 	</head>
 	<body>
-		<!-- Tabel kategori -->
-		<div th:fragment="tabel-kategori">
+		<!-- Tabel Metode Pembayaran -->
+		<div th:fragment="tabel-pembayaran">
 			<div class="flex justify-between mt-10 mb-2">
-				<h1 class="font-bold text-[20px]">Kelola Kategori</h1>
+				<h1 class="font-bold text-[20px]">Kelola Metode Pembayaran</h1>
 				<div class="flex justify-center items-center gap-x-3">
 					<div
 						class="flex justify-center items-center rounded-2xl outline outline-1 bg-[var(--primary)] px-3 text-white text-sm font-semibold gap-x-1 py-[5px]">
-						<button id="addCategoryButton" class="btn btn-success">
-							Tambah Kategori
+						<button id="addPaymentButton" class="btn btn-success">
+							Tambah Metode Pembayaran
 						</button>
 					</div>
 				</div>
 			</div>
 			<div class="flex justify-center overflow-x-auto">
-				<table class="w-full" id="tabel-kategori">
+				<table class="w-full" id="tabel-pembayaran">
 					<thead class="bg-[#EBF3FC]">
 						<tr class="text-center text-xs font-bold">
 							<th scope="col-1" class="px-2 py-3">No</th>
-							<th scope="col-3" class="px-2 py-3">Kategori</th>
-							<th scope="col-5" class="px-2 py-3">Link Gambar Kategori</th>
-							<th scope="col-3" class="px-2 py-3">Aksi</th>
+							<th scope="col-5" class="px-2 py-3">Metode Pembayaran</th>
+							<th scope="col-6" class="px-2 py-3">Aksi</th>
 						</tr>
 					</thead>
 				</table>

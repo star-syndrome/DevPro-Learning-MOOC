@@ -41,6 +41,22 @@ public class CourseController {
         return ResponseEntity.ok().body(courseService.getCourseByIdForAdmin(id));
     }
 
+    @GetMapping(
+        path = "/admin/total-courses",
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Object> getTotalCourses() {
+        return ResponseEntity.ok().body(courseService.countAllCourses());
+    }
+
+    @GetMapping(
+        path = "/admin/total-premium-courses",
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Object> getPremiumCourses() {
+        return ResponseEntity.ok().body(courseService.countPremiumCourses());
+    }
+
     @PostMapping(
         path = "/admin/course",
         consumes = MediaType.APPLICATION_JSON_VALUE,

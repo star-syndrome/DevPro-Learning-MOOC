@@ -120,7 +120,7 @@ public class OrderServiceImpl implements OrderService {
                     .price(totalPrice)
                     .orderTime(simpleDateFormat.format(order.getTime()))
                     .paymentMethod(order.getPayments().getName())
-                    .paid(order.getIsPaid())
+                    .paid(order.getIsPaid() ? "Success" : "Failed")
                     .build();
             emailService.sendReceipt(receiptRequest);
 
@@ -145,11 +145,12 @@ public class OrderServiceImpl implements OrderService {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         return OrderResponse.builder()
                 .id(order.getId())
+                .category(order.getCourses().getCategories().getName())
                 .course(order.getCourses().getTitle())
-                .name(order.getUsers().getName())
+                .username(order.getUsers().getUsername())
                 .time(simpleDateFormat.format(order.getTime()))
                 .payment(order.getPayments().getName())
-                .isPaid(order.getIsPaid())
+                .isPaid(order.getIsPaid() ? "Success" : "Failed")
                 .build();
     }
 }
