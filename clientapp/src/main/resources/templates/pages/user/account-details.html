@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Belajar</title>
+    <link rel="stylesheet" href="/clientapp/src/main/resources/static/css/account-details.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">Belajar</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Cari Kursus terbaik...">
+                <button type="button">🔍</button>
+            </div>
+            <div class="login">
+                <a href="#">🔔</a>
+                <a href="#">🔒</a>
+                <a href="#">Akun</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="profile">
+        <div class="container">
+            <a href="#" class="back-link">← Kembali ke Beranda</a>
+            <div class="profile-header">
+                <h1>Akun</h1>
+            </div>
+            <div class="profile-content">
+                <nav class="profile-nav">
+                    <ul>
+                        <li class="active"><a href="#">Profil Saya</a></li><hr>
+                        <li><a href="#">Ubah Password</a></li><hr>
+                        <li><a href="#">Riwayat Pembayaran</a></li><hr>
+                        <li><a href="#">Keluar</a></li><hr>
+                    </ul>
+                </nav>
+                <div class="profile-form">
+                    <div class="profile-picture">
+                        <img src="profile-placeholder.png" alt="Profile Picture">
+                        <input type="file" id="profile-picture-input" hidden>
+                        <label for="profile-picture-input">📷</label>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nama</label>
+                            <input type="text" id="name" value="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" value="johndoe@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon</label>
+                            <input type="text" id="phone" value="+62 81212112121">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Negara</label>
+                            <input type="text" id="country" placeholder="Masukkan Negara tempat tinggal">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Kota</label>
+                            <input type="text" id="city" placeholder="Masukkan kota tempat tinggal">
+                        </div>
+                        <button type="submit" class="save-button">Simpan Profil Saya</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
