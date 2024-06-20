@@ -10,4 +10,6 @@ public interface ModuleRepository extends JpaRepository<Module, Integer> {
 
     @Query("SELECT COUNT(m) > 0 FROM Module m WHERE m.name = :name AND m.id != :id")
     Boolean existsByNameAndNotId(String name, Integer id);
+
+    Boolean existsByName(String name);
 }

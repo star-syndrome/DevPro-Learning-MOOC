@@ -7,34 +7,22 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateCourseRequest {
+public class ModuleRequest {
 
     @NotBlank
     @Size(max = 100)
-    private String title;
-
-    @NotNull
-    private Boolean isPremium;
-
-    @NotNull
-    private Integer price;
+    private String name;
 
     @NotBlank
-    @Size(max = 25)
-    private String level;
+    private String description;
 
     @NotBlank
-    @Size(max = 50)
-    private String mentor;
-
-    @NotBlank
-    private String about;
+    private String content;
 
     @NotNull
-    private Integer categoryId;
+    private Integer duration;
 }
