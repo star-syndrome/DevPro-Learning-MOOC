@@ -2,6 +2,7 @@ package org.metrodataacademy.finalproject.serverapp.services.impls;
 
 import lombok.extern.slf4j.Slf4j;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.AddCourseRequest;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.ModuleRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UpdateCourseRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.*;
 import org.metrodataacademy.finalproject.serverapp.models.entities.Category;
@@ -32,13 +33,13 @@ public class CourseServiceImpl implements CourseService {
     private CourseRepository courseRepository;
 
     @Autowired
-    private ModuleRepository moduleRepository;
-
-    @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private ModuleRepository moduleRepository;
 
     @Override
     @Transactional(readOnly = true)
@@ -127,6 +128,7 @@ public class CourseServiceImpl implements CourseService {
                             .level(courses.getLevel())
                             .mentor(courses.getMentor())
                             .totalDuration(courses.getModules().stream().mapToInt(Module::getDuration).sum())
+                            .category(courses.getCategories().getName())
                             .moduleResponses(courses.getModules().stream()
                                     .map(module -> ModuleResponse.builder()
                                             .name(module.getName())
@@ -209,6 +211,20 @@ public class CourseServiceImpl implements CourseService {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Course title already exists!");
             }
 
+            List<Module> modules = course.getModules();
+            for (ModuleRequest moduleRequest : updateCourseRequest.getModuleRequests()) {
+                Module module = modules.stream()
+                        .filter(mdl -> mdl.getName().equals(moduleRequest.getName()))
+                        .findFirst()
+                        .orElse(null);
+                if (module != null) {
+                    continue;
+                }
+                if (moduleRepository.existsByNameAndNotId(moduleRequest.getName(), -1)) {
+                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Module name already exists!");
+                }
+            }
+
             Category category = categoryRepository.findById(updateCourseRequest.getCategoryId())
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found!"));
 
@@ -223,6 +239,22 @@ public class CourseServiceImpl implements CourseService {
             course.setAbout(updateCourseRequest.getAbout());
             course.setCategories(category);
             course.setUsers(user);
+
+            List<Module> moduleList = updateCourseRequest.getModuleRequests().stream()
+                    .map(updateModuleRequest -> {
+                        Module module = modules.stream()
+                                .filter(mdl -> mdl.getName().equals(updateModuleRequest.getName()))
+                                .findFirst()
+                                .orElse(new Module());
+                        module.setName(updateModuleRequest.getName());
+                        module.setDescription(updateModuleRequest.getDescription());
+                        module.setContent(updateModuleRequest.getContent());
+                        module.setDuration(updateModuleRequest.getDuration());
+                        return module;
+                    }).collect(Collectors.toList());
+
+            course.setModules(moduleList);
+            course.setTotalDuration(moduleList.stream().mapToInt(Module::getDuration).sum());
             courseRepository.save(course);
 
             log.info("Updating the course with id {} was successful!", course.getId());
@@ -273,11 +305,12 @@ public class CourseServiceImpl implements CourseService {
     private CourseResponse mapToCourseResponse(Course course) {
         return CourseResponse.builder()
                 .title(course.getTitle())
-                .isPremium(course.getIsPremium())
+                .isPremium(course.getIsPremium() ? "Premium" : "Free")
                 .price(course.getPrice())
                 .level(course.getLevel())
                 .mentor(course.getMentor())
                 .category(course.getCategories().getName())
+                .linkPhoto(course.getCategories().getLinkPhoto())
                 .build();
     }
 
@@ -291,6 +324,7 @@ public class CourseServiceImpl implements CourseService {
                 .level(course.getLevel())
                 .mentor(course.getMentor())
                 .totalDuration(course.getTotalDuration())
+                .category(course.getCategories().getName())
                 .moduleAdminResponses(course.getModules().stream()
                         .map(module -> ModuleAdminResponse.builder()
                                 .id(module.getId())

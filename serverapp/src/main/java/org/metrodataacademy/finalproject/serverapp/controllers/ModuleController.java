@@ -2,7 +2,7 @@ package org.metrodataacademy.finalproject.serverapp.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.AddModuleRequest;
-import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.GetAllModulesResponse;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.GetAllModulesResponse;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UpdateModuleRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.ModuleResponse;
 import org.metrodataacademy.finalproject.serverapp.services.ModuleService;

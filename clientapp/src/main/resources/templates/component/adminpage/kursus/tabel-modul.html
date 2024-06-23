@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Table Modules</title>
+	</head>
+	<body>
+		<!-- Table Modules -->
+		<div th:fragment="tabel-modul" class="container mt-4">
+			<div class="d-flex justify-content-between align-items-center mb-3">
+				<h1 class="fw-bold fs-3">Manage Modules</h1>
+			</div>
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped" id="tabel-modul">
+					<thead class="table-light">
+						<tr class="text-center fw-bold">
+							<th scope="col-1">No</th>
+							<th scope="col-4">Name</th>
+							<th scope="col-3">Content</th>
+							<th scope="col-1">Duration</th>
+							<th scope="col-3">Action</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+
+			<!-- The Module Details Modal -->
+			<div
+				class="modal fade"
+				id="details-module"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				tabindex="-1"
+				role="dialog"
+				aria-labelledby="moduleDetailsModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title fw-bold fs-5" id="moduleDetailsModalLabel">
+								Module Details
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body" id="moduleDetails">
+							<!-- Module details will be populated here -->
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal">
+								Close
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- The Update Module Modal -->
+			<div
+				class="modal fade"
+				id="update-module"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				tabindex="-1"
+				role="dialog"
+				aria-labelledby="updateModuleModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title fw-bold fs-5" id="updateModuleModalLabel">
+								Update Module
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<form id="updateModuleForm">
+								<input type="hidden" id="moduleId" name="id" />
+								<div class="form-group fw-bold">
+									<label for="moduleName">Module Name:</label>
+									<input
+										type="text"
+										class="form-control mb-3"
+										id="moduleName"
+										name="name"
+										required />
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="moduleDescription">Module Description:</label>
+									<textarea
+										class="form-control mb-3"
+										id="moduleDescription"
+										name="description"
+										required></textarea>
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="moduleContent">Module Content:</label>
+									<textarea
+										class="form-control mb-3"
+										id="moduleContent"
+										name="content"
+										required></textarea>
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="moduleDuration">Module Duration (minutes):</label>
+									<input
+										type="number"
+										class="form-control mb-3"
+										id="moduleDuration"
+										name="duration"
+										required />
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="moduleCourse">Course:</label>
+									<select
+										id="moduleCourse"
+										name="course"
+										class="form-select mb-5"
+										required>
+										<!-- Courses will be populated here -->
+									</select>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal">
+								Close
+							</button>
+							<button
+								type="button"
+								class="btn btn-primary"
+								onclick="updateModule()">
+								Save changes
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

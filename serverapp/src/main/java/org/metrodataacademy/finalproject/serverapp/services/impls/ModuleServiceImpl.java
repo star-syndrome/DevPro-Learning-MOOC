@@ -2,7 +2,7 @@ package org.metrodataacademy.finalproject.serverapp.services.impls;
 
 import lombok.extern.slf4j.Slf4j;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.AddModuleRequest;
-import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.GetAllModulesResponse;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.GetAllModulesResponse;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UpdateModuleRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.ModuleResponse;
 import org.metrodataacademy.finalproject.serverapp.models.entities.Course;
@@ -117,6 +117,10 @@ public class ModuleServiceImpl implements ModuleService {
             Module module = moduleRepository.findById(id)
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Module not found!"));
 
+            Course course = module.getCourses();
+            course.setTotalDuration(course.getTotalDuration() - module.getDuration());
+            courseRepository.save(course);
+
             moduleRepository.delete(module);
             log.info("Deleting the module with id {} was successful!", module.getId());
 
@@ -134,11 +138,12 @@ public class ModuleServiceImpl implements ModuleService {
 
     private GetAllModulesResponse mapToModuleResponse(Module module) {
         return GetAllModulesResponse.builder()
+                .id(module.getId())
                 .name(module.getName())
                 .description(module.getDescription())
                 .content(module.getContent())
                 .duration(module.getDuration())
-                .courseId(module.getCourses().getId())
+                .course(module.getCourses().getTitle())
                 .build();
     }
 }

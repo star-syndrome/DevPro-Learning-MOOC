@@ -13,4 +13,5 @@ public class AddModuleRequest {
     private String description;
     private String content;
     private Integer duration;
+    private Integer courseId;
 }

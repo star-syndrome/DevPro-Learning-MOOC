@@ -19,5 +19,6 @@ public class CourseDetailsAdminResponse {
     private String mentor;
     private String about;
     private Integer totalDuration;
+    private String category;
     private List<ModuleAdminResponse> moduleAdminResponses;
 }

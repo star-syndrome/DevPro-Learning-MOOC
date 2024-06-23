@@ -1,4 +1,4 @@
-package org.metrodataacademy.finalproject.serverapp.models.dtos.requests;
+package org.metrodataacademy.finalproject.serverapp.models.dtos.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,9 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class GetAllModulesResponse {
 
+    private Integer id;
     private String name;
     private String description;
     private String content;
     private Integer duration;
-    private Integer courseId;
+    private String course;
 }

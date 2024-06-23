@@ -20,5 +20,6 @@ public class CourseDetailsResponse {
     private String mentor;
     private String about;
     private Integer totalDuration;
+    private String category;
     private List<ModuleResponse> moduleResponses;
 }
