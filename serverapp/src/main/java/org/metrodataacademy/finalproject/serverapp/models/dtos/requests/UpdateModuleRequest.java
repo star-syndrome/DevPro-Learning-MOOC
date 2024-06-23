@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
@@ -22,6 +23,9 @@ public class UpdateModuleRequest {
     @NotBlank
     private String content;
 
-    @NotBlank
+    @NotNull
     private Integer duration;
+
+    @NotNull
+    private Integer courseId;
 }

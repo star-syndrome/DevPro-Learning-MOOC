@@ -18,5 +18,5 @@ public class UpdateCourseRequest {
     private String mentor;
     private String about;
     private Integer categoryId;
-    private List<UpdateModuleRequest> updateModuleRequests;
+    private List<ModuleRequest> moduleRequests;
 }

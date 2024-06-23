@@ -36,6 +36,7 @@
 									class="nav-link"
 									th:classappend="${isActive} == 'home' ? 'active fw-bold' : ''"
 									th:href="@{/home}"
+									sec:authorize="hasRole('ROLE_USER')"
 									>Home</a
 								>
 							</li>

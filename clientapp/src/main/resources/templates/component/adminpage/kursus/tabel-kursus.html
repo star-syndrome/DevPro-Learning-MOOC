@@ -3,33 +3,322 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Kursus</title>
+		<title>Table Courses</title>
 	</head>
 	<body>
-		<!-- Tabel Kursus -->
-		<div th:fragment="tabel-kursus">
-			<div class="flex justify-between mt-10 mb-2">
-				<h1 class="font-bold text-[20px]">Kelola Kursus</h1>
-				<div class="flex justify-center items-center gap-x-3">
-					<div
-						class="flex justify-center items-center rounded-2xl outline outline-1 bg-[var(--primary)] px-3 text-white text-sm font-semibold gap-x-1 py-[5px]">
-						<button id="addCourseButton" class="btn btn-success">Tambah Kursus</button>
-					</div>
-				</div>
+		<!-- Table Courses-->
+		<div th:fragment="tabel-kursus" class="container mt-4">
+			<div class="d-flex justify-content-between align-items-center mb-3">
+				<h1 class="fw-bold fs-3">Manage Courses</h1>
+				<button
+					type="button"
+					class="btn btn-success"
+					data-bs-toggle="modal"
+					data-bs-target="#create">
+					Add Course
+				</button>
 			</div>
-			<div class="overflow-x-auto">
-				<table class="min-w-full" id="tabel-kursus">
-					<thead class="bg-[#EBF3FC]">
-						<tr class="text-left text-xs font-bold">
-							<th scope="col-1" class="px-2 py-3">No</th>
-							<th scope="col-3" class="px-2 py-3">Nama Kelas</th>
-							<th scope="col-1" class="px-2 py-3">Mentor</th>
-							<th scope="col-2" class="px-2 py-3">Level</th>
-							<th scope="col-2" class="px-2 py-3">Harga Kelas</th>
-							<th scope="col-3" class="px-2 py-3">Aksi</th>
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped" id="tabel-kursus">
+					<thead class="table-light">
+						<tr class="text-center fw-bold">
+							<th scope="col-1">No</th>
+							<th scope="col-2">Course</th>
+							<th scope="col-2">Mentor</th>
+							<th scope="col-2">Level</th>
+							<th scope="col-2">Price</th>
+							<th scope="col-3">Action</th>
 						</tr>
 					</thead>
 				</table>
+			</div>
+
+			<!-- Create Course Modal -->
+			<div
+				class="modal fade"
+				id="create"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				tabindex="-1"
+				role="dialog"
+				aria-labelledby="courseModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title fw-bold fs-3" id="courseModalLabel">
+								Input Course Data
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<form id="courseForm">
+							<div class="modal-body">
+								<div class="form-group fw-bold">
+									<label for="title">Course Title:</label>
+									<input
+										type="text"
+										id="title"
+										name="title"
+										class="form-control mb-3"
+										required />
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="isPremium">Is Premium:</label>
+									<select
+										id="isPremium"
+										name="isPremium"
+										class="form-select mb-3"
+										required>
+										<option value="true">Yes</option>
+										<option value="false">No</option>
+									</select>
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="price">Price:</label>
+									<input
+										type="number"
+										id="price"
+										name="price"
+										class="form-control mb-3"
+										required />
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="level">Level:</label>
+									<input
+										type="text"
+										id="level"
+										name="level"
+										class="form-control mb-3"
+										required />
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="mentor">Mentor:</label>
+									<input
+										type="text"
+										id="mentor"
+										name="mentor"
+										class="form-control mb-3"
+										required />
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="about">About:</label>
+									<textarea
+										id="about"
+										name="about"
+										class="form-control mb-3"
+										required></textarea>
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="categoryId">Category:</label>
+									<select
+										id="categoryId"
+										name="categoryId"
+										class="form-select mb-5"
+										required>
+										<!-- Categories will be populated here -->
+									</select>
+								</div>
+
+								<h5 class="mt-2 mb-3 fs-3 fw-bold">Modules</h5>
+								<div id="modules">
+									<!-- Modules will be added here -->
+								</div>
+								<button
+									type="button"
+									class="btn btn-secondary mb-3"
+									onclick="addModule()">
+									Add Module
+								</button>
+							</div>
+							<div class="modal-footer">
+								<button
+									type="button"
+									class="btn btn-secondary"
+									data-bs-dismiss="modal">
+									Close
+								</button>
+								<button type="submit" class="btn btn-primary">
+									Save changes
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- The Course Details Modal -->
+			<div
+				class="modal fade"
+				id="details"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				tabindex="-1"
+				role="dialog"
+				aria-labelledby="detailsModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5
+								class="modal-title fw-bold fs-3 text-center"
+								id="detailsModalLabel">
+								Course Details
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div id="courseDetails">
+								<!-- Course details will be populated here -->
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal">
+								Close
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- The Update Course Modal -->
+			<div
+				class="modal fade"
+				id="update"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				tabindex="-1"
+				role="dialog"
+				aria-labelledby="updateModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title fw-bold fs-3" id="updateModalLabel">
+								Update Course
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<form id="updateCourseForm">
+							<div class="modal-body">
+								<input type="hidden" id="courseId" name="id" />
+								<div class="form-group fw-bold">
+									<label for="title-update">Title:</label>
+									<input
+										type="text"
+										class="form-control mb-3"
+										id="title-update"
+										name="title"
+										required />
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="isPremium-update">Is Premium:</label>
+									<select
+										id="isPremium-update"
+										name="isPremium"
+										class="form-select mb-3"
+										required>
+										<option value="true">Yes</option>
+										<option value="false">No</option>
+									</select>
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="price-update">Price:</label>
+									<input
+										type="number"
+										class="form-control mb-3"
+										id="price-update"
+										name="price"
+										required />
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="level-update">Level:</label>
+									<input
+										type="text"
+										class="form-control mb-3"
+										id="level-update"
+										name="level"
+										required />
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="mentor-update">Mentor:</label>
+									<input
+										type="text"
+										class="form-control mb-3"
+										id="mentor-update"
+										name="mentor"
+										required />
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="about-update">About:</label>
+									<textarea
+										class="form-control mb-3"
+										id="about-update"
+										name="about"
+										required></textarea>
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="categoryId-update">Category:</label>
+									<select
+										id="categoryId-update"
+										name="categoryId"
+										class="form-select mb-5"
+										required>
+										<!-- Categories will be populated here -->
+									</select>
+								</div>
+
+								<h5 class="mt-2 mb-3 fs-3 fw-bold">Modules</h5>
+								<div id="modules-update">
+									<!-- Module fields will be appended here -->
+								</div>
+								<button
+									type="button"
+									class="btn btn-secondary"
+									onclick="addModuleForUpdate()">
+									Add Module
+								</button>
+							</div>
+							<div class="modal-footer">
+								<button
+									type="button"
+									class="btn btn-secondary"
+									data-bs-dismiss="modal">
+									Close
+								</button>
+								<button type="submit" class="btn btn-primary">
+									Update Course
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>

@@ -6,36 +6,23 @@
 		<title>Payment History Table</title>
 	</head>
 	<body>
-		<!-- Table -->
-		<div th:fragment="table">
-			<div class="flex justify-between mt-10 mb-2">
-				<h1 class="font-bold text-[20px]">Payment History</h1>
-				<div class="flex justify-center items-center gap-x-3">
-					<div
-						class="flex justify-center items-center rounded-xl outline outline-[var(--primary)] outline-1 px-3 text-[var(--primary)] text-sm font-semibold gap-x-1 py-[2px]">
-						<img
-							src="https://img.icons8.com/android/24/7950F2/filter.png"
-							alt="filter"
-							class="h-4" />
-						<h1>Filter</h1>
-					</div>
-					<img
-						src="https://img.icons8.com/ios-filled/50/7950F2/search--v1.png"
-						alt="search"
-						class="h-5" />
-				</div>
+		<div class="container mt-5" th:fragment="table">
+			<div class="d-flex justify-content-between mb-4">
+				<h1 class="fw-bold fs-3">Payment History</h1>
 			</div>
-			<div class="overflow-x-auto">
-				<table class="min-w-full" id="tabel-riwayat-pembayaran">
-					<thead class="bg-[#EBF3FC]">
-						<tr class="text-left text-xs font-bold">
-							<th scope="col" class="px-2 py-3">ID</th>
-							<th scope="col" class="px-2 py-3">Kategori</th>
-							<th scope="col" class="px-2 py-3">Kelas Premium</th>
-							<th scope="col" class="px-2 py-3">Username</th>
-							<th scope="col" class="px-2 py-3">Status Pembayaran</th>
-							<th scope="col" class="px-2 py-3">Metode Pembayaran</th>
-							<th scope="col" class="px-2 py-3">Tanggal Bayar</th>
+			<div class="table-responsive">
+				<table
+					class="table table-striped table-bordered table-hover text-center table-light"
+					id="tabel-riwayat-pembayaran">
+					<thead class="table-light">
+						<tr class="text-center fw-bold">
+							<th scope="col-1">ID</th>
+							<th scope="col-2">Category</th>
+							<th scope="col-2">Course</th>
+							<th scope="col-2">Username</th>
+							<th scope="col-1">Paid</th>
+							<th scope="col-1">Payment</th>
+							<th scope="col-3">Date</th>
 						</tr>
 					</thead>
 				</table>

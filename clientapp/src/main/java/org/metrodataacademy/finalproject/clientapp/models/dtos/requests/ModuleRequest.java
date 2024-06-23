@@ -7,11 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateModuleRequest {
+public class ModuleRequest {
 
     private String name;
     private String description;
     private String content;
     private Integer duration;
-    private Integer courseId;
 }

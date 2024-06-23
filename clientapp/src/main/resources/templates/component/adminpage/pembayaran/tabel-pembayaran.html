@@ -3,32 +3,174 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Metode Pembayaran</title>
+		<title>Table Payment Methods</title>
 	</head>
 	<body>
-		<!-- Tabel Metode Pembayaran -->
-		<div th:fragment="tabel-pembayaran">
-			<div class="flex justify-between mt-10 mb-2">
-				<h1 class="font-bold text-[20px]">Kelola Metode Pembayaran</h1>
-				<div class="flex justify-center items-center gap-x-3">
-					<div
-						class="flex justify-center items-center rounded-2xl outline outline-1 bg-[var(--primary)] px-3 text-white text-sm font-semibold gap-x-1 py-[5px]">
-						<button id="addPaymentButton" class="btn btn-success">
-							Tambah Metode Pembayaran
-						</button>
-					</div>
-				</div>
+		<!-- Table Payment Methods-->
+		<div th:fragment="tabel-pembayaran" class="container mt-4">
+			<div class="d-flex justify-content-between align-items-center mb-3">
+				<h1 class="fw-bold fs-3">Manage Payment Methods</h1>
+				<button
+					type="button"
+					class="btn btn-success"
+					data-bs-toggle="modal"
+					data-bs-target="#create">
+					Add Payment Method
+				</button>
 			</div>
-			<div class="flex justify-center overflow-x-auto">
-				<table class="w-full" id="tabel-pembayaran">
-					<thead class="bg-[#EBF3FC]">
-						<tr class="text-center text-xs font-bold">
-							<th scope="col-1" class="px-2 py-3">No</th>
-							<th scope="col-5" class="px-2 py-3">Metode Pembayaran</th>
-							<th scope="col-6" class="px-2 py-3">Aksi</th>
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped" id="tabel-pembayaran">
+					<thead class="table-light">
+						<tr class="text-center fw-bold">
+							<th scope="col-1">No</th>
+							<th scope="col-5">Payment Method</th>
+							<th scope="col-6">Action</th>
 						</tr>
 					</thead>
 				</table>
+			</div>
+
+			<!-- Modal Create -->
+			<div
+				class="modal fade"
+				id="create"
+				tabindex="-1"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				aria-labelledby="addPaymentMethodModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5
+								class="modal-title fw-bold fs-5"
+								id="addPaymentMethodModalLabel">
+								Add Payment Method
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<form id="addPaymentMethodForm">
+							<div class="modal-body">
+								<div class="form-group fw-bold">
+									<label for="paymentMethodName">Name</label>
+									<input
+										type="text"
+										class="form-control"
+										id="paymentMethodName"
+										name="name"
+										required />
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button
+									type="button"
+									class="btn btn-secondary"
+									data-bs-dismiss="modal">
+									Close
+								</button>
+								<button type="submit" class="btn btn-primary">
+									Add Payment Method
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- Modal Details -->
+			<div
+				class="modal fade"
+				id="details"
+				tabindex="-1"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				aria-labelledby="paymentMethodDetailsModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5
+								class="modal-title fw-bold fs-5"
+								id="paymentMethodDetailsModalLabel">
+								Payment Method Details
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<p><strong>ID:</strong> <span id="paymentMethodId"></span></p>
+							<p>
+								<strong>Name:</strong>
+								<span id="paymentMethodName-details"></span>
+							</p>
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal">
+								Close
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Modal Update -->
+			<div
+				class="modal fade"
+				id="update"
+				tabindex="-1"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				aria-labelledby="updatePaymentMethodModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5
+								class="modal-title fw-bold fs-5"
+								id="updatePaymentMethodModalLabel">
+								Update Payment Method
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<form id="updatePaymentMethodForm">
+								<div class="form-group fw-bold">
+									<label for="paymentMethodId-update">ID</label>
+									<input
+										type="text"
+										class="form-control mb-3"
+										id="paymentMethodId-update"
+										name="id"
+										readonly />
+								</div>
+								<div class="form-group fw-bold">
+									<label for="paymentMethodName-update">Name</label>
+									<input
+										type="text"
+										class="form-control mb-5"
+										id="paymentMethodName-update"
+										name="name"
+										required />
+								</div>
+								<button type="submit" class="btn btn-primary">Update</button>
+							</form>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>

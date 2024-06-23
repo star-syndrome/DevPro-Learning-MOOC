@@ -3,33 +3,238 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Kategori</title>
+		<title>Table Category</title>
 	</head>
 	<body>
-		<!-- Tabel kategori -->
-		<div th:fragment="tabel-kategori">
-			<div class="flex justify-between mt-10 mb-2">
-				<h1 class="font-bold text-[20px]">Kelola Kategori</h1>
-				<div class="flex justify-center items-center gap-x-3">
-					<div
-						class="flex justify-center items-center rounded-2xl outline outline-1 bg-[var(--primary)] px-3 text-white text-sm font-semibold gap-x-1 py-[5px]">
-						<button id="addCategoryButton" class="btn btn-success">
-							Tambah Kategori
-						</button>
-					</div>
+		<!-- Table Categories-->
+		<div class="container mt-5" th:fragment="tabel-kategori">
+			<div class="d-flex justify-content-between align-items-center mb-4">
+				<h1 class="fw-bold fs-3">Manage Categories</h1>
+				<div class="d-flex justify-content-end">
+					<button
+						type="button"
+						class="btn btn-success me-4"
+						data-bs-toggle="modal"
+						data-bs-target="#create">
+						Add Category
+					</button>
+					<button
+						type="button"
+						class="btn btn-success"
+						data-bs-toggle="modal"
+						data-bs-target="#uploadImage">
+						Upload Image for Category
+					</button>
 				</div>
 			</div>
-			<div class="flex justify-center overflow-x-auto">
-				<table class="w-full" id="tabel-kategori">
-					<thead class="bg-[#EBF3FC]">
-						<tr class="text-center text-xs font-bold">
-							<th scope="col-1" class="px-2 py-3">No</th>
-							<th scope="col-3" class="px-2 py-3">Kategori</th>
-							<th scope="col-5" class="px-2 py-3">Link Gambar Kategori</th>
-							<th scope="col-3" class="px-2 py-3">Aksi</th>
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped" id="tabel-kategori">
+					<thead class="table-light">
+						<tr class="text-center fw-bold">
+							<th scope="col-1">No</th>
+							<th scope="col-3">Category</th>
+							<th scope="col-4">Picture</th>
+							<th scope="col-4">Action</th>
 						</tr>
 					</thead>
 				</table>
+			</div>
+
+			<!-- Modal Create -->
+			<div
+				class="modal fade"
+				id="create"
+				tabindex="-1"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				aria-labelledby="addCategoryModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title fw-bold fs-5" id="addCategoryModalLabel">
+								Add New Category
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<form id="addCategoryForm">
+							<div class="modal-body">
+								<div class="form-group fw-bold">
+									<label for="categoryName">Category Name:</label>
+									<input
+										type="text"
+										class="form-control"
+										id="categoryName"
+										name="name"
+										required />
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button
+									type="button"
+									class="btn btn-secondary"
+									data-bs-dismiss="modal">
+									Close
+								</button>
+								<button type="submit" class="btn btn-primary">
+									Add Category
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- Modal Upload Image -->
+			<div
+				class="modal fade"
+				id="uploadImage"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				tabindex="-1"
+				aria-labelledby="uploadImageModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title fw-bold fs-5" id="uploadImageModalLabel">
+								Upload Image
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<form id="uploadImageForm" enctype="multipart/form-data">
+							<div class="modal-body">
+								<div class="form-group fw-bold">
+									<label for="categoryImage">Select Image:</label>
+									<input
+										type="file"
+										class="form-control mb-3"
+										id="categoryImage"
+										name="multipartFile"
+										required />
+								</div>
+
+								<div class="form-group fw-bold">
+									<label for="categoryId">Category:</label>
+									<select
+										id="categoryId"
+										name="categoryId"
+										class="form-select mb-5"
+										required>
+										<!-- Categories will be populated here -->
+									</select>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button
+									type="button"
+									class="btn btn-secondary"
+									data-bs-dismiss="modal">
+									Close
+								</button>
+								<button type="submit" class="btn btn-primary">Upload</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- Modal Category Details-->
+			<div
+				class="modal fade"
+				id="details"
+				tabindex="-1"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				aria-labelledby="categoryDetailsModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5
+								class="modal-title fw-bold fs-5"
+								id="categoryDetailsModalLabel">
+								Category Details
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body" id="categoryDetailsContent">
+							<!-- Category details will be populated here -->
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal">
+								Close
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Modal Category Update -->
+			<div
+				class="modal fade"
+				id="update"
+				tabindex="-1"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				aria-labelledby="updateCategoryModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5
+								class="modal-title fw-bold fs-5"
+								id="updateCategoryModalLabel">
+								Update Category
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<form id="updateCategoryForm">
+							<div class="modal-body">
+								<input type="hidden" id="categoryId-update" />
+								<div class="form-group fw-bold">
+									<label for="categoryName-update">Name</label>
+									<input
+										type="text"
+										class="form-control"
+										id="categoryName-update"
+										name="name"
+										required />
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button
+									type="button"
+									class="btn btn-secondary"
+									data-bs-dismiss="modal">
+									Close
+								</button>
+								<button type="submit" class="btn btn-primary">
+									Update Category
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>
