@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-    width: 90%;
+    width: 100%;
     margin: auto;
 }
 
@@ -22,6 +22,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
 }
 
 .logo {
@@ -57,17 +65,19 @@ body {
 
 .course-details {
     background-color: #fff;
-    padding: 2rem 0;
+    margin-top: 0;
 }
 
 .course-header {
-    text-align: center;
+    text-align:left;
     margin-bottom: 2rem;
+    background-color: #EBF3FC;
+    padding: 2rem 3rem 1rem 3rem;
 }
 
 .course-header a {
     display: block;
-    color: #7b4bf3;
+    color: #000000;
     text-decoration: none;
     margin-bottom: 1rem;
 }
@@ -88,13 +98,12 @@ body {
 
 .course-meta {
     display: flex;
-    justify-content: center;
+    justify-content:left;
     gap: 1rem;
     margin-bottom: 1rem;
 }
 
 .course-meta span {
-    background-color: #e9ecef;
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
 }
@@ -109,18 +118,21 @@ body {
 }
 
 .course-content {
-    display: flex;
+    display:block;
     justify-content: space-between;
+    padding-left: 3rem;
+    padding-right: 3rem;
 }
 
 .video-placeholder {
     background-color: #000;
     width: 60%;
-    height: 300px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0.25rem;
+    border-radius: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .video-icon {
@@ -130,6 +142,7 @@ body {
 
 .course-description {
     width: 35%;
+    padding-bottom: 2rem;
 }
 
 .course-description h3 {
@@ -147,7 +160,17 @@ body {
 }
 
 .course-material {
-    width: 35%;
+    width: 30%;
+    position: absolute;
+    right: 6rem;
+    top: 9rem;
+    background-color: #ffffff;
+    box-shadow: 0.20rem  0rem 1rem 0rem #000;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+hr {
+    color:#ebf3fc;
 }
 
 .course-material h3 {
@@ -160,6 +183,7 @@ body {
 
 .chapter h4 {
     margin-bottom: 0.5rem;
+    color: #7b4bf3;
 }
 
 .chapter ul {
@@ -168,8 +192,9 @@ body {
 }
 
 .chapter ul li {
-    margin-bottom: 0.5rem;
+    margin: 1rem;
     position: relative;
+    color: #333333;
 }
 
 .chapter ul li:before {
