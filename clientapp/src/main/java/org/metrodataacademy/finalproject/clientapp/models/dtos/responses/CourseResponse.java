@@ -15,5 +15,6 @@ public class CourseResponse {
     private String level;
     private String mentor;
     private String category;
+    private Integer totalDuration;
     private String linkPhoto;
 }

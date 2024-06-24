@@ -5,6 +5,8 @@ import java.util.List;
 import org.metrodataacademy.finalproject.clientapp.models.dtos.requests.AddCourseRequest;
 import org.metrodataacademy.finalproject.clientapp.models.dtos.requests.UpdateCourseRequest;
 import org.metrodataacademy.finalproject.clientapp.models.dtos.responses.CourseDetailsAdminResponse;
+import org.metrodataacademy.finalproject.clientapp.models.dtos.responses.CourseDetailsResponse;
+import org.metrodataacademy.finalproject.clientapp.models.dtos.responses.CourseResponse;
 import org.metrodataacademy.finalproject.clientapp.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -29,8 +31,24 @@ public class CourseController {
         path = "/admin/course",
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<List<CourseDetailsAdminResponse>> getAllCourse() {
+    public ResponseEntity<List<CourseDetailsAdminResponse>> getAllCourseForAdmin() {
         return ResponseEntity.ok().body(courseService.getAllCourseForAdmin());
+    }
+
+    @GetMapping(
+        path = "/course",
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<List<CourseResponse>> getAllCourse() {
+        return ResponseEntity.ok().body(courseService.getAllCourse());
+    }
+
+    @GetMapping(
+        path = "/course/{title}",
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<CourseDetailsResponse> getCourseByTitle(@PathVariable String title) {
+        return ResponseEntity.ok().body(courseService.courseDetails(title));
     }
 
     @GetMapping(

@@ -3,6 +3,8 @@ package org.metrodataacademy.finalproject.clientapp.services.Impls;
 import org.metrodataacademy.finalproject.clientapp.models.dtos.requests.AddCourseRequest;
 import org.metrodataacademy.finalproject.clientapp.models.dtos.requests.UpdateCourseRequest;
 import org.metrodataacademy.finalproject.clientapp.models.dtos.responses.CourseDetailsAdminResponse;
+import org.metrodataacademy.finalproject.clientapp.models.dtos.responses.CourseDetailsResponse;
+import org.metrodataacademy.finalproject.clientapp.models.dtos.responses.CourseResponse;
 import org.metrodataacademy.finalproject.clientapp.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -95,6 +97,28 @@ public class CourseServiceImpl implements CourseService {
                 HttpMethod.GET,
                 null,
                 Long.class
+            ).getBody();
+    }
+
+    @Override
+    public List<CourseResponse> getAllCourse() {
+        return restTemplate
+            .exchange(
+                "http://localhost:8080/api/course/after-login",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<CourseResponse>>() {}
+            ).getBody();
+    }
+
+    @Override
+    public CourseDetailsResponse courseDetails(String title) {
+        return restTemplate
+            .exchange(
+                "http://localhost:8080/api/course/details/" + title,
+                HttpMethod.GET,
+                null,
+                CourseDetailsResponse.class
             ).getBody();
     }
 }

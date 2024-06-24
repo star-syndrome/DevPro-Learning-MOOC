@@ -12,7 +12,7 @@ import java.util.List;
 public class CourseDetailsResponse {
 
     private String title;
-    private Boolean isPremium;
+    private String isPremium;
     private Integer price;
     private String level;
     private String mentor;

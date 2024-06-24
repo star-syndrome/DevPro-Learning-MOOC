@@ -8,15 +8,15 @@
 	<body>
 		<!-- Navigation Bars -->
 		<div th:fragment="navbar">
-			<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<nav class="navbar navbar-expand-lg" style="background-color: #563d7c">
 				<div class="container-fluid">
-					<a class="navbar-brand fw-bold fs-3" th:href="@{/home}">
-						<!-- <img
+					<a class="navbar-brand fw-bold fs-2 text-light" th:href="@{/home}">
+						<img
 							class="d-inline-block align-text-top"
-							th:src="@{}"
+							th:src="@{/img/online-course.png}"
 							alt="Logo"
 							width="40"
-							height="36" /> -->
+							height="40" />
 						DevPro Learning
 					</a>
 					<button
@@ -33,12 +33,29 @@
 						<ul class="navbar-nav me-lg-auto mt-lg-2 fs-5">
 							<li class="nav-item">
 								<a
-									class="nav-link"
+									class="nav-link text-light"
 									th:classappend="${isActive} == 'home' ? 'active fw-bold' : ''"
 									th:href="@{/home}"
-									sec:authorize="hasRole('ROLE_USER')"
-									>Dashboard</a
+									>Home</a
 								>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link text-light"
+									th:classappend="${isActive} == 'course' ? 'active fw-bold' : ''"
+									th:href="@{/my-course}"
+									sec:authorize="hasRole('ROLE_USER')"
+									>My Course
+								</a>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link text-light"
+									th:classappend="${isActive} == 'profile' ? 'active fw-bold' : ''"
+									th:href="@{/profile}"
+									sec:authorize="hasRole('ROLE_USER')"
+									>Profile
+								</a>
 							</li>
 						</ul>
 
