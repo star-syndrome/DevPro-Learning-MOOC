@@ -311,6 +311,7 @@ public class CourseServiceImpl implements CourseService {
                 .mentor(course.getMentor())
                 .category(course.getCategories().getName())
                 .linkPhoto(course.getCategories().getLinkPhoto())
+                .totalDuration(course.getTotalDuration())
                 .build();
     }
 

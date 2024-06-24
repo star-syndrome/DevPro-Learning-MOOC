@@ -16,17 +16,25 @@
 			crossorigin="anonymous" />
 
 		<!-- CSS -->
-		<link rel="stylesheet" type="text/css" href="/clientapp/src/main/resources/static/css/index.css" />
+		<link rel="stylesheet" type="text/css" href="/css/index.css" />
 	</head>
-	<body>
-		<header class="header">
-			<div class="container">
-				<div class="logo">DevPro Learning</div>
-				<div class="search-bar">
+	<body class="landingPage">
+		<header class="header d-flex justify-content-between align-items-center">
+			<div class="container d-flex justify-content-between align-items-center">
+				<div class="fw-bold fs-3">
+					<img
+						class="d-inline-block align-text-top"
+						src="/img/online-course.png"
+						alt="Logo"
+						width="40"
+						height="36" />
+					DevPro Learning
+				</div>
+				<div class="search-bar d-flex align-items-center">
 					<input type="text" placeholder="Cari Kursus terbaik..." />
 					<button type="button">🔍</button>
 				</div>
-				<div class="login">
+				<div class="login fw-bold fs-5">
 					<a th:href="@{/auth/login}">Masuk</a>
 				</div>
 			</div>
@@ -34,8 +42,8 @@
 
 		<section class="hero">
 			<div class="container">
-				<div class="hero-image">
-					<img src="hero-image.jpg" alt="Hero Image" />
+				<div class="hero-image me-5">
+					<img src="/img/LandingPagePicture.jpg" alt="Hero Image" />
 				</div>
 				<div class="hero-text">
 					<h1>Belajar dari Praktisi Terbaik!</h1>
@@ -46,60 +54,18 @@
 
 		<section class="categories">
 			<div class="container">
-				<h2>Kategori Belajar</h2>
-				<div class="category-list">
-					<div class="category-item">UI/UX Design</div>
-					<div class="category-item">Product Management</div>
-					<div class="category-item">Web Development</div>
-					<div class="category-item">Android Development</div>
-					<div class="category-item">IOS Development</div>
-					<div class="category-item">Data Science</div>
-					<a href="#" class="see-all">Lihat Semua</a>
+				<h2 class="my-4 text-center">Kategori Belajar</h2>
+				<div class="row" id="category-list">
+					<!-- Cards will be appended here by jQuery -->
 				</div>
 			</div>
 		</section>
 
-		<section class="popular-courses">
+		<section class="courses">
 			<div class="container">
-				<h2>Kursus Populer</h2>
-				<div class="filters">
-					<button>All</button>
-					<button>Data Science</button>
-					<button>UI/UX Design</button>
-					<button>Android Development</button>
-					<button>Web Development</button>
-					<button>IOS Development</button>
-					<button>Business Intelligence</button>
-					<a href="#" class="see-all">Lihat Semua</a>
-				</div>
-				<div class="courses">
-					<div class="course">
-						<img src="course1.jpg" alt="Course 1" />
-						<h3>Belajar Web Designer dengan Figma</h3>
-						<p>by Angela Dew</p>
-						<p>Intermediate Level</p>
-						<p>10 Modul</p>
-						<p>120 Menit</p>
-						<p>Rp 249.000</p>
-					</div>
-					<div class="course">
-						<img src="course2.jpg" alt="Course 2" />
-						<h3>Membuat Wireframe Hingga ke Visual Design</h3>
-						<p>by Angela Dew</p>
-						<p>Intermediate Level</p>
-						<p>5 Modul</p>
-						<p>90 Menit</p>
-						<p>Rp 249.000</p>
-					</div>
-					<div class="course">
-						<img src="course3.jpg" alt="Course 3" />
-						<h3>Pemahaman tentang Design System</h3>
-						<p>by Angela Dew</p>
-						<p>Advanced Level</p>
-						<p>8 Modul</p>
-						<p>120 Menit</p>
-						<p>Rp 249.000</p>
-					</div>
+				<h2 class="my-4 text-center">Semua Kursus</h2>
+				<div class="row" id="course-list">
+					<!-- Cards will be appended here by jQuery -->
 				</div>
 			</div>
 		</section>
@@ -110,6 +76,12 @@
 			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 			crossorigin="anonymous"></script>
 
-		<script src="/clientapp/src/main/resources/static/js/index.js"></script>
+		<!-- jQuery -->
+		<script
+			src="https://code.jquery.com/jquery-3.7.1.js"
+			integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+			crossorigin="anonymous"></script>
+
+		<script src="/js/index.js"></script>
 	</body>
 </html>
