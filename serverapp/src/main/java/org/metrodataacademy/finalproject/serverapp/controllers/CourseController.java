@@ -7,6 +7,7 @@ import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseD
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseDetailsResponse;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseResponse;
 import org.metrodataacademy.finalproject.serverapp.services.CourseService;
+import org.metrodataacademy.finalproject.serverapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,9 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping(
             path = "/course/after-login",
             produces = MediaType.APPLICATION_JSON_VALUE
@@ -33,6 +37,39 @@ public class CourseController {
     public ResponseEntity<List<CourseResponse>> getAllCourseAfterLogin() {
         return ResponseEntity.ok()
                 .body(courseService.getAllCourseAfterLogin());
+    }
+
+    @GetMapping(
+            path = "/admin/total-courses",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    @Operation(summary = "API to get total courses")
+    @PreAuthorize(value = "hasAuthority('READ_ADMIN')")
+    public ResponseEntity<Object> getTotalCourses() {
+        return ResponseEntity.ok()
+                .body(courseService.countAllCourses());
+    }
+
+    @GetMapping(
+            path = "/admin/total-premium-courses",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    @Operation(summary = "API to get total premium courses")
+    @PreAuthorize(value = "hasAuthority('READ_ADMIN')")
+    public ResponseEntity<Object> getTotalPremiumCourses() {
+        return ResponseEntity.ok()
+                .body(courseService.countPremiumCourses());
+    }
+
+    @GetMapping(
+            path = "/admin/total-users",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    @Operation(summary = "API to get total users")
+    @PreAuthorize(value = "hasAuthority('READ_ADMIN')")
+    public ResponseEntity<Object> getTotalUsers() {
+        return ResponseEntity.ok()
+                .body(userService.countAllUsers());
     }
 
     @GetMapping(

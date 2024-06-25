@@ -102,6 +102,13 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Long countAllUsers() {
+        log.info("Get total all of users!");
+        return userRepository.countTotalUsers();
+    }
+
     private UserResponse mapToUserResponse(User user) {
         return UserResponse.builder()
                 .id(user.getId())

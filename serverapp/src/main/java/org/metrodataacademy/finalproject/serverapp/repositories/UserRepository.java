@@ -23,4 +23,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query("SELECT COUNT(u) > 0 FROM User u WHERE u.phone = :phone AND u.id != :id")
     Boolean existsByPhoneAndNotId(String phone, Integer id);
+
+    @Query(value = "SELECT COUNT(*) FROM tb_user tu JOIN user_roles ur ON tu.id = ur.user_id WHERE ur.role_id = 2", nativeQuery = true)
+    Long countTotalUsers();
 }

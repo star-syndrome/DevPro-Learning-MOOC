@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/main}">
+	layout:decorate="~{layout/dashboard}">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>Dashboard</title>
 	</head>
 	<body>
-		<!-- Content -->
-		<section
-			class="container ms-5 mt-3"
-			layout:fragment="content"
-			sec:authorize="isAuthenticated()">
-			<h1 class="fw-bold">
-				Hi <span sec:authentication="name"></span>, <br />
-				Welcome to DevPro Learning!
-			</h1>
-		</section>
+		<div layout:fragment="content">
+			<section class="hero">
+				<div class="container">
+					<div class="hero-text">
+						<h1>Selamat datang <span sec:authentication="name"></span></h1>
+						<span>Semoga aktivitas belajarmu menyenangkan.</span>
+					</div>
+				</div>
+			</section>
+
+			<section class="categories">
+				<div class="container mt-5">
+					<h2 class="my-4 text-center">Kategori Belajar</h2>
+					<div class="row" id="category-list">
+						<!-- Cards will be appended here by jQuery -->
+					</div>
+				</div>
+			</section>
+
+			<section class="courses">
+				<div class="container mt-5">
+					<h2 class="my-4 text-center">Kursus Aktif</h2>
+					<div class="row" id="course-list">
+						<!-- Cards will be appended here by jQuery -->
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<!-- JS -->
+		<div layout:fragment="script">
+			<script src="/js/dashboard.js"></script>
+		</div>
 	</body>
 </html>

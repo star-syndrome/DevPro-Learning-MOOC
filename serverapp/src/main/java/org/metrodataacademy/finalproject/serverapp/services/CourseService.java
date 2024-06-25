@@ -29,4 +29,8 @@ public interface CourseService {
     CourseDetailsAdminResponse updateCourse(Integer id, UpdateCourseRequest updateCourseRequest);
 
     CourseDetailsAdminResponse deleteCourse(Integer id);
+
+    Long countAllCourses();
+
+    Long countPremiumCourses();
 }

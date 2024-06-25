@@ -11,12 +11,14 @@ import java.util.List;
 @AllArgsConstructor
 public class CourseDetailsResponse {
 
+    private String linkPhoto;
     private String title;
-    private Boolean isPremium;
+    private String isPremium;
     private Integer price;
     private String level;
     private String mentor;
     private String about;
     private Integer totalDuration;
+    private String category;
     private List<ModuleResponse> moduleResponses;
 }

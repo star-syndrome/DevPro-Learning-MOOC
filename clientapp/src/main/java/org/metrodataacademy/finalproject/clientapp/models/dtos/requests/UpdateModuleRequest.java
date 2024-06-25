@@ -13,4 +13,5 @@ public class UpdateModuleRequest {
     private String description;
     private String content;
     private Integer duration;
+    private Integer courseId;
 }

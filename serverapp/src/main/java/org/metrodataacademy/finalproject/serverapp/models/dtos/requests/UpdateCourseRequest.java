@@ -39,5 +39,5 @@ public class UpdateCourseRequest {
     private Integer categoryId;
 
     @NotNull
-    private List<UpdateModuleRequest> updateModuleRequests;
+    private List<ModuleRequest> moduleRequests;
 }

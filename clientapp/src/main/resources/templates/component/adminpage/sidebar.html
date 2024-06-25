@@ -9,27 +9,53 @@
 		<!-- Sidebar -->
 		<div th:fragment="sidebar">
 			<div class="bg-[var(--primary)] w-72 h-full fixed text-white">
-				<div class="flex justify-center items-center my-7">DevPro Learning</div>
+				<div class="flex justify-center items-center my-10 fs-4">
+					<img
+						class="d-inline-block align-text-top me-2"
+						th:src="@{/img/online-course.png}"
+						alt="Logo"
+						width="40"
+						height="40" />
+					DevPro Learning
+				</div>
 				<ul class="font-medium">
 					<li
 						th:classappend="${#httpServletRequest.requestURI == '/admin/dashboard'} ? 'bg-[var(--secondary)]' : ''"
-						class="py-2 px-8">
+						class="py-3 px-10">
 						<a
 							th:href="@{/admin/dashboard}"
 							sec:authorize="hasRole('ROLE_ADMIN')"
-							>Dashboard
+							>Payment History
 						</a>
 					</li>
 					<li
 						th:classappend="${#httpServletRequest.requestURI == '/admin/kelola-kelas'} ? 'bg-[var(--secondary)]' : ''"
-						class="py-2 px-8">
+						class="py-3 px-10">
 						<a
 							th:href="@{/admin/kelola-kelas}"
 							sec:authorize="hasRole('ROLE_ADMIN')"
-							>Manage Courses
+							>Course and Module
 						</a>
 					</li>
-					<li class="py-2 px-8">
+					<li
+						th:classappend="${#httpServletRequest.requestURI == '/admin/kategori-kelas'} ? 'bg-[var(--secondary)]' : ''"
+						class="py-3 px-10">
+						<a
+							th:href="@{/admin/kategori-kelas}"
+							sec:authorize="hasRole('ROLE_ADMIN')"
+							>Category
+						</a>
+					</li>
+					<li
+						th:classappend="${#httpServletRequest.requestURI == '/admin/metode-pembayaran'} ? 'bg-[var(--secondary)]' : ''"
+						class="py-3 px-10">
+						<a
+							th:href="@{/admin/metode-pembayaran}"
+							sec:authorize="hasRole('ROLE_ADMIN')"
+							>Payment Method
+						</a>
+					</li>
+					<li class="d-flex justify-content-center mt-5">
 						<form th:action="@{/logout}" th:method="POST">
 							<button class="btn btn-danger fw-bold" type="submit">
 								Log out

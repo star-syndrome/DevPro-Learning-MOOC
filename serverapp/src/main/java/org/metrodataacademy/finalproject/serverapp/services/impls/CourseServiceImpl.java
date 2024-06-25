@@ -2,8 +2,8 @@ package org.metrodataacademy.finalproject.serverapp.services.impls;
 
 import lombok.extern.slf4j.Slf4j;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.AddCourseRequest;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.ModuleRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UpdateCourseRequest;
-import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.UpdateModuleRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.*;
 import org.metrodataacademy.finalproject.serverapp.models.entities.Category;
 import org.metrodataacademy.finalproject.serverapp.models.entities.Course;
@@ -33,13 +33,13 @@ public class CourseServiceImpl implements CourseService {
     private CourseRepository courseRepository;
 
     @Autowired
-    private ModuleRepository moduleRepository;
-
-    @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private ModuleRepository moduleRepository;
 
     @Override
     @Transactional(readOnly = true)
@@ -121,13 +121,15 @@ public class CourseServiceImpl implements CourseService {
 
             return courseRepository.findCourseByTitle(course.getTitle())
                     .map(courses -> CourseDetailsResponse.builder()
+                            .linkPhoto(courses.getCategories().getLinkPhoto())
                             .title(courses.getTitle())
                             .about(courses.getAbout())
                             .price(courses.getPrice())
-                            .isPremium(courses.getIsPremium())
+                            .isPremium(courses.getIsPremium() ? "Premium" : "Free")
                             .level(courses.getLevel())
                             .mentor(courses.getMentor())
                             .totalDuration(courses.getModules().stream().mapToInt(Module::getDuration).sum())
+                            .category(courses.getCategories().getName())
                             .moduleResponses(courses.getModules().stream()
                                     .map(module -> ModuleResponse.builder()
                                             .name(module.getName())
@@ -159,7 +161,7 @@ public class CourseServiceImpl implements CourseService {
             User user = userRepository.findById(1) // <- Admin ID
                             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
 
-            List<Module> modules = addCourseRequest.getAddModuleRequests().stream()
+            List<Module> modules = addCourseRequest.getModuleRequests().stream()
                     .map(addModuleRequest -> Module.builder()
                             .name(addModuleRequest.getName())
                             .description(addModuleRequest.getDescription())
@@ -211,7 +213,7 @@ public class CourseServiceImpl implements CourseService {
             }
 
             List<Module> modules = course.getModules();
-            for (UpdateModuleRequest moduleRequest : updateCourseRequest.getUpdateModuleRequests()) {
+            for (ModuleRequest moduleRequest : updateCourseRequest.getModuleRequests()) {
                 Module module = modules.stream()
                         .filter(mdl -> mdl.getName().equals(moduleRequest.getName()))
                         .findFirst()
@@ -239,7 +241,7 @@ public class CourseServiceImpl implements CourseService {
             course.setCategories(category);
             course.setUsers(user);
 
-            List<Module> moduleList = updateCourseRequest.getUpdateModuleRequests().stream()
+            List<Module> moduleList = updateCourseRequest.getModuleRequests().stream()
                     .map(updateModuleRequest -> {
                         Module module = modules.stream()
                                 .filter(mdl -> mdl.getName().equals(updateModuleRequest.getName()))
@@ -281,14 +283,36 @@ public class CourseServiceImpl implements CourseService {
         }
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Long countAllCourses() {
+        log.info("Get total of all courses!");
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
+        return courseRepository.countTotalCourses(user.getId());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Long countPremiumCourses() {
+        log.info("Get total of all premium courses!");
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
+        return courseRepository.countByIsPremium(user.getId());
+    }
+
     private CourseResponse mapToCourseResponse(Course course) {
         return CourseResponse.builder()
                 .title(course.getTitle())
-                .isPremium(course.getIsPremium())
+                .isPremium(course.getIsPremium() ? "Premium" : "Free")
                 .price(course.getPrice())
                 .level(course.getLevel())
                 .mentor(course.getMentor())
                 .category(course.getCategories().getName())
+                .linkPhoto(course.getCategories().getLinkPhoto())
+                .totalDuration(course.getTotalDuration())
                 .build();
     }
 
@@ -298,10 +322,11 @@ public class CourseServiceImpl implements CourseService {
                 .title(course.getTitle())
                 .about(course.getAbout())
                 .price(course.getPrice())
-                .isPremium(course.getIsPremium())
+                .isPremium(course.getIsPremium() ? "Premium" : "Free")
                 .level(course.getLevel())
                 .mentor(course.getMentor())
                 .totalDuration(course.getTotalDuration())
+                .category(course.getCategories().getName())
                 .moduleAdminResponses(course.getModules().stream()
                         .map(module -> ModuleAdminResponse.builder()
                                 .id(module.getId())

@@ -20,5 +20,5 @@ public class ReceiptRequest {
     private Double price;
     private String orderTime;
     private String paymentMethod;
-    private Boolean paid;
+    private String paid;
 }

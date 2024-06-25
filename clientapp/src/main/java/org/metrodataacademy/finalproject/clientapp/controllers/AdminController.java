@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -15,6 +16,16 @@ public class AdminController {
 
     @GetMapping("/kelola-kelas")
     public String kelolaKelasView(){
-        return "pages/adminpage/kelolaKelas";
+        return "pages/adminpage/kursus";
+    }
+
+    @GetMapping("/kategori-kelas")
+    public String kategoriKelasView() {
+        return "pages/adminpage/kategori";
+    }
+
+    @GetMapping("/metode-pembayaran")
+    public String metodePembayaranView() {
+        return "pages/adminpage/pembayaran";
     }
 }

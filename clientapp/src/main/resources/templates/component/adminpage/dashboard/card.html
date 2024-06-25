@@ -6,43 +6,51 @@
 		<title>Card</title>
 	</head>
 	<body>
-		<!-- Card -->
-		<div th:fragment="card">
-			<div class="grid grid-cols-3 gap-x-10">
-				<div
-					class="flex items-center bg-[var(--secondary)] rounded-xl px-10 py-7 text-white gap-x-5 font-medium">
-					<div class="bg-white p-3 rounded-full">
-						<img
-							src="https://img.icons8.com/material/24/7950F2/group-background-selected.png"
-							alt="/" />
-					</div>
-					<div class="flex flex-col">
-						<h1>450</h1>
-						<h1>Active User</h1>
-					</div>
-				</div>
-				<div
-					class="flex items-center bg-[#73CA5C] rounded-xl px-10 py-7 text-white gap-x-5 font-medium">
-					<div class="bg-white p-3 rounded-full">
-						<img
-							src="https://img.icons8.com/material/24/7950F2/group-background-selected.png"
-							alt="/" />
-					</div>
-					<div class="flex flex-col">
-						<h1>25</h1>
-						<h1>Active Class</h1>
+		<div class="container mt-5" th:fragment="card">
+			<div class="row">
+				<div class="col-md-4 mb-4">
+					<div class="card text-white bg-secondary">
+						<div class="card-body d-flex align-items-center">
+							<div class="bg-white p-3 rounded-circle mr-3">
+								<img
+									src="https://img.icons8.com/material/24/7950F2/group-background-selected.png"
+									alt="/" />
+							</div>
+							<div>
+								<h5 id="total-pengguna" class="card-title fs-5 mb-0"></h5>
+								<p class="card-text">Active Users</p>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div
-					class="flex items-center bg-[var(--primary)] rounded-xl px-10 py-7 text-white gap-x-5 font-medium">
-					<div class="bg-white p-3 rounded-full">
-						<img
-							src="https://img.icons8.com/material/24/7950F2/group-background-selected.png"
-							alt="/" />
+				<div class="col-md-4 mb-4">
+					<div class="card text-white" style="background-color: #73ca5c">
+						<div class="card-body d-flex align-items-center">
+							<div class="bg-white p-3 rounded-circle mr-3">
+								<img
+									src="https://img.icons8.com/material/24/7950F2/group-background-selected.png"
+									alt="/" />
+							</div>
+							<div>
+								<h5 id="total-kursus" class="card-title fs-5 mb-0"></h5>
+								<p class="card-text">Active Courses</p>
+							</div>
+						</div>
 					</div>
-					<div class="flex flex-col">
-						<h1>20</h1>
-						<h1>Premium Class</h1>
+				</div>
+				<div class="col-md-4 mb-4">
+					<div class="card text-white" style="background-color: var(--primary)">
+						<div class="card-body d-flex align-items-center">
+							<div class="bg-white p-3 rounded-circle mr-3">
+								<img
+									src="https://img.icons8.com/material/24/7950F2/group-background-selected.png"
+									alt="/" />
+							</div>
+							<div>
+								<h5 id="total-kursus-premium" class="card-title fs-5 mb-0"></h5>
+								<p class="card-text">Premium Courses</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
