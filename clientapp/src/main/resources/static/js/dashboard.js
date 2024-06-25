@@ -5,10 +5,10 @@ $(document).ready(() => {
 		dataType: "json",
 		success: function (response) {
 			response.forEach(function (category) {
-				const categoryCard = `
-                    <div class="col-md-4">
-                        <div class="card m-2 category-card">
-                            <img src="${category.linkPhoto}" class="card-img-top category-img" alt="${category.name}">
+				const categoryCard = /*html*/ `
+                    <div class="col-sm-2">
+                        <div class="card category-card">
+                            <img src="${category.linkPhoto}" class="img-thumbnail category-img" alt="${category.name}">
                             <div class="card-body">
                                 <h5 class="card-title">${category.name}</h5>
                             </div>

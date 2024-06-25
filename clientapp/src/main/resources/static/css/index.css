@@ -97,6 +97,7 @@ body {
 .category-card {
 	margin-bottom: 20px;
 }
+
 .category-img {
 	height: 200px;
 	object-fit: cover;
@@ -105,17 +106,21 @@ body {
 .course-card {
 	margin-bottom: 20px;
 }
+
 .course-img {
 	height: 200px;
 	object-fit: cover;
 }
+
 .card-title {
 	font-size: 1.25rem;
 	font-weight: bold;
 }
+
 .card-text {
 	font-size: 1rem;
 }
+
 .card-footer {
 	font-size: 0.9rem;
 }
