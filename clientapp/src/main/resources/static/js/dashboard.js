@@ -30,7 +30,7 @@ $(document).ready(() => {
 		success: function (response) {
 			const courses = JSON.parse(JSON.stringify(response));
 			courses.forEach((course) => {
-				const cardHtml = `
+				const cardHtml = /*html*/ `
                     <div class="col-md-4">
                         <div class="card course-card">
                             <img src="${course.linkPhoto}" class="card-img-top" alt="${course.categoryName}">
@@ -42,7 +42,7 @@ $(document).ready(() => {
                                 <p class="card-text"><strong>Level:</strong> ${course.level}</p>
                                 <p class="card-text"><strong>Total Duration:</strong> ${course.totalDuration} minutes</p>
                                 <p class="card-text"><strong>Status:</strong> ${course.isPremium}</p>
-                                <a href="#" class="btn btn-primary">Details</a>
+                                <a href="/course/details/${course.title}" class="btn btn-primary">Details</a>
                             </div>
                         </div>
                     </div>

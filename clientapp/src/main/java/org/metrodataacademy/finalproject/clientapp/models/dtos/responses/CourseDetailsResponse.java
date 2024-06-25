@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CourseDetailsResponse {
 
+    private String linkPhoto;
     private String title;
     private String isPremium;
     private Integer price;

@@ -121,6 +121,7 @@ public class CourseServiceImpl implements CourseService {
 
             return courseRepository.findCourseByTitle(course.getTitle())
                     .map(courses -> CourseDetailsResponse.builder()
+                            .linkPhoto(courses.getCategories().getLinkPhoto())
                             .title(courses.getTitle())
                             .about(courses.getAbout())
                             .price(courses.getPrice())
