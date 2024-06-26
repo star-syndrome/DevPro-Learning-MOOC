@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran Kelas</title>
+    <link rel="stylesheet" href="/clientapp/src/main/resources/static/css/payment-page.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Belajar</h1>
+    </div>
+    <section class="alert-section">
+        <a class="back-link" href="/home">← Kelas Lainnya</a>
+    </section>
+
+    <section class="payment-section">
+        <div class="container">
+            <div class="payment-method">
+                <select>
+                    <option>Debit Card</option>
+                    <option selected>Credit Card</option>
+                </select>
+            </div>
+            <div class="card-logos">
+                <img class="logo" src="/clientapp/src/main/resources/static/img/pngimg.com - visa_PNG38.png" alt="Visa"  height="50">
+                <img class="logo" src="/clientapp/src/main/resources/static/img/pngimg.com - mastercard_PNG1.png" alt="Mastercard" height="50">
+                <img class="logo" src="/clientapp/src/main/resources/static/img/pngimg.com - paypal_PNG15.png" alt="PayPal"  height="50">
+            </div>
+            <div class="credit-card-form">
+                <input type="text" placeholder="Card number" value="4480 0000 0000 0000">
+                <input type="text" placeholder="Card holder name" value="John Doe">
+                <div style="display: flex; justify-content: space-between;">
+                    <input type="text" placeholder="CVV" value="000" style="width: 48%;">
+                    <input type="text" placeholder="Expiry date" value="07/24" style="width: 48%;">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="payment-summary">
+                <div class="card m-1 category-card">
+                    <img src="/clientapp/src/main/resources/static/img/pngimg.com - mastercard_PNG1.png" class="card-img-top category-img" alt="${category.name}" height="150">
+                    <div class="card-body">
+                        <p class="category-title">UI/UX</p>
+                        <p class="card-title">Example</p>
+                        <p class="creator">By Rizki Kurnia</p>
+                    </div>
+                </div>
+                <div class="subtotal">
+                    <div class="total-detail">
+                        <label for="harga">Harga:</label>
+                        <p>Rp 38,390</p>
+                    </div>
+                    <div class="total=detail">
+                        <label for="ppn">PPN 11%:</label>
+                        <p>Rp 38,390</p>
+                    </div>
+                    <div class="total-detail">
+                        <label for="total">Total Bayar:</label>
+                        <p class="total">Rp 387,390</p>
+                    </div>
+                </div>
+                <a href="#" class="pay-button">Bayar dan Ikuti Kelas Selamanya</a>
+            </div>
+            
+        </div>
+    </section>
+    
+</body>
+</html>
