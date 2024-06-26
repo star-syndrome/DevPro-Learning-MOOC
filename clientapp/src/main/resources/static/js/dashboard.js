@@ -31,17 +31,18 @@ $(document).ready(() => {
 			const courses = JSON.parse(JSON.stringify(response));
 			courses.forEach((course) => {
 				const cardHtml = /*html*/ `
-                    <div class="col-md-4">
-                        <div class="card course-card">
-                            <img src="${course.linkPhoto}" class="card-img-top" alt="${course.categoryName}">
-                            <div class="card-body">
-                                <h5 class="card-title">${course.title}</h5>
-                                <p class="card-text"><strong>Category:</strong> ${course.category}</p>
-                                <p class="card-text"><strong>Price:</strong> ${course.price}</p>
-                                <p class="card-text"><strong>Mentor:</strong> ${course.mentor}</p>
-                                <p class="card-text"><strong>Level:</strong> ${course.level}</p>
-                                <p class="card-text"><strong>Total Duration:</strong> ${course.totalDuration} minutes</p>
-                                <p class="card-text"><strong>Status:</strong> ${course.isPremium}</p>
+					<div class="col-md-4">
+						<div class="course-card">
+							<img src="${course.linkPhoto}" alt="Course Image">
+							<div class="course-card-body">
+								<h5 class="course-title">${course.category}</h5>
+								<p>${course.title}</p>
+								<p class="text-muted">by ${course.mentor}</p>
+								<p>
+									<span class="course-level text-success">${course.level}</span>
+									<span class="course-isPremium text-danger">${course.isPremium}</span>
+									<span class="course-duration text-primary">${course.totalDuration} Minutes</span>
+								</p>
                                 <a href="/course/details/${course.title}" class="btn btn-primary">Details</a>
                             </div>
                         </div>

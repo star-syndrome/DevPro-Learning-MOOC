@@ -24,7 +24,7 @@ public class CourseControllerThymeleaf {
     public String courseDetailsView(@PathVariable String title, Model model) {
         CourseDetailsResponse courseDetailsResponse = courseService.courseDetails(title);
         model.addAttribute("course", courseDetailsResponse);
-        return "pages/user/course-details"; // course-details or details
+        return "pages/user/course-details";
     }
     
 }
