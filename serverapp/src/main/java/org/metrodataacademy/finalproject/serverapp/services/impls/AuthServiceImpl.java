@@ -97,7 +97,7 @@ public class AuthServiceImpl implements AuthService {
 
             User users = modelMapper.map(registrationRequest, User.class);
 
-            List<Role> roles = Collections.singletonList(roleRepository.findById(2)
+            List<Role> roles = Collections.singletonList(roleRepository.findById(1)
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Role not found!")));
 
             users.setRoles(roles);
