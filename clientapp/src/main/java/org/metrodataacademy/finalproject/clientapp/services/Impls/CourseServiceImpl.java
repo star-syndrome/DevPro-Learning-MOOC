@@ -121,4 +121,15 @@ public class CourseServiceImpl implements CourseService {
                 CourseDetailsResponse.class
             ).getBody();
     }
+
+    @Override
+    public List<CourseResponse> getMyCourse() {
+        return restTemplate
+            .exchange(
+                "http://localhost:8080/api/course/my-course",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<CourseResponse>>() {}
+            ).getBody();
+    }
 }

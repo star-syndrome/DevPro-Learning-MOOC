@@ -38,31 +38,34 @@
 							<span th:text="${course.title}"></span>
 						</h2>
 						<p class="fs-5">by <span th:text="${course.mentor}"></span></p>
-						<div class="course-meta fs-5">
-							<a
+						<div class="course-meta">
+							<a class="fs-3"
 								><span
 									class="level badge badge-success"
 									th:text="${course.level} + ' Level'"></span
 							></a>
-							<a
+							<a class="fs-3"
 								><span
 									class="status badge badge-danger"
 									th:text="${course.isPremium}"></span
 							></a>
-							<a>
+							<a class="fs-3">
 								<span
 									class="duration badge badge-primary"
 									th:text="${course.totalDuration} + ' minutes'"></span>
+							</a>
+							<a class="fs-3">
+								<span
+									class="duration badge badge-secondary"
+									th:text="'Rp ' + ${course.price}"></span>
 							</a>
 						</div>
 						<button
 							type="button"
 							class="btn btn-primary btn-sm"
-							data-toggle="modal"
-							data-target="#details-course"
-							data-course-title="${course.title}">
-							Rp
-							<span th:text="${course.price}"></span>
+							id="orderButton"
+							th:data-course-title="@{${course.title}}">
+							Buy now!
 						</button>
 					</div>
 					<div class="course-description">
@@ -89,73 +92,6 @@
 				</div>
 				<div th:if="${course == null}">
 					<p>No course details available.</p>
-				</div>
-				<!-- The Module Details Course for Order -->
-				<div
-					class="modal fade"
-					id="details-course"
-					data-bs-backdrop="static"
-					data-bs-keyboard="false"
-					tabindex="-1"
-					role="dialog"
-					aria-labelledby="courseDetailsModalLabel"
-					aria-hidden="true">
-					<div class="modal-dialog modal-lg" role="document">
-						<div class="modal-content">
-							<div class="modal-header d-flex justify-content-center">
-								<h5
-									class="modal-title fw-bold fs-3"
-									id="courseDetailsModalLabel">
-									Selangkah lagi menuju
-									<span class="fw-bold fs-3" style="color: #4454ec"
-										>Kelas Premium</span
-									>
-								</h5>
-							</div>
-							<div class="course-card container">
-								<h1
-									class="fw-bold fs-3"
-									id="courseCategory"
-									style="color: #7b4bf3">
-									<span id="categoryText"></span>
-								</h1>
-								<h2 class="fw-bold fs-4" id="courseTitle">
-									<span id="titleText"></span>
-								</h2>
-								<p class="fs-5" id="courseMentor">
-									by <span id="mentorText"></span>
-								</p>
-								<div class="course-meta fs-5 mb-3">
-									<a id="courseLevel"
-										><span
-											class="level badge badge-success"
-											id="levelText"></span
-									></a>
-									<a id="courseIsPremium"
-										><span
-											class="status badge badge-danger"
-											id="isPremiumText"></span
-									></a>
-									<a id="courseDuration">
-										<span
-											class="duration badge badge-primary"
-											id="totalDurationText"></span>
-									</a>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button
-									type="button"
-									class="btn btn-secondary"
-									data-dismiss="modal">
-									Close
-								</button>
-								<a href="#" id="orderButton" class="btn btn-primary"
-									>Order Now</a
-								>
-							</div>
-						</div>
-					</div>
 				</div>
 
 				<!-- Video Player Modal -->

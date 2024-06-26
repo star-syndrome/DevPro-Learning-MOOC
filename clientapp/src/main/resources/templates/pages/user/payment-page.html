@@ -3,21 +3,33 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
 		<title>Pembayaran Kelas</title>
+
+		<!-- Bootstrap -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+			crossorigin="anonymous" />
+
 		<link rel="stylesheet" href="/css/payment-page.css" />
 	</head>
 
 	<body>
 		<div class="header">
-			<h1>
+			<div
+				class="d-flex justify-content-center align-items-center fw-bold fs-3">
 				<img
-					class="d-inline-block align-text-top"
+					class="d-inline-block align-text-top me-2"
 					th:src="@{/img/online-course.png}"
 					alt="Logo"
 					width="40"
 					height="36" />
 				DevPro Learning
-			</h1>
+			</div>
 		</div>
 		<section class="alert-section">
 			<a class="back-link" href="/home">← Kelas Lainnya</a>
@@ -25,18 +37,7 @@
 
 		<section class="payment-section">
 			<div class="container">
-				<div class="payment-method">
-					<div class="form-group fw-bold">
-						<label for="paymentMethod"></label>
-						<select
-							id="paymentMethod"
-							name="paymentMethod"
-							class="form-select mb-5"
-							required>
-							<!-- Payment will be populated here -->
-						</select>
-					</div>
-				</div>
+				<div class="payment-method"></div>
 				<div class="card-logos">
 					<img
 						class="logo"
@@ -77,35 +78,72 @@
 
 			<div class="container">
 				<div class="payment-summary">
-					<div class="card m-1 category-card">
-						<img
-							src="/img/pngimg.com - mastercard_PNG1.png"
-							class="card-img-top category-img"
-							alt="Photo Name"
-							height="150" />
+					<div class="card category-card">
 						<div class="card-body">
-							<p class="category-title" id="courseCategory"></p>
-							<p id="courseTitle"></p>
+							<p>
+								<span th:text="${order.category}"></span>
+							</p>
+							<p><span th:text="${order.title}"></span></p>
+						</div>
+						<div class="subtotal">
+							<div class="total-detail">
+								<label for="price">Harga:</label>
+								<p id="price"><span th:text="${order.price}"></span></p>
+							</div>
+							<div class="total-detail">
+								<label for="tax">PPN 11%:</label>
+								<p id="tax"><span th:text="${order.tax}"></span></p>
+							</div>
+							<div class="total-detail">
+								<label for="total">Total Bayar:</label>
+								<p class="total" id="courseTotalPrice">
+									<span th:text="${order.totalPrice}"></span>
+								</p>
+							</div>
 						</div>
 					</div>
-					<div class="subtotal">
-						<div class="total-detail">
-							<label for="harga">Harga:</label>
-							<p id="coursePrice"></p>
-						</div>
-						<div class="total-detail">
-							<label for="ppn">PPN 11%:</label>
-							<p id="courseTax"></p>
-						</div>
-						<div class="total-detail">
-							<label for="total">Total Bayar:</label>
-							<p class="total" id="courseTotalPrice"></p>
-						</div>
+					<div class="form-group fw-bold text-start">
+						<label for="course-title">Course Title</label>
+						<input
+							type="text"
+							class="form-control mb-2"
+							id="course-title"
+							th:value="${order.title}" />
 					</div>
-					<a href="#" class="pay-button">Bayar dan Ikuti Kelas Selamanya</a>
+					<div class="form-group fw-bold text-start">
+						<label for="payment-method">Payment Method:</label>
+						<select
+							id="payment-method"
+							name="payment-method"
+							class="form-select mb-3"
+							required>
+							<!-- Payment will be populated here -->
+						</select>
+					</div>
+					<button type="button" class="btn btn-primary" id="createOrderButton">
+						Submit Payment
+					</button>
 				</div>
 			</div>
 		</section>
+
+		<!-- Bootstrap  -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+			crossorigin="anonymous"></script>
+
+		<!-- jQuery -->
+		<script
+			src="https://code.jquery.com/jquery-3.7.1.js"
+			integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+			crossorigin="anonymous"></script>
+
+		<!-- CSRF Token -->
+		<script src="/js/CSRFToken.js"></script>
+
+		<!-- SweetAlert2 -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 		<script src="/js/payment.js"></script>
 	</body>

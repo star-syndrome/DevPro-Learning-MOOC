@@ -36,6 +36,14 @@ public class CourseController {
     }
 
     @GetMapping(
+        path = "/course/my-course",
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<List<CourseResponse>> getMyCourse() {
+        return ResponseEntity.ok().body(courseService.getMyCourse());
+    }
+
+    @GetMapping(
         path = "/course",
         produces = MediaType.APPLICATION_JSON_VALUE
     )

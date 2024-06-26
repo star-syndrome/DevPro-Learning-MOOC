@@ -24,6 +24,8 @@ public interface CourseService {
 
     CourseDetailsResponse courseDetails(String title);
 
+    List<CourseResponse> getMyCourse();
+
     Long countAllCourses();
 
     Long countPremiumCourses();

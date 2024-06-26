@@ -214,25 +214,10 @@ $("#videoModal").on("hidden.bs.modal", function () {
 	modal.find(".modal-body #courseVideo").attr("src", "");
 });
 
-$("#details-course").on("show.bs.modal", function (event) {
-	var button = $(event.relatedTarget); // Button that triggered the modal
-	var courseTitle = button.data("course-title"); // Extract info from data-* attributes
+// Handle Order Now button click
+$("#orderButton").on("click", function () {
+	var courseTitle = $(this).data("course-title");
 
-	// Use Ajax to get course details
-	$.ajax({
-		url: "/api/course/" + courseTitle,
-		method: "GET",
-		success: function (data) {
-			// Populate modal fields with the data
-			$("#categoryText").text(data.category);
-			$("#titleText").text(data.title);
-			$("#priceText").text(data.price);
-			$("#mentorText").text(data.mentor);
-			$("#levelText").text(data.level);
-			$("#totalDurationText").text(data.totalDuration);
-
-			// Update order button href
-			$("#orderButton").attr("href", "/order/" + data.title);
-		},
-	});
+	// Redirect to payment page
+	window.location.href = "/order/" + courseTitle;
 });

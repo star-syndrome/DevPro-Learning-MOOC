@@ -29,7 +29,8 @@ public class CourseControllerThymeleaf {
         path = "/my-course",
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public String myCourseView(){
+    public String myCourseView(Model model){
+        model.addAttribute("isActive", "course");
         return "pages/user/my-course";
     }
     

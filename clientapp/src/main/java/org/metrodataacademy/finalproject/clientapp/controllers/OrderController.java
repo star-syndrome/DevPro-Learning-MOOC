@@ -1,6 +1,5 @@
 package org.metrodataacademy.finalproject.clientapp.controllers;
 
-import org.metrodataacademy.finalproject.clientapp.models.dtos.responses.OrderDetailsResponse;
 import org.metrodataacademy.finalproject.clientapp.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -20,8 +19,16 @@ public class OrderController {
         produces = MediaType.APPLICATION_JSON_VALUE
     )
     public String getOrderDetailsView(@PathVariable String title, Model model) {
-        OrderDetailsResponse orderDetailsResponse = orderService.getOrderDetailsCourse(title);
-        model.addAttribute("order", orderDetailsResponse);
+        model.addAttribute("order", orderService.getOrderDetailsCourse(title));
+        model.addAttribute("courseTitle", title);
         return "pages/user/payment-page";
-    }  
+    }
+    
+    @GetMapping(
+        path = "/payment-success",
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public String paymentSuccessView() {
+        return "pages/user/payment-success";
+    }
 }
