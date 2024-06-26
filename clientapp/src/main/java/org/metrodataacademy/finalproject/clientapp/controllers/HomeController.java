@@ -19,4 +19,13 @@ public class HomeController {
         model.addAttribute("isActive", "home");
         return "dashboard";
     }
+    
+    @GetMapping(
+        path = "/payment-success"
+    )
+    public String paymentSuccess() {
+        return "pages/user/payment-success";
+    }
+
+
 }
