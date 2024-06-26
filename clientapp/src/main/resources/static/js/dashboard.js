@@ -43,7 +43,6 @@ $(document).ready(() => {
                                 <p class="card-text"><strong>Total Duration:</strong> ${course.totalDuration} minutes</p>
                                 <p class="card-text"><strong>Status:</strong> ${course.isPremium}</p>
                                 <a href="/course/details/${course.title}" class="btn btn-primary">Details</a>
-								<p>aujdbukawbd</p>
                             </div>
                         </div>
                     </div>
