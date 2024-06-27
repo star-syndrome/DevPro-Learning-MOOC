@@ -5,15 +5,15 @@ $(document).ready(() => {
 		dataType: "json",
 		success: function (response) {
 			response.forEach(function (category) {
-				const categoryCard = `
-                    <div class="col-md-4">
-                        <div class="card m-2 category-card">
-                            <img src="${category.linkPhoto}" class="card-img-top category-img" alt="${category.name}">
-                            <div class="card-body">
-                                <h5 class="card-title">${category.name}</h5>
-                            </div>
-                        </div>
-                    </div>
+				const categoryCard = /*html*/ `
+					<div class="col-sm-2">
+						<div class="card category-card">
+							<img src="${category.linkPhoto}" class="img-thumbnail category-img" alt="${category.name}">
+							<div class="card-body">
+								<h5 class="card-title">${category.name}</h5>
+						</div>
+					</div>
+				</div>
                 `;
 				$("#category-list").append(categoryCard);
 			});
@@ -29,18 +29,20 @@ $(document).ready(() => {
 		dataType: "json",
 		success: function (response) {
 			response.forEach(function (course) {
-				const courseCard = `
+				const courseCard = /*html*/ `
                     <div class="col-md-4">
-                        <div class="card course-card">
-                            <img src="${course.linkPhoto}" class="card-img-top course-img" alt="${course.categoryName}">
-                            <div class="card-body">
-                                <h5 class="card-title">${course.title}</h5>
-                                <p class="card-text"><strong>Kategori:</strong> ${course.category}</p>
-                                <p class="card-text"><strong>Mentor:</strong> ${course.mentor}</p>
-                                <p class="card-text"><strong>Level:</strong> ${course.level}</p>
-                                <p class="card-text"><strong>Total Durasi:</strong> ${course.totalDuration} menit</p>
-                                <p class="card-text"><strong>Harga:</strong> Rp ${course.price}</p>
-                                <p class="card-text"><strong>${course.isPremium}</strong></p>
+                        <div class="course-card">
+                            <img src="${course.linkPhoto}" alt="Course Image">
+                            <div class="course-card-body">
+                                <h5 class="course-title">${course.category}</h5>
+                                <p>${course.title}</p>
+                                <p class="text-muted">by ${course.mentor}</p>
+                                <p>
+                                    <span class="course-level text-success">${course.level}</span>
+                                    <span class="course-isPremium text-danger">${course.isPremium}</span>
+                                    <span class="course-duration text-primary">${course.totalDuration} Minutes</span>
+                                </p>
+								<a href="/auth/login" class="btn btn-primary">Rp ${course.price}</a>
                             </div>
                         </div>
                     </div>
@@ -53,6 +55,29 @@ $(document).ready(() => {
 		},
 	});
 });
+
+function displayCategories(categories) {
+	var categoryListHTML = "";
+
+	for (var i = 0; i < categories.length; i++) {
+		var category = categories[i];
+		var categoryItemHTML = `
+			<div class="category-item" data-category-id="${category.id}">
+				${category.name}
+			</div>
+		`;
+		categoryListHTML += categoryItemHTML;
+	}
+
+	$("#category-list").html(categoryListHTML);
+
+	// Attach click event to category items
+	$(".category-item").click(function () {
+		var categoryId = $(this).data("categoryId");
+		// Handle category click event (e.g., filter products, load subcategories)
+		console.log("Category clicked:", categoryId);
+	});
+}
 
 document.addEventListener("DOMContentLoaded", () => {
 	const filters = document.querySelectorAll(".filters button");

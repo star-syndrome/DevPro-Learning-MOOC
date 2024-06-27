@@ -95,27 +95,46 @@ body {
 }
 
 .category-card {
-	margin-bottom: 20px;
+	max-width: 200px;
 }
-.category-img {
+
+.category-card img {
 	height: 200px;
 	object-fit: cover;
 }
 
 .course-card {
+	border-radius: 10px;
+	overflow: hidden;
+	background-color: white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	margin-bottom: 20px;
 }
-.course-img {
-	height: 200px;
-	object-fit: cover;
+
+.course-card img {
+	width: 100%;
+	height: auto;
 }
-.card-title {
-	font-size: 1.25rem;
+
+.course-card-body {
+	padding: 15px;
+}
+
+.course-title {
+	color: #4a90e2;
 	font-weight: bold;
+	margin-bottom: 5px;
 }
-.card-text {
-	font-size: 1rem;
+
+.course-level,
+.course-isPremium,
+.course-duration {
+	margin-right: 15px;
 }
-.card-footer {
-	font-size: 0.9rem;
+
+.btn-primary {
+	background-color: #5c67f2;
+	border: none;
+	border-radius: 25px;
+	padding: 10px 20px;
 }

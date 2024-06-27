@@ -1,0 +1,106 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f5f5f5;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.header {
+	background-color: #563d7c;
+	padding: 10px;
+	text-align: center;
+	color: white;
+}
+
+.alert-section {
+	height: 59px;
+	padding-top: 2rem;
+	padding-left: 3rem;
+	padding-right: 3rem;
+	background-color: #fff;
+	margin-bottom: 0.45rem;
+}
+
+.back-link {
+	display: block;
+	color: #7b4bf3;
+	text-decoration: none;
+}
+
+.payment-section {
+	background-color: #fff;
+	height: 80vh;
+	display: flex;
+}
+
+.card-body .category-title {
+	color: #7b4bf3;
+}
+
+.card-logos {
+	margin: 3rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+.container {
+	height: 12cm;
+	width: 40%;
+	margin: auto;
+	background-color: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-method {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.payment-method select {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.credit-card-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.credit-card-form input {
+	margin-bottom: 10px;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+}
+
+.payment-summary {
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.payment-summary .card {
+	margin-bottom: 20px;
+	text-align: start;
+}
+
+.payment-summary p {
+	margin: 5px 0;
+}
+
+.payment-summary .total {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+.subtotal {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin-bottom: 3rem;
+}
