@@ -24,7 +24,7 @@
 
 ### **`Design & Documentation:`**
 
-- [Slide of Presentation](https://docs.google.com/presentation/d/1aUV2L98Gq43LgOB2OIHlnl3YOkrKV6gLP0FRUagd13Y/edit?usp=sharing)
+- [Slide of Presentation](https://docs.google.com/presentation/d/1vBsycABDKSVW2u49wU9D6zn2jmZ2d-u1Ln8aIn8jeeM/edit?usp=sharing)
 - [BPMN](https://drive.google.com/file/d/1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-/view?usp=sharing)
 - [Use Case](https://drive.google.com/file/d/1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-/view?usp=sharing)
 - [Entity Relational Diagram](https://drive.google.com/file/d/1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-/view?usp=sharing)
