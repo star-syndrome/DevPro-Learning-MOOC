@@ -314,7 +314,7 @@ function findCourseById(id) {
 				<p><strong>Title:</strong> ${response.title}</p>
 				<p><strong>Category:</strong> ${response.category}</p>
 				<p><strong>About:</strong> ${response.about}</p>
-				<p><strong>Is Premium:</strong> ${response.isPremium ? "Yes" : "No"}</p>
+				<p><strong>Is Premium:</strong> ${response.isPremium}</p>
 				<p><strong>Price:</strong> ${response.price}</p>
 				<p><strong>Level:</strong> ${response.level}</p>
 				<p><strong>Mentor:</strong> ${response.mentor}</p>
