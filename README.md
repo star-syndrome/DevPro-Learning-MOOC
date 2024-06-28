@@ -24,7 +24,7 @@
 
 ### **`Design & Documentation:`**
 
-- [Slide of Presentation](https://docs.google.com/presentation/d/1aUV2L98Gq43LgOB2OIHlnl3YOkrKV6gLP0FRUagd13Y/edit?usp=sharing)
+- [Slide of Presentation](https://docs.google.com/presentation/d/1vBsycABDKSVW2u49wU9D6zn2jmZ2d-u1Ln8aIn8jeeM/edit?usp=sharing)
 - [BPMN](https://drive.google.com/file/d/1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-/view?usp=sharing)
 - [Use Case](https://drive.google.com/file/d/1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-/view?usp=sharing)
 - [Entity Relational Diagram](https://drive.google.com/file/d/1btRCx5kGTLytgNJkzdVQE_1vDcpShWq-/view?usp=sharing)
@@ -35,7 +35,44 @@
 
 ### **`Screenshot:`**
 
-- Dashboard (Example)
+- Login
+  ![Gambar1](materials/img/image12.jpg)
+
+- Registration
+  ![Gambar2](materials/img/image13.jpg)
+
+- Landing Page
+  ![Gambar3](materials/img/image1.png)
+
+- Landing Page
+  ![Gambar4](materials/img/image2.jpg)
+
+- Landing Page
+  ![Gambar5](materials/img/image3.jpg)
+
+- Admin
+  ![Gambar6](materials/img/image4.jpg)
+
+- Admin
+  ![Gambar7](materials/img/image5.jpg)
+
+- Dashboard
+  ![Gambar8](materials/img/image6.jpg)
+
+- My Course
+  ![Gambar9](materials/img/image7.jpg)
+
+- Account Profile
+  ![Gambar10](materials/img/image8.jpg)
+
+- Course Details
+  ![Gambar11](materials/img/image9.jpg)
+
+- Payment
+  ![Gambar12](materials/img/image10.jpg)
+
+- Watch Courses Video
+  ![Gambar13](materials/img/image11.jpg)
 
 ---
 
