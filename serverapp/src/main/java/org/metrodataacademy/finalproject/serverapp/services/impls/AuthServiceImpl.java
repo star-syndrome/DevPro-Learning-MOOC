@@ -1,10 +1,12 @@
 package org.metrodataacademy.finalproject.serverapp.services.impls;
 
 import lombok.extern.slf4j.Slf4j;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.ForgotPasswordRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.LoginRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.RegistrationRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.LoginResponse;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.RegistrationResponse;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.UserResponse;
 import org.metrodataacademy.finalproject.serverapp.models.entities.Role;
 import org.metrodataacademy.finalproject.serverapp.models.entities.User;
 import org.metrodataacademy.finalproject.serverapp.repositories.RoleRepository;
@@ -112,6 +114,38 @@ public class AuthServiceImpl implements AuthService {
                     .email(users.getEmail())
                     .phone(users.getPhone())
                     .username(users.getUsername())
+                    .build();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Override
+    public UserResponse forgotPassword(ForgotPasswordRequest forgotPasswordRequest) {
+        try {
+            log.info("Trying to forgot password!");
+            User user = userRepository.findByUsername(forgotPasswordRequest.getUsername())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
+
+            if (!forgotPasswordRequest.getNewPassword().equals(forgotPasswordRequest.getRepeatNewPassword())) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Password not match!");
+            }
+
+            String encode = passwordEncoder.encode(forgotPasswordRequest.getNewPassword());
+            user.setPassword(encode);
+
+            userRepository.save(user);
+            log.info("Forgot password success!");
+
+            return UserResponse.builder()
+                    .id(user.getId())
+                    .name(user.getName())
+                    .email(user.getEmail())
+                    .phone(user.getPhone())
+                    .city(user.getCity())
+                    .country(user.getCountry())
+                    .username(user.getUsername())
                     .build();
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());

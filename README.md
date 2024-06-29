@@ -41,38 +41,41 @@
 - Registration
   ![Gambar2](materials/img/image13.jpg)
 
-- Landing Page
-  ![Gambar3](materials/img/image1.png)
+- Forgot Password
+  ![Gambar3](materials/img/image14.jpg)
 
 - Landing Page
-  ![Gambar4](materials/img/image2.jpg)
+  ![Gambar4](materials/img/image1.png)
 
 - Landing Page
-  ![Gambar5](materials/img/image3.jpg)
+  ![Gambar5](materials/img/image2.jpg)
+
+- Landing Page
+  ![Gambar6](materials/img/image3.jpg)
 
 - Admin
-  ![Gambar6](materials/img/image4.jpg)
+  ![Gambar7](materials/img/image4.jpg)
 
 - Admin
-  ![Gambar7](materials/img/image5.jpg)
+  ![Gambar8](materials/img/image5.jpg)
 
 - Dashboard
-  ![Gambar8](materials/img/image6.jpg)
+  ![Gambar9](materials/img/image6.jpg)
 
 - My Course
-  ![Gambar9](materials/img/image7.jpg)
+  ![Gambar10](materials/img/image7.jpg)
 
 - Account Profile
-  ![Gambar10](materials/img/image8.jpg)
+  ![Gambar11](materials/img/image8.jpg)
 
 - Course Details
-  ![Gambar11](materials/img/image9.jpg)
+  ![Gambar12](materials/img/image9.jpg)
 
 - Payment
-  ![Gambar12](materials/img/image10.jpg)
+  ![Gambar13](materials/img/image10.jpg)
 
 - Watch Courses Video
-  ![Gambar13](materials/img/image11.jpg)
+  ![Gambar14](materials/img/image11.jpg)
 
 ---
 
