@@ -80,10 +80,11 @@
 				<div class="payment-summary">
 					<div class="card category-card">
 						<div class="card-body">
-							<p>
+							<h3>
 								<span th:text="${order.category}"></span>
-							</p>
+							</h3>
 							<p><span th:text="${order.title}"></span></p>
+							<p><span th:text="'by ' + ${order.mentor}"></span></p>
 						</div>
 						<div class="subtotal">
 							<div class="total-detail">

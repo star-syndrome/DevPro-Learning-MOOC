@@ -38,7 +38,9 @@
 						Show Password
 					</div>
 					<button type="submit">Log in</button>
-					<a href="#" class="forgot-password mt-2">Forgot Password?</a>
+					<a th:href="@{/auth/forgot-password}" class="forgot-password mt-2"
+						>Forgot Password?</a
+					>
 					<p class="register">
 						Don't have an account?
 						<a th:href="@{/auth/registration}">Sign up here!</a>

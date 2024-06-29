@@ -1,12 +1,10 @@
 package org.metrodataacademy.finalproject.serverapp.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.ForgotPasswordRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.LoginRequest;
 import org.metrodataacademy.finalproject.serverapp.models.dtos.requests.RegistrationRequest;
-import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CategoryResponse;
-import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.CourseResponse;
-import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.LoginResponse;
-import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.RegistrationResponse;
+import org.metrodataacademy.finalproject.serverapp.models.dtos.responses.*;
 import org.metrodataacademy.finalproject.serverapp.services.AuthService;
 import org.metrodataacademy.finalproject.serverapp.services.CategoryService;
 import org.metrodataacademy.finalproject.serverapp.services.CourseService;
@@ -48,6 +46,14 @@ public class AuthController {
     )
     public ResponseEntity<LoginResponse> login(@Validated @RequestBody LoginRequest loginRequest) {
         return ResponseEntity.ok().body(authService.login(loginRequest));
+    }
+
+    @PostMapping(
+            path = "/auth/forgot-password",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<UserResponse> forgotPassword(@Validated @RequestBody ForgotPasswordRequest forgotPasswordRequest) {
+        return ResponseEntity.ok().body(authService.forgotPassword(forgotPasswordRequest));
     }
 
     @GetMapping(
