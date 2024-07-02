@@ -36,7 +36,7 @@
 		</section>
 
 		<section class="payment-section">
-			<div class="container">
+			<div class="container-payment">
 				<div class="payment-method"></div>
 				<div class="card-logos">
 					<img
@@ -80,11 +80,15 @@
 				<div class="payment-summary">
 					<div class="card category-card">
 						<div class="card-body">
-							<h3>
+							<h1 class="fw-bold fs-3">
 								<span th:text="${order.category}"></span>
-							</h3>
-							<p><span th:text="${order.title}"></span></p>
-							<p><span th:text="'by ' + ${order.mentor}"></span></p>
+							</h1>
+							<h2 class="fw-bold fs-4">
+								<span th:text="${order.title}"></span>
+							</h2>
+							<p class="fs-5">
+								<span th:text="'by ' + ${order.mentor}"></span>
+							</p>
 						</div>
 						<div class="subtotal">
 							<div class="total-detail">

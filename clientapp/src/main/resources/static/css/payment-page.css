@@ -45,13 +45,27 @@ body {
 }
 
 .container {
-	height: 12cm;
+	height: 12.5cm;
 	width: 40%;
 	margin: auto;
 	background-color: white;
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container-payment {
+	height: 10cm;
+	width: 40%;
+	margin: auto;
+	background-color: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-summary h1 {
+	color: #7b4bf3;
 }
 
 .payment-method {
@@ -102,5 +116,5 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	margin-bottom: 3rem;
+	margin-bottom: 0.75rem;
 }
