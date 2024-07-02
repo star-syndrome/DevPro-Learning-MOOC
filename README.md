@@ -74,7 +74,7 @@
 - Payment
   ![Gambar13](materials/img/image10.jpg)
 
-- Watch Courses Video
+- Watch Course Videos
   ![Gambar14](materials/img/image11.jpg)
 
 ---
