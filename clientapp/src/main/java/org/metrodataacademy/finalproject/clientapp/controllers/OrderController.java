@@ -1,6 +1,7 @@
 package org.metrodataacademy.finalproject.clientapp.controllers;
 
 import org.metrodataacademy.finalproject.clientapp.services.OrderService;
+import org.metrodataacademy.finalproject.clientapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,9 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private UserService userService;
     
     @GetMapping(
         path = "/order/{title}",
@@ -20,7 +24,7 @@ public class OrderController {
     )
     public String getOrderDetailsView(@PathVariable String title, Model model) {
         model.addAttribute("order", orderService.getOrderDetailsCourse(title));
-        model.addAttribute("courseTitle", title);
+        model.addAttribute("user", userService.getUserProfile());
         return "pages/user/payment-page";
     }
     

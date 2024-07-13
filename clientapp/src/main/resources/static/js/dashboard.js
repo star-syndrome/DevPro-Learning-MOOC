@@ -8,7 +8,7 @@ $(document).ready(() => {
 				const categoryCard = /*html*/ `
                     <div class="col-sm-2">
                         <div class="card category-card">
-                            <img src="${category.linkPhoto}" class="img-thumbnail category-img" alt="${category.name}">
+                            <img src="${category.linkPhoto}" class="img-thumbnail" alt="${category.name}">
                             <div class="card-body">
                                 <h5 class="card-title">${category.name}</h5>
                             </div>
@@ -33,10 +33,10 @@ $(document).ready(() => {
 			courses.forEach((course) => {
 				const cardHtml = /*html*/ `
 					<div class="col-md-4">
-						<div class="course-card">
+						<div class="card course-card">
 							<img src="${course.linkPhoto}" alt="Course Image">
 							<div class="course-card-body">
-								<h5 class="course-title">${course.category}</h5>
+								<h5 class="course-category">${course.category}</h5>
 								<p>${course.title}</p>
 								<p class="text-muted">by ${course.mentor}</p>
 								<p>
@@ -67,10 +67,10 @@ $(document).ready(() => {
 			courses.forEach((course) => {
 				const cardHtml = /*html*/ `
 					<div class="col-md-4">
-						<div class="course-card">
+						<div class="card course-card">
 							<img src="${course.linkPhoto}" alt="Course Image">
 							<div class="course-card-body">
-								<h5 class="course-title">${course.category}</h5>
+								<h5 class="course-category">${course.category}</h5>
 								<p>${course.title}</p>
 								<p class="text-muted">by ${course.mentor}</p>
 								<p>
@@ -90,4 +90,24 @@ $(document).ready(() => {
 			console.error("Failed to fetch courses:", error);
 		},
 	});
+});
+
+function searchCoursesAndCategories(search) {
+	$(".card").each(function () {
+		let courseTitle = $(this).find("p").text().toLowerCase();
+		let courseCategory = $(this).find("h5").text().toLowerCase();
+		if (
+			courseTitle.includes(search.toLowerCase()) ||
+			courseCategory.includes(search.toLowerCase())
+		) {
+			$(this).show();
+		} else {
+			$(this).hide();
+		}
+	});
+}
+
+$("#search").on("input", function () {
+	let search = $(this).val().trim();
+	searchCoursesAndCategories(search);
 });

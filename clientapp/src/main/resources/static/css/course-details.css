@@ -76,10 +76,6 @@ body {
 	gap: 3rem;
 }
 
-.course-meta span {
-	border-radius: 0.25rem;
-}
-
 .course-content {
 	display: block;
 	justify-content: space-between;
@@ -111,6 +107,7 @@ body {
 	border-radius: 1rem;
 	padding: 1rem;
 }
+
 hr {
 	color: #ebf3fc;
 }

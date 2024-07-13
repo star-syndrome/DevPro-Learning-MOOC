@@ -31,10 +31,10 @@ $(document).ready(() => {
 			response.forEach(function (course) {
 				const courseCard = /*html*/ `
                     <div class="col-md-4">
-                        <div class="course-card">
+                        <div class="card course-card">
                             <img src="${course.linkPhoto}" alt="Course Image">
                             <div class="course-card-body">
-                                <h5 class="course-title">${course.category}</h5>
+                                <h5 class="course-category">${course.category}</h5>
                                 <p>${course.title}</p>
                                 <p class="text-muted">by ${course.mentor}</p>
                                 <p>
@@ -56,70 +56,22 @@ $(document).ready(() => {
 	});
 });
 
-function displayCategories(categories) {
-	var categoryListHTML = "";
-
-	for (var i = 0; i < categories.length; i++) {
-		var category = categories[i];
-		var categoryItemHTML = `
-			<div class="category-item" data-category-id="${category.id}">
-				${category.name}
-			</div>
-		`;
-		categoryListHTML += categoryItemHTML;
-	}
-
-	$("#category-list").html(categoryListHTML);
-
-	// Attach click event to category items
-	$(".category-item").click(function () {
-		var categoryId = $(this).data("categoryId");
-		// Handle category click event (e.g., filter products, load subcategories)
-		console.log("Category clicked:", categoryId);
+function searchCoursesAndCategories(search) {
+	$(".card").each(function () {
+		let courseTitle = $(this).find("p").text().toLowerCase();
+		let courseCategory = $(this).find("h5").text().toLowerCase();
+		if (
+			courseTitle.includes(search.toLowerCase()) ||
+			courseCategory.includes(search.toLowerCase())
+		) {
+			$(this).show();
+		} else {
+			$(this).hide();
+		}
 	});
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-	const filters = document.querySelectorAll(".filters button");
-	const searchBar = document.querySelector(".search-bar input");
-	const searchButton = document.querySelector(".search-bar button");
-	const courses = document.querySelectorAll(".course");
-
-	// Add event listener to filters
-	filters.forEach((filter) => {
-		filter.addEventListener("click", (e) => {
-			filters.forEach((f) => f.classList.remove("active"));
-			e.target.classList.add("active");
-			const filterText = e.target.textContent;
-			filterCourses(filterText);
-		});
-	});
-
-	// Add event listener to search button
-	searchButton.addEventListener("click", () => {
-		const query = searchBar.value.toLowerCase();
-		searchCourses(query);
-	});
-
-	// Function to filter courses based on category
-	function filterCourses(category) {
-		courses.forEach((course) => {
-			if (category === "All" || course.textContent.includes(category)) {
-				course.style.display = "block";
-			} else {
-				course.style.display = "none";
-			}
-		});
-	}
-
-	// Function to search courses based on query
-	function searchCourses(query) {
-		courses.forEach((course) => {
-			if (course.textContent.toLowerCase().includes(query)) {
-				course.style.display = "block";
-			} else {
-				course.style.display = "none";
-			}
-		});
-	}
+$("#search").on("input", function () {
+	let search = $(this).val().trim();
+	searchCoursesAndCategories(search);
 });

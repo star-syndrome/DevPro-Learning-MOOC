@@ -45,7 +45,7 @@ body {
 }
 
 .container {
-	height: 12.5cm;
+	height: 10.5cm;
 	width: 40%;
 	margin: auto;
 	background-color: white;
@@ -54,17 +54,7 @@ body {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.container-payment {
-	height: 10cm;
-	width: 40%;
-	margin: auto;
-	background-color: white;
-	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.payment-summary h1 {
+.payment-summary h2 {
 	color: #7b4bf3;
 }
 
@@ -105,11 +95,6 @@ body {
 
 .payment-summary p {
 	margin: 5px 0;
-}
-
-.payment-summary .total {
-	font-weight: bold;
-	font-size: 1.2em;
 }
 
 .subtotal {

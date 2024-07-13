@@ -62,8 +62,8 @@
 - Dashboard
   ![Gambar9](materials/img/image6.jpg)
 
-- My Course
-  ![Gambar10](materials/img/image7.jpg)
+- My Courses
+  ![Gambar10](materials/img/image7.png)
 
 - Account Profile
   ![Gambar11](materials/img/image8.jpg)
@@ -72,10 +72,13 @@
   ![Gambar12](materials/img/image9.jpg)
 
 - Payment
-  ![Gambar13](materials/img/image10.jpg)
+  ![Gambar13](materials/img/image10.png)
+
+- Payment Success
+  ![Gambar14](materials/img/image15.png)
 
 - Watch Course Videos
-  ![Gambar14](materials/img/image11.jpg)
+  ![Gambar15](materials/img/image11.png)
 
 ---
 
