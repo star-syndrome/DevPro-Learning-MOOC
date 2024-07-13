@@ -63,7 +63,7 @@
   ![Gambar9](materials/img/image6.jpg)
 
 - My Courses
-  ![Gambar10](materials/img/image7.jpg)
+  ![Gambar10](materials/img/image7.png)
 
 - Account Profile
   ![Gambar11](materials/img/image8.jpg)
