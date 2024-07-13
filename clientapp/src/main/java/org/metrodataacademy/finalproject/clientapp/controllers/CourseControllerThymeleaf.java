@@ -26,7 +26,7 @@ public class CourseControllerThymeleaf {
     }
 
     @GetMapping(
-        path = "/my-course",
+        path = "/my-courses",
         produces = MediaType.APPLICATION_JSON_VALUE
     )
     public String myCourseView(Model model){

@@ -36,7 +36,7 @@
 		</section>
 
 		<section class="payment-section">
-			<div class="container-payment">
+			<div class="container">
 				<div class="payment-method"></div>
 				<div class="card-logos">
 					<img
@@ -60,7 +60,10 @@
 						type="text"
 						placeholder="Card number"
 						value="4480 0000 0000 0000" />
-					<input type="text" placeholder="Card holder name" value="John Doe" />
+					<input
+						type="text"
+						placeholder="Card holder name"
+						th:value="${user.name}" />
 					<div style="display: flex; justify-content: space-between">
 						<input
 							type="text"
@@ -80,40 +83,40 @@
 				<div class="payment-summary">
 					<div class="card category-card">
 						<div class="card-body">
-							<h1 class="fw-bold fs-3">
+							<h2 class="fw-bold">
 								<span th:text="${order.category}"></span>
-							</h1>
-							<h2 class="fw-bold fs-4">
-								<span th:text="${order.title}"></span>
 							</h2>
+							<h4 class="fw-bold">
+								<span th:text="${order.title}"></span>
+							</h4>
 							<p class="fs-5">
 								<span th:text="'by ' + ${order.mentor}"></span>
 							</p>
 						</div>
 						<div class="subtotal">
 							<div class="total-detail">
-								<label for="price">Harga:</label>
+								<label for="price">Price:</label>
 								<p id="price"><span th:text="${order.price}"></span></p>
 							</div>
 							<div class="total-detail">
-								<label for="tax">PPN 11%:</label>
+								<label for="tax">Tax 11%:</label>
 								<p id="tax"><span th:text="${order.tax}"></span></p>
 							</div>
 							<div class="total-detail">
-								<label for="total">Total Bayar:</label>
-								<p class="total" id="courseTotalPrice">
+								<label for="total">Total Price:</label>
+								<p id="total" class="fw-bold">
 									<span th:text="${order.totalPrice}"></span>
 								</p>
 							</div>
 						</div>
 					</div>
 					<div class="form-group fw-bold text-start">
-						<label for="course-title">Course Title</label>
 						<input
 							type="text"
 							class="form-control mb-2"
 							id="course-title"
-							th:value="${order.title}" />
+							th:value="${order.title}"
+							hidden />
 					</div>
 					<div class="form-group fw-bold text-start">
 						<label for="payment-method">Payment Method:</label>

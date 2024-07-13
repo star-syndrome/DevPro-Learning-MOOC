@@ -25,7 +25,11 @@
 						</a>
 					</div>
 					<div class="search-bar">
-						<input type="text" placeholder="Cari Kursus terbaik..." />
+						<input
+							type="search"
+							id="search"
+							aria-label="Search"
+							placeholder="Cari Kursus terbaik..." />
 						<button type="button">🔍</button>
 					</div>
 					<div class="login d-flex justify-content-between gap-4">
@@ -39,9 +43,9 @@
 						<a
 							class="nav-link text-light"
 							th:classappend="${isActive} == 'course' ? 'active fw-bold' : ''"
-							th:href="@{/my-course}"
+							th:href="@{/my-courses}"
 							sec:authorize="hasRole('ROLE_USER')"
-							>My Course
+							>My Courses
 						</a>
 						<a
 							class="nav-link text-light"

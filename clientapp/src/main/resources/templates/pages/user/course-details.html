@@ -39,24 +39,22 @@
 						</h2>
 						<p class="fs-5">by <span th:text="${course.mentor}"></span></p>
 						<div class="course-meta">
-							<a class="fs-3"
+							<a
 								><span
-									class="level badge badge-success"
+									class="text-success"
 									th:text="${course.level} + ' Level'"></span
 							></a>
-							<a class="fs-3"
-								><span
-									class="status badge badge-danger"
-									th:text="${course.isPremium}"></span
+							<a
+								><span class="text-danger" th:text="${course.isPremium}"></span
 							></a>
-							<a class="fs-3">
+							<a>
 								<span
-									class="duration badge badge-primary"
+									class="text-secondary"
 									th:text="${course.totalDuration} + ' minutes'"></span>
 							</a>
-							<a class="fs-3">
+							<a>
 								<span
-									class="duration badge badge-secondary"
+									class="text-primary"
 									th:text="'Rp ' + ${course.price}"></span>
 							</a>
 						</div>
