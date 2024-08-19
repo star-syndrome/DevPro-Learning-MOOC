@@ -16,12 +16,18 @@
 			crossorigin="anonymous" />
 
 		<link rel="stylesheet" href="/css/payment-page.css" />
+
+		<!-- Icon -->
+		<link
+			rel="shortcut icon"
+			href="/img/online-course.png"
+			type="image/x-icon" />
 	</head>
 
 	<body>
 		<div class="header">
 			<div
-				class="d-flex justify-content-center align-items-center fw-bold fs-3">
+				class="d-flex justify-content-center align-items-center fw-bold fs-2">
 				<img
 					class="d-inline-block align-text-top me-2"
 					th:src="@{/img/online-course.png}"
@@ -86,24 +92,24 @@
 							<h2 class="fw-bold">
 								<span th:text="${order.category}"></span>
 							</h2>
-							<h4 class="fw-bold">
+							<h5 class="fw-bold">
 								<span th:text="${order.title}"></span>
-							</h4>
+							</h5>
 							<p class="fs-5">
 								<span th:text="'by ' + ${order.mentor}"></span>
 							</p>
 						</div>
 						<div class="subtotal">
-							<div class="total-detail">
-								<label for="price">Price:</label>
+							<div class="total-detail fs-5">
+								<label for="price">Harga:</label>
 								<p id="price"><span th:text="${order.price}"></span></p>
 							</div>
-							<div class="total-detail">
-								<label for="tax">Tax 11%:</label>
+							<div class="total-detail fs-5">
+								<label for="tax">Pajak 11%:</label>
 								<p id="tax"><span th:text="${order.tax}"></span></p>
 							</div>
-							<div class="total-detail">
-								<label for="total">Total Price:</label>
+							<div class="total-detail fs-5">
+								<label for="total">Total Harga:</label>
 								<p id="total" class="fw-bold">
 									<span th:text="${order.totalPrice}"></span>
 								</p>
@@ -119,7 +125,7 @@
 							hidden />
 					</div>
 					<div class="form-group fw-bold text-start">
-						<label for="payment-method">Payment Method:</label>
+						<label for="payment-method">Metode Pembayaran:</label>
 						<select
 							id="payment-method"
 							name="payment-method"
@@ -129,7 +135,7 @@
 						</select>
 					</div>
 					<button type="button" class="btn btn-primary" id="createOrderButton">
-						Submit Payment
+						Konfirmasi Pembayaran
 					</button>
 				</div>
 			</div>

@@ -31,7 +31,7 @@ public class CourseControllerThymeleaf {
     )
     public String myCourseView(Model model){
         model.addAttribute("isActive", "course");
-        return "pages/user/my-course";
+        return "pages/user/my-courses";
     }
     
 }

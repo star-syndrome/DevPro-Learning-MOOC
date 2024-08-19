@@ -113,7 +113,8 @@ $("#addPaymentMethodForm").on("submit", function (event) {
 			Swal.fire({
 				position: "center",
 				icon: "success",
-				title: "Payment Method added successfully!",
+				title: "SUCCESS!",
+				text: "Payment Method added successfully!",
 				showConfirmButton: false,
 				timer: 1500,
 			});
@@ -127,8 +128,8 @@ $("#addPaymentMethodForm").on("submit", function (event) {
 			Swal.fire({
 				position: "center",
 				icon: "error",
-				title: "Failed to add payment method!",
-				text: "Status: " + status,
+				title: "ERROR!",
+				text: "Failed to add payment method!",
 				showConfirmButton: false,
 				timer: 1500,
 			});
@@ -152,8 +153,8 @@ function findPaymentById(id) {
 			Swal.fire({
 				position: "center",
 				icon: "error",
-				title: "Failed to fetch payment method details!",
-				text: "Status: " + status,
+				title: "ERROR!",
+				text: "Failed to fetch payment method details!",
 				showConfirmButton: false,
 				timer: 1500,
 			});
@@ -176,8 +177,8 @@ function beforeUpdatePayment(id) {
 			Swal.fire({
 				position: "center",
 				icon: "error",
-				title: "Failed to fetch payment method details!",
-				text: "Status: " + status,
+				title: "ERROR!",
+				text: "Failed to fetch payment method details!",
 				showConfirmButton: false,
 				timer: 1500,
 			});
@@ -204,7 +205,8 @@ $("#updatePaymentMethodForm").on("submit", function (event) {
 			Swal.fire({
 				position: "center",
 				icon: "success",
-				title: "Payment Method updated successfully!",
+				title: "SUCCESS!",
+				text: "Payment Method updated successfully!",
 				showConfirmButton: false,
 				timer: 1500,
 			});
@@ -217,8 +219,8 @@ $("#updatePaymentMethodForm").on("submit", function (event) {
 			Swal.fire({
 				position: "center",
 				icon: "error",
-				title: "Failed to update payment method!",
-				text: "Status: " + status,
+				title: "ERROR!",
+				text: "Failed to update payment method!",
 				showConfirmButton: false,
 				timer: 1500,
 			});

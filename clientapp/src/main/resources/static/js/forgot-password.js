@@ -14,9 +14,10 @@ $("#forgot-password").click(function (e) {
 		Swal.fire({
 			position: "center",
 			icon: "error",
-			title: validatePassword,
+			title: "ERROR!",
+			text: validatePassword,
 			showConfirmButton: false,
-			timer: 1500,
+			timer: 2500,
 		});
 	} else {
 		$.ajax({
@@ -47,9 +48,10 @@ $("#forgot-password").click(function (e) {
 				Swal.fire({
 					position: "center",
 					icon: "error",
-					title: "Reset Password Failed!",
+					title: "ERROR!",
+					text: "Failed to Reset Password!",
 					showConfirmButton: false,
-					timer: 1500,
+					timer: 2500,
 				});
 			},
 		});

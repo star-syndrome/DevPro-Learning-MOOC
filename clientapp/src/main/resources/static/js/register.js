@@ -8,15 +8,22 @@ $("#register-button").click(function (e) {
 	let valueUsername = $("#username").val();
 	let valuePassword = $("#password").val();
 
-	let validatePassword = validationPassword(valuePassword);
+	let validateRegistration = validationRegistration(
+		valuePassword,
+		valueName,
+		valueEmail,
+		valuePhone,
+		valueUsername
+	);
 
-	if (validatePassword !== "LFG!") {
+	if (validateRegistration !== "LFG!") {
 		Swal.fire({
 			position: "center",
 			icon: "error",
-			title: validatePassword,
+			title: "ERROR!",
+			text: validateRegistration,
 			showConfirmButton: false,
-			timer: 1500,
+			timer: 2500,
 		});
 	} else {
 		$.ajax({
@@ -51,18 +58,27 @@ $("#register-button").click(function (e) {
 				Swal.fire({
 					position: "center",
 					icon: "error",
-					title: "Registration Failed!",
+					title: "ERROR!",
+					text: "Registration Failed!",
 					showConfirmButton: false,
-					timer: 1500,
+					timer: 2500,
 				});
 			},
 		});
 	}
 });
 
-function validationPassword(password) {
+function validationRegistration(password, name, email, phone, username) {
 	if (password.length < 8) {
 		return "Password length must be at least 8 characters";
+	} else if (name === "") {
+		return "Name must not be empty!";
+	} else if (email === "") {
+		return "Email must not be empty!";
+	} else if (phone === "") {
+		return "Phone must not be empty!";
+	} else if (username === "") {
+		return "Username must not be empty!";
 	} else {
 		return "LFG!";
 	}

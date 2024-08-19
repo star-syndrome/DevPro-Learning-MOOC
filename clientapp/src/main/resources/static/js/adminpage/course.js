@@ -225,9 +225,10 @@ $("#courseForm").on("submit", function (event) {
 			Swal.fire({
 				position: "center",
 				icon: "success",
-				title: "Course added successfully!",
+				title: "SUCCESS!",
+				text: "Course added successfully!",
 				showConfirmButton: false,
-				timer: 1500,
+				timer: 2500,
 			});
 			$("#create").modal("hide");
 			$("#courseForm")[0].reset();
@@ -240,10 +241,10 @@ $("#courseForm").on("submit", function (event) {
 			Swal.fire({
 				position: "center",
 				icon: "error",
-				title: "Failed to add course!",
-				text: "Status: " + status,
+				title: "ERROR!",
+				text: "Failed to add course!",
 				showConfirmButton: false,
-				timer: 1500,
+				timer: 2500,
 			});
 		},
 	});
@@ -291,10 +292,10 @@ function findModuleById(id) {
 			Swal.fire({
 				position: "center",
 				icon: "error",
-				title: "Failed to fetch module details!",
-				text: "Status: " + status,
+				title: "ERROR!",
+				text: "Failed to fetch module details!",
 				showConfirmButton: false,
-				timer: 1500,
+				timer: 2500,
 			});
 		},
 	});
@@ -351,10 +352,10 @@ function findCourseById(id) {
 			Swal.fire({
 				position: "center",
 				icon: "error",
-				title: "Failed to fetch course details!",
-				text: "Status: " + status,
+				title: "ERROR!",
+				text: "Failed to fetch course details!",
 				showConfirmButton: false,
-				timer: 1500,
+				timer: 2500,
 			});
 		},
 	});
@@ -448,10 +449,10 @@ function beforeUpdateCourse(id) {
 			Swal.fire({
 				position: "center",
 				icon: "error",
-				title: "Failed to fetch details course!",
-				text: "Status: " + status,
+				title: "ERROR!",
+				text: "Failed to fetch details course!",
 				showConfirmButton: false,
-				timer: 1500,
+				timer: 2500,
 			});
 		},
 	});
@@ -489,9 +490,10 @@ $("#updateCourseForm").on("submit", function (event) {
 			Swal.fire({
 				position: "center",
 				icon: "success",
-				title: "Course successfully updated!",
+				title: "SUCCESS!",
+				text: "Course successfully updated!",
 				showConfirmButton: false,
-				timer: 1500,
+				timer: 2500,
 			});
 			$("#update").modal("hide");
 			$("#updateCourseForm")[0].reset();
@@ -504,10 +506,10 @@ $("#updateCourseForm").on("submit", function (event) {
 			Swal.fire({
 				position: "center",
 				icon: "error",
-				title: "Failed to update course!",
-				text: "Status: " + status,
+				title: "ERROR!",
+				text: "Failed to update course!",
 				showConfirmButton: false,
-				timer: 1500,
+				timer: 2500,
 			});
 		},
 	});
@@ -553,10 +555,10 @@ function beforeUpdateModule(id) {
 			Swal.fire({
 				position: "center",
 				icon: "error",
-				title: "Failed to fetch module details!",
-				text: "Status: " + status,
+				title: "ERROR!",
+				text: "Failed to fetch module details!",
 				showConfirmButton: false,
-				timer: 1500,
+				timer: 2500,
 			});
 		},
 	});
@@ -584,9 +586,10 @@ function updateModule() {
 			Swal.fire({
 				position: "center",
 				icon: "success",
-				title: "Module successfully updated!",
+				title: "SUCCESS!",
+				text: "Module successfully updated!",
 				showConfirmButton: false,
-				timer: 1500,
+				timer: 2500,
 			});
 			$("#update-module").modal("hide");
 			$("#updateModuleForm")[0].reset();
@@ -598,10 +601,10 @@ function updateModule() {
 			Swal.fire({
 				position: "center",
 				icon: "error",
-				title: "Failed to update module!",
-				text: "Status: " + status,
+				title: "ERROR!",
+				text: "Module successfully updated!",
 				showConfirmButton: false,
-				timer: 1500,
+				timer: 2500,
 			});
 		},
 	});

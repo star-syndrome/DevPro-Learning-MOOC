@@ -24,7 +24,7 @@ $(document).ready(() => {
 	});
 
 	$.ajax({
-		url: "http://localhost:8080/api/course/before-login", // Adjust the URL to your API endpoint
+		url: "http://localhost:8080/api/course/before-login",
 		method: "GET",
 		dataType: "json",
 		success: function (response) {
