@@ -114,7 +114,8 @@ $(document).ready(() => {
 				Swal.fire({
 					position: "center",
 					icon: "success",
-					title: "Category added successfully!",
+					title: "SUCCESS!",
+					text: "Category added successfully!",
 					showConfirmButton: false,
 					timer: 1500,
 				});
@@ -127,8 +128,8 @@ $(document).ready(() => {
 				Swal.fire({
 					position: "center",
 					icon: "error",
-					title: "Failed to add category!",
-					text: "Status: " + status,
+					title: "ERROR!",
+					text: "Failed to add category!",
 					showConfirmButton: false,
 					timer: 1500,
 				});
@@ -155,7 +156,8 @@ $(document).ready(() => {
 				Swal.fire({
 					position: "center",
 					icon: "success",
-					title: "Uploaded image to category successful!",
+					title: "SUCCESS!",
+					text: "Uploaded image to category successful!",
 					showConfirmButton: false,
 					timer: 1500,
 				});
@@ -216,8 +218,8 @@ function findCategoryById(id) {
 			Swal.fire({
 				position: "center",
 				icon: "error",
-				title: "Failed to fetch category details!",
-				text: "Status: " + status,
+				title: "ERROR!",
+				text: "Failed to fetch category details!",
 				showConfirmButton: false,
 				timer: 1500,
 			});
@@ -240,8 +242,8 @@ function beforeUpdateCategory(id) {
 			Swal.fire({
 				position: "center",
 				icon: "error",
-				title: "Failed to fetch category details!",
-				text: "Status: " + status,
+				title: "ERROR!",
+				text: "Failed to fetch category details!",
 				showConfirmButton: false,
 				timer: 1500,
 			});
@@ -269,7 +271,8 @@ $("#updateCategoryForm").on("submit", function (event) {
 			Swal.fire({
 				position: "center",
 				icon: "success",
-				title: "Category updated successfully!",
+				title: "SUCCESS!",
+				text: "Category updated successfully!",
 				showConfirmButton: false,
 				timer: 1500,
 			});
@@ -281,8 +284,8 @@ $("#updateCategoryForm").on("submit", function (event) {
 			Swal.fire({
 				position: "center",
 				icon: "error",
-				title: "Failed to update category!",
-				text: "Status: " + status,
+				title: "ERROR!",
+				text: "Failed to update category!",
 				showConfirmButton: false,
 				timer: 1500,
 			});

@@ -34,7 +34,8 @@ $("#update-profile").click(function (e) {
 		Swal.fire({
 			position: "center",
 			icon: "error",
-			title: validateProfile,
+			title: "ERROR!",
+			text: validateProfile,
 			showConfirmButton: false,
 			timer: 1500,
 		});
@@ -66,7 +67,8 @@ $("#update-profile").click(function (e) {
 				Swal.fire({
 					position: "center",
 					icon: "error",
-					title: "Email or Phone Already Exists!",
+					title: "ERROR!",
+					text: "Email or Phone Already Exists",
 					showConfirmButton: false,
 					timer: 1500,
 				});
@@ -125,7 +127,8 @@ $("#update-password").click(function (e) {
 				Swal.fire({
 					position: "center",
 					icon: "error",
-					title: "Update Password Failed!",
+					title: "ERROR!",
+					text: "Update Password Failed!",
 					showConfirmButton: false,
 					timer: 1500,
 				});

@@ -29,10 +29,10 @@ $(document).ready(function () {
 				Swal.fire({
 					position: "center",
 					icon: "error",
-					title: "You already purchased this course!",
-					text: "Status: " + status,
+					title: "ERROR!",
+					text: "You already purchased this course!",
 					showConfirmButton: false,
-					timer: 1500,
+					timer: 2500,
 				});
 			},
 		});
