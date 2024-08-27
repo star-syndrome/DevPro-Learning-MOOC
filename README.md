@@ -36,49 +36,64 @@
 ### **`Screenshot:`**
 
 - Login
-  ![Gambar1](materials/img/image12.jpg)
+  ![Gambar1](materials/img/Login.jpg)
 
 - Registration
-  ![Gambar2](materials/img/image13.jpg)
+  ![Gambar2](materials/img/Registration.jpg)
 
 - Forgot Password
-  ![Gambar3](materials/img/image14.jpg)
+  ![Gambar3](materials/img/Forgot-Password.jpg)
 
 - Landing Page
-  ![Gambar4](materials/img/image1.png)
+  ![Gambar4](materials/img/Landing-Page-1.png)
 
 - Landing Page
-  ![Gambar5](materials/img/image2.jpg)
+  ![Gambar5](materials/img/Landing-Page-2.png)
 
 - Landing Page
-  ![Gambar6](materials/img/image3.jpg)
-
-- Admin
-  ![Gambar7](materials/img/image4.jpg)
-
-- Admin
-  ![Gambar8](materials/img/image5.jpg)
+  ![Gambar6](materials/img/Landing-Page-3.png)
 
 - Dashboard
-  ![Gambar9](materials/img/image6.jpg)
+  ![Gambar7](materials/img/Dashboard-1.png)
+
+- Dashboard
+  ![Gambar8](materials/img/Dashboard-2.png)
 
 - My Courses
-  ![Gambar10](materials/img/image7.png)
+  ![Gambar9](materials/img/My-Courses-1.png)
+
+- My Courses
+  ![Gambar10](materials/img/My-Courses-2.png)
 
 - Account Profile
-  ![Gambar11](materials/img/image8.jpg)
+  ![Gambar11](materials/img/Account-1.png)
+
+- Account Profile
+  ![Gambar12](materials/img/Account-2.png)
+
+- Change Password
+  ![Gambar13](materials/img/Change-Password.png)
 
 - Course Details
-  ![Gambar12](materials/img/image9.jpg)
+  ![Gambar14](materials/img/Course-Details.png)
 
-- Payment
-  ![Gambar13](materials/img/image10.png)
+- Course Payment
+  ![Gambar15](materials/img/Course-Payment.png)
 
 - Payment Success
-  ![Gambar14](materials/img/image15.png)
+  ![Gambar16](materials/img/Payment-Success.jpg)
+
+- The e-receipt is sent via email
+  ![Gambar17](materials/img/E-receipt.jpg)
 
 - Watch Course Videos
-  ![Gambar15](materials/img/image11.png)
+  ![Gambar18](materials/img/Watch-Video.png)
+
+- Admin
+  ![Gambar19](materials/img/Admin-1.jpg)
+
+- Admin
+  ![Gambar20](materials/img/Admin-2.jpg)
 
 ---
 
