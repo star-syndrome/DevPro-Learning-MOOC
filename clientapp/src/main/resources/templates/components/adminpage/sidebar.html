@@ -29,28 +29,26 @@
 						</a>
 					</li>
 					<li
-						th:classappend="${#httpServletRequest.requestURI == '/admin/kelola-kelas'} ? 'bg-[var(--secondary)]' : ''"
+						th:classappend="${#httpServletRequest.requestURI == '/admin/course'} ? 'bg-[var(--secondary)]' : ''"
 						class="py-3 px-10">
-						<a
-							th:href="@{/admin/kelola-kelas}"
-							sec:authorize="hasRole('ROLE_ADMIN')"
+						<a th:href="@{/admin/course}" sec:authorize="hasRole('ROLE_ADMIN')"
 							>Course and Module
 						</a>
 					</li>
 					<li
-						th:classappend="${#httpServletRequest.requestURI == '/admin/kategori-kelas'} ? 'bg-[var(--secondary)]' : ''"
+						th:classappend="${#httpServletRequest.requestURI == '/admin/category'} ? 'bg-[var(--secondary)]' : ''"
 						class="py-3 px-10">
 						<a
-							th:href="@{/admin/kategori-kelas}"
+							th:href="@{/admin/category}"
 							sec:authorize="hasRole('ROLE_ADMIN')"
 							>Category
 						</a>
 					</li>
 					<li
-						th:classappend="${#httpServletRequest.requestURI == '/admin/metode-pembayaran'} ? 'bg-[var(--secondary)]' : ''"
+						th:classappend="${#httpServletRequest.requestURI == '/admin/payment-method'} ? 'bg-[var(--secondary)]' : ''"
 						class="py-3 px-10">
 						<a
-							th:href="@{/admin/metode-pembayaran}"
+							th:href="@{/admin/payment-method}"
 							sec:authorize="hasRole('ROLE_ADMIN')"
 							>Payment Method
 						</a>

@@ -219,8 +219,14 @@ $("#videoModal").on("hidden.bs.modal", function () {
 
 // Handle Order Now button click
 $("#orderButton").on("click", function () {
-	var courseTitle = $(this).data("course-title");
+	const courseStatus = $(this).data("course-status");
+	const courseTitle = $(this).data("course-title");
 
-	// Redirect to payment page
-	window.location.href = "/order/" + courseTitle;
+	if (courseStatus === "premium") {
+		// Redirect to payment page
+		window.location.href = "/order/" + courseTitle;
+	} else {
+		// Redirect to telegram group
+		window.location.href = "https://www.instagram.com/alfariz.ky";
+	}
 });

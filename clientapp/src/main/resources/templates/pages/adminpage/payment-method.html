@@ -5,18 +5,18 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Kategori</title>
+		<title>Pembayaran</title>
 	</head>
 
 	<body>
 		<div layout:fragment="content" sec:authorize="isAuthenticated()">
-			<div th:replace="component/adminpage/dashboard/card :: card"></div>
+			<div th:replace="components/adminpage/dashboard/card :: card"></div>
 			<div
-				th:replace="component/adminpage/kategori/tabel-kategori :: tabel-kategori"></div>
+				th:replace="components/adminpage/payment-method/tabel-pembayaran :: tabel-pembayaran"></div>
 		</div>
 
 		<div layout:fragment="script">
-			<script src="/js/adminpage/category.js"></script>
+			<script src="/js/adminpage/payment.js"></script>
 		</div>
 	</body>
 </html>

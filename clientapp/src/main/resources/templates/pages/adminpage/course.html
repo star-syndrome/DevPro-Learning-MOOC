@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/admin}">
+	layout:decorate="~{layouts/admin}">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,11 +10,11 @@
 
 	<body>
 		<div layout:fragment="content" sec:authorize="isAuthenticated()">
-			<div th:replace="component/adminpage/dashboard/card :: card"></div>
+			<div th:replace="components/adminpage/dashboard/card :: card"></div>
 			<div
-				th:replace="component/adminpage/kursus/tabel-kursus :: tabel-kursus"></div>
+				th:replace="components/adminpage/course-module/tabel-kursus :: tabel-kursus"></div>
 			<div
-				th:replace="component/adminpage/kursus/tabel-modul :: tabel-modul"></div>
+				th:replace="components/adminpage/course-module/tabel-modul :: tabel-modul"></div>
 		</div>
 
 		<div layout:fragment="script">

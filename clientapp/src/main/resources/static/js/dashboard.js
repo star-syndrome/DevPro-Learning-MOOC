@@ -78,7 +78,7 @@ $(document).ready(() => {
 									<span class="course-isPremium text-danger">${course.isPremium}</span>
 									<span class="course-duration text-primary">${course.totalDuration} Minutes</span>
 								</p>
-                                <a href="/course/details/${course.title}" class="btn btn-primary">Details</a>
+                                <a href="/my-courses/details/${course.title}" class="btn btn-primary">Details</a>
                             </div>
                         </div>
                     </div>

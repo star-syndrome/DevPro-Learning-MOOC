@@ -76,6 +76,11 @@ body {
 	gap: 3rem;
 }
 
+.course-meta span {
+	font-size: 1.15rem;
+	font-weight: bold;
+}
+
 .course-content {
 	display: block;
 	justify-content: space-between;
@@ -95,6 +100,12 @@ body {
 .course-description p {
 	margin-bottom: 1rem;
 	text-align: justify;
+}
+
+.course-image img {
+	width: 50%;
+	max-height: 300px;
+	object-fit: cover;
 }
 
 .course-material {

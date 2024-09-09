@@ -14,18 +14,18 @@ public class AdminController {
         return "pages/adminpage/dashboard";
     }
 
-    @GetMapping("/kelola-kelas")
+    @GetMapping("/course")
     public String kelolaKelasView(){
-        return "pages/adminpage/kursus";
+        return "pages/adminpage/course";
     }
 
-    @GetMapping("/kategori-kelas")
+    @GetMapping("/category")
     public String kategoriKelasView() {
-        return "pages/adminpage/kategori";
+        return "pages/adminpage/category";
     }
 
-    @GetMapping("/metode-pembayaran")
+    @GetMapping("/payment-method")
     public String metodePembayaranView() {
-        return "pages/adminpage/pembayaran";
+        return "pages/adminpage/payment-method";
     }
 }
