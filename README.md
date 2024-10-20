@@ -75,25 +75,28 @@
   ![Gambar13](materials/img/Change-Password.png)
 
 - Course Details
-  ![Gambar14](materials/img/Course-Details.png)
+  ![Gambar14](materials/img/Course-Details1.png)
+
+- Course Details
+  ![Gambar15](materials/img/Course-Details2.png)
 
 - Course Payment
-  ![Gambar15](materials/img/Course-Payment.png)
+  ![Gambar16](materials/img/Course-Payment.png)
 
 - Payment Success
-  ![Gambar16](materials/img/Payment-Success.jpg)
+  ![Gambar17](materials/img/Payment-Success.jpg)
 
 - The e-receipt is sent via email
-  ![Gambar17](materials/img/E-receipt.jpg)
+  ![Gambar18](materials/img/E-receipt.jpg)
 
 - Watch Course Videos
-  ![Gambar18](materials/img/Watch-Video.png)
+  ![Gambar19](materials/img/Watch-Video.png)
 
 - Admin
-  ![Gambar19](materials/img/Admin-1.jpg)
+  ![Gambar20](materials/img/Admin-1.jpg)
 
 - Admin
-  ![Gambar20](materials/img/Admin-2.jpg)
+  ![Gambar21](materials/img/Admin-2.jpg)
 
 ---
 
